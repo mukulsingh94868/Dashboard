@@ -1,6 +1,6 @@
 import React from 'react';
-import Login from '../../Auth/Login';
 import Header from '../../Compoments/Header/Header';
+import LoginPage from '../../Auth/LoginPage';
 
 const Home = () => {
   return (
@@ -10,7 +10,7 @@ const Home = () => {
 
         <div className='landingLogin'>
           <div className='loginSection'>
-            <Login />
+            <LoginPage />
           </div>
 
         </div>
@@ -21,10 +21,6 @@ const Home = () => {
         <div className=''>
         </div>
       </div>
-
-
-
-
     </>
   )
 }

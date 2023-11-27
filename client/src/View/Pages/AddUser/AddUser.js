@@ -8,7 +8,6 @@ import ModalDialog from '@mui/joy/ModalDialog';
 import DialogTitle from '@mui/joy/DialogTitle';
 import DialogContent from '@mui/joy/DialogContent';
 import Stack from '@mui/joy/Stack';
-import Add from '@mui/icons-material/Add';
 
 const AddUser = () => {
     const [open, setOpen] = useState(false);
@@ -39,7 +38,7 @@ const AddUser = () => {
                 }),
                 // body: JSON.stringify(data)
             });
-            const data = await response.json();
+            // const data = await response.json();
             if (response.status === 201) {
                 setOpen(false);
                 window.location.reload();

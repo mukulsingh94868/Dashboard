@@ -17,7 +17,8 @@ const DashHeader = () => {
     const handleNavigate = () => {
         localStorage.removeItem('authUser');
         localStorage.removeItem('authPerson');
-        navigate('/logins')
+        localStorage.removeItem('authFullName');
+        navigate('/login')
     };
 
     useEffect(() => {

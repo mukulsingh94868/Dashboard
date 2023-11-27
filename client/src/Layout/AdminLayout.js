@@ -1,5 +1,4 @@
 import React from 'react';
-import AppContent from './AppContent';
 import DashAdminHeader from '../Compoments/DashHeader/DashAdminHeader';
 import DashAdminSidebar from '../Compoments/DashSidebar/DashAdminSidebar';
 import AppAdminContent from './AppAdminContent';

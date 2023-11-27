@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Login from '../Auth/Login';
-import Register from '../Auth/Register';
 import AdminLayout from '../Layout/AdminLayout';
 import Layout from '../Layout/Layout';
 import About from '../View/Pages/About';
@@ -10,6 +8,7 @@ import IndustriesSolutions from '../View/Pages/IndustriesSolutions';
 import Job from '../View/Pages/Job';
 import LoginPage from '../Auth/LoginPage';
 import Resources from '../View/Pages/Resource';
+import RegisterPage from '../Auth/RegisterPage';
 
 
 const Index = () => {
@@ -20,7 +19,7 @@ const Index = () => {
     useEffect(() => {
         const getLocalStorage = JSON.parse(localStorage.getItem('authPerson'));
         setIsUser(getLocalStorage);
-    }, [])
+    }, [isUser])
 
     const checkUserToken = () => {
         const userToken = localStorage.getItem('authUser');
@@ -43,9 +42,9 @@ const Index = () => {
                 <Route path="/about" element={<About />} />
                 <Route path="/IndustriesSolutions" element={<IndustriesSolutions />} />
                 <Route path="/resource" element={<Resources />} />
-                <Route path="/register" exact element={<Register />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/logins" element={<LoginPage />} />
+                <Route path="/register" exact element={<RegisterPage />} />
+                {/* <Route path="/login" element={<Login />} /> */}
+                <Route path="/login" element={<LoginPage />} />
 
 
                 {

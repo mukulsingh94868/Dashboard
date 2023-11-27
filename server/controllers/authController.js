@@ -15,7 +15,7 @@ module.exports.register = async (req, res) => {
             gender,
             location,
             password: hashedPassword,
-            role: 'admin'
+            role: 'user'
         });
         const saveUser = await newUser.save();
         res.status(201).json({
