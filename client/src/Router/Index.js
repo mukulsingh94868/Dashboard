@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AdminLayout from '../Layout/AdminLayout';
 import Layout from '../Layout/Layout';
-import About from '../View/Pages/About';
 import Home from '../View/Pages/Home';
-import IndustriesSolutions from '../View/Pages/IndustriesSolutions';
-import Job from '../View/Pages/Job';
 import LoginPage from '../Auth/LoginPage';
-import Resources from '../View/Pages/Resource';
 import RegisterPage from '../Auth/RegisterPage';
+import Resource from '../View/OtherPages/Resource';
+import About from '../View/OtherPages/About';
+import Job from '../View/OtherPages/Job';
+import IndustriesSolutions from '../View/OtherPages/IndustriesSolutions';
 
 
 const Index = () => {
@@ -41,7 +41,7 @@ const Index = () => {
                 <Route path="/job" element={<Job />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/IndustriesSolutions" element={<IndustriesSolutions />} />
-                <Route path="/resource" element={<Resources />} />
+                <Route path="/resource" element={<Resource />} />
                 <Route path="/register" exact element={<RegisterPage />} />
                 {/* <Route path="/login" element={<Login />} /> */}
                 <Route path="/login" element={<LoginPage />} />

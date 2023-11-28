@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 const DashSidebar = () => {
     const [isUser, setIsUser] = useState(null);
     const [isFullName, setIsFullName] = useState(null);
-    console.log('isFullName', isFullName)
 
     useEffect(() => {
         const getLocalStorage = JSON.parse(localStorage.getItem('authPerson'));
@@ -29,17 +28,17 @@ const DashSidebar = () => {
                         </li>
                         <li>
                             <Link to="/dashboard/profile">
-                                <img src="../images/profile.svg" alt="" /> Profile
+                                <img src="../images/profile.svg" alt="" /> User Profile
                             </Link>
                         </li>
                         <li>
-                            <Link to="/dashboard/job">
-                                <img src="../images/job.svg" alt="" /> Job
+                            <Link to="/dashboard/products">
+                                <img src="../images/job.svg" alt="" /> Products
                             </Link>
                         </li>
                         <li>
-                            <Link to="/dashboard/onboarding">
-                                <img src="../images/onboarding.svg" alt="" /> Onboarding
+                            <Link to="/dashboard/blogs">
+                                <img src="../images/onboarding.svg" alt="" /> Blogs
                             </Link>
                         </li>
                         <li>

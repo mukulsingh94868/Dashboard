@@ -1,7 +1,7 @@
 
 import { Button } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Dropdown from '@mui/joy/Dropdown';
 import IconButton from '@mui/joy/IconButton';
 import Menu from '@mui/joy/Menu';
@@ -12,6 +12,7 @@ import { Settings } from '@mui/icons-material';
 
 const DashHeader = () => {
     const navigate = useNavigate();
+    const location = useLocation();
     const [isBodyClassActive, setIsBodyClassActive] = useState(false);
 
     const handleNavigate = () => {
@@ -41,9 +42,9 @@ const DashHeader = () => {
                 </button>
                 <ul className="breadcrumb d-flex align-items-center">
                     <li>
-                        <a href="#">Dashboards</a>
+                        <a href="/dashboard/blogs">Dashboard</a>
                     </li>
-                    <li>Default</li>
+                    <li>{location?.pathname?.substring(11)?.toUpperCase()}</li>
                 </ul>
 
                 <form className="header_search">
@@ -53,10 +54,10 @@ const DashHeader = () => {
                     <input type="search" placeholder="Search" />
                 </form>
                 <div className="header_right_icon">
-                    <a href="#">
+                    <a href="#/">
                         <img src="../images/light_mode.svg" alt="" />
                     </a>
-                    <a href="#">
+                    <a href="#/">
                         <img src="../images/notification.svg" alt="" />
                     </a>
                     <Dropdown>

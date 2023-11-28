@@ -415,6 +415,7 @@ ExtraCss
     rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
   border-radius: 15px;
   height: 50rem;
+  overflow: auto;
 }
 
 .register {

@@ -148,6 +148,7 @@ const TableData = () => {
                             <th>Phone</th>
                             <th>Gender</th>
                             <th>Location</th>
+                            <th>Role</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -162,6 +163,7 @@ const TableData = () => {
                                     <td>{item.phone}</td>
                                     <td>{item.gender}</td>
                                     <td>{item.location}</td>
+                                    <td>{item.role}</td>
                                     <td>
                                         <Dropdown>
                                             <MenuButton

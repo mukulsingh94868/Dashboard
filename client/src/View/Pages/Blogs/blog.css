@@ -1,0 +1,20 @@
+.postTitle {
+    margin-bottom: 30px !important;
+}
+
+.imagePost img {
+    width: 100%;
+    height: 400px;
+}
+
+.imageContent {
+    margin-top: 30px;
+}
+
+.imageContent div {
+    font-size: 16px;
+    font-weight: 500;
+    font-family: auto;
+    line-height: revert-layer;
+    letter-spacing: revert-layer;
+}
