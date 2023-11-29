@@ -16,6 +16,7 @@ import { CssVarsProvider } from '@mui/joy/styles';
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import GoogleIcon from "../Assets/GoogleIcon";
+import toast from 'react-hot-toast';
 
 const LoginPage = () => {
 
@@ -47,7 +48,10 @@ const LoginPage = () => {
 					navigate('/dashboard');
 				}, [500]);
 			} else {
-				alert('error found')
+				toast.error('Invalid credentials', {
+					duration: 3000,
+					position: 'top-right'
+				});
 			}
 		} catch (error) {
 			console.log(error);

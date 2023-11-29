@@ -11,6 +11,7 @@ import Job from '../View/OtherPages/Job';
 import IndustriesSolutions from '../View/OtherPages/IndustriesSolutions';
 import ResetPassword from '../View/Pages/ResetPassword/ResetPassword';
 import ForgotPage from '../Auth/ForgotPage';
+import Header from '../Compoments/Header/Header';
 
 
 const Index = () => {
@@ -38,6 +39,7 @@ const Index = () => {
 
     return (
         <BrowserRouter>
+            <Header />
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/job" element={<Job />} />
@@ -46,8 +48,8 @@ const Index = () => {
                 <Route path="/resource" element={<Resource />} />
                 <Route path="/register" exact element={<RegisterPage />} />
                 <Route path="/login" element={<LoginPage />} />
-                <Route path="/reset-password/:id" element={<ResetPassword />} />
                 <Route path="/forgot-password" element={<ForgotPage />} />
+                <Route path="/reset-password/:id" element={<ResetPassword />} />
 
 
                 {

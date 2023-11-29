@@ -42,9 +42,7 @@ module.exports.login = async (req, res) => {
         if (!passwordCheck) {
             return res.status(401).json({ message: 'Password incorrect' });
         }
-        const token = jwt.sign({ username: usernameCheck.username }, 'tdyhdrtgfd', {
-            expiresIn: '1hr'
-        });
+        const token = jwt.sign({ username: usernameCheck.username }, process.env.SECRET_KEY, { expiresIn: '1hr' });
         res.status(200).json({
             data: usernameCheck,
             token: token,
@@ -117,8 +115,7 @@ module.exports.deleteData = async (req, res) => {
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
-}
-
+};
 
 module.exports.forgotPassword = async (req, res) => {
     try {
@@ -128,8 +125,8 @@ module.exports.forgotPassword = async (req, res) => {
         if (!user) {
             return res.status(404).json({ message: 'User not found' });
         }
+        const resetToken = (await bcrypt.hash(email + new Date().toISOString(), 10)).replace(/\//g, '_');
 
-        const resetToken = await bcrypt.hash(email + new Date().toISOString(), 10);
         const resetTokenExpiration = new Date(Date.now() + 3600000);
 
         user.resetToken = resetToken;
@@ -154,13 +151,32 @@ module.exports.forgotPassword = async (req, res) => {
         };
         transporter.sendMail(mailOptions, (error, info) => {
             if (error) {
-                console.error('Error sending email:', error);
                 return res.status(500).json({ message: 'Failed to send reset email' });
             }
-            res.json({ message: 'Password reset email sent successfully' });
+            res.status(200).json({ message: 'Password reset email sent successfully' });
         });
     } catch (error) {
-        console.log('error sending email:', error);
         res.status(500).json({ message: 'Internal Server Error' });
     }
-}
+};
+
+module.exports.resetPassword = async (req, res) => {
+    try {
+        const { token, newPassword } = req.body;
+        const user = await AuthModel.findOne({ resetToken: token, resetTokenExpiration: { $gt: Date.now() } });
+
+        if (!user) {
+            return res.status(400).json({ message: 'Invalid or expired token' });
+        }
+        const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+        user.password = hashedPassword;
+        user.resetToken = null;
+        user.resetTokenExpiration = null;
+
+        await user.save();
+        res.status(200).json({ status: true, message: 'Password reset successfully' });
+    } catch (error) {
+        res.status(500).json({ message: 'Internal Server Error' });
+    }
+};

@@ -12,7 +12,7 @@ const Header = () => {
         <>
             <div className="container mainheader">
                 <div className="header-logo">
-                   <Link to="/"><img className='logo' src={Logo} alt="#" /></Link> 
+                   <Link to="/login"><img className='logo' src={Logo} alt="#" /></Link> 
                     <div className="nav-menu">
                         <ul>
                             <li><Link to="/Job">Jobs</Link></li>

@@ -1,30 +1,25 @@
 import BadgeRoundedIcon from '@mui/icons-material/BadgeRounded';
 import Box from '@mui/joy/Box';
 import Button from '@mui/joy/Button';
-import Checkbox from '@mui/joy/Checkbox';
 import CssBaseline from '@mui/joy/CssBaseline';
-import Divider from '@mui/joy/Divider';
 import FormControl from '@mui/joy/FormControl';
 import FormLabel, { formLabelClasses } from '@mui/joy/FormLabel';
 import GlobalStyles from '@mui/joy/GlobalStyles';
 import IconButton from '@mui/joy/IconButton';
 import Input from '@mui/joy/Input';
-import Link from '@mui/joy/Link';
 import Stack from '@mui/joy/Stack';
 import Typography from '@mui/joy/Typography';
 import { CssVarsProvider } from '@mui/joy/styles';
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import GoogleIcon from "../Assets/GoogleIcon";
+import React, { useState } from "react";
+import toast from 'react-hot-toast';
 
 const ForgotPage = () => {
-    const navigate = useNavigate();
 	const [email, setEmail] = useState('');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch('http://localhost:5000/api/auth/login', {
+            const response = await fetch('http://localhost:5000/api/auth/forgot-password', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -32,16 +27,13 @@ const ForgotPage = () => {
                 body: JSON.stringify({
                     email,
                 }),
-                // body: JSON.stringify(data)
             });
             const data = await response.json();
             if (response.status === 200) {
-                localStorage.setItem('authUser', JSON.stringify(data?.token));
-                localStorage.setItem('authPerson', JSON.stringify(data?.data?.role));
-                localStorage.setItem('authFullName', JSON.stringify(data?.data?.fullname));
-                setTimeout(() => {
-                    navigate('/dashboard');
-                }, [500]);
+                toast.success(data?.message, {
+                    duration: 3000,
+                    position: 'top-right'
+                })
             } else {
                 alert('error found')
             }
@@ -146,7 +138,7 @@ const ForgotPage = () => {
                             <Stack gap={4} sx={{ mt: 2 }}>
                                 <form onSubmit={(e) => handleSubmit(e)}>
                                     <FormControl required>
-                                        <FormLabel>Email/Username</FormLabel>
+                                        <FormLabel>Enter Your Email</FormLabel>
 
                                         <Input type="text"
                                             placeholder="Enter your username"

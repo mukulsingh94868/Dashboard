@@ -2,7 +2,6 @@ import React from 'react';
 import Box from '@mui/joy/Box';
 import Button from '@mui/joy/Button';
 import Table from '@mui/joy/Table';
-import Typography from '@mui/joy/Typography';
 import Sheet from '@mui/joy/Sheet';
 
 function createData(name, calories, fat, carbs, protein) {

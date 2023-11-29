@@ -1,5 +1,5 @@
 const express = require('express');
-const { register, login, getAllData, updateData, deleteData, getSingleData, forgotPassword } = require('../controllers/authController');
+const { register, login, getAllData, updateData, deleteData, getSingleData, forgotPassword, resetPassword } = require('../controllers/authController');
 const router = express.Router();
 
 router.post('/register', register);
@@ -9,5 +9,6 @@ router.get('/getData/:id', getSingleData);
 router.put('/updateData/:id', updateData);
 router.delete('/deleteData/:id', deleteData);
 router.post('/forgot-password', forgotPassword);
+router.post('/reset-password', resetPassword);
 
 module.exports = router;
