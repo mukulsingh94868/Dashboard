@@ -14,10 +14,9 @@ import Stack from '@mui/joy/Stack';
 import Typography from '@mui/joy/Typography';
 import { CssVarsProvider } from '@mui/joy/styles';
 import React, { useEffect, useState } from "react";
+import { useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import GoogleIcon from "../Assets/GoogleIcon";
-import toast from 'react-hot-toast';
-import { useDispatch } from 'react-redux';
 import { Login } from '../Redux/actions/AuthActions';
 
 const LoginPage = () => {

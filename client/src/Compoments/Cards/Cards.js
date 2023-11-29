@@ -1,13 +1,11 @@
-import * as React from 'react';
 import Button from '@mui/joy/Button';
 import Card from '@mui/joy/Card';
-import CardContent from '@mui/joy/CardContent';
 import CardActions from '@mui/joy/CardActions';
+import CardContent from '@mui/joy/CardContent';
 import CircularProgress from '@mui/joy/CircularProgress';
-import Typography from '@mui/joy/Typography';
 import SvgIcon from '@mui/joy/SvgIcon';
-import Box from '@mui/joy/Box';
-import CardCover from '@mui/joy/CardCover';
+import Typography from '@mui/joy/Typography';
+import * as React from 'react';
 
 export function Card1() {
     return (

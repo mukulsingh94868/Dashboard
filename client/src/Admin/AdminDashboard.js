@@ -3,7 +3,6 @@ import Button from '@mui/joy/Button';
 import Card from '@mui/joy/Card';
 import CardActions from '@mui/joy/CardActions';
 import CardContent from '@mui/joy/CardContent';
-import Chip from '@mui/joy/Chip';
 import CircularProgress from '@mui/joy/CircularProgress';
 import IconButton from '@mui/joy/IconButton';
 import SvgIcon from '@mui/joy/SvgIcon';
@@ -35,9 +34,9 @@ const AdminDashboard = () => {
                     </div>
                 </Grid>
             </Grid> */}
-            <div class="Dashcontainer">
-                <div class="Dashcontainer1">
-                    <div class="layer layer-1">
+            <div className="Dashcontainer">
+                <div className="Dashcontainer1">
+                    <div className="layer layer-1">
                         <Card variant="solid" color="primary" invertedColors>
                             <CardContent orientation="horizontal">
                                
@@ -88,27 +87,27 @@ const AdminDashboard = () => {
                         </Card>
 
                     </div>
-                    {/* <div class="layer layer-2">Layer 2</div>
-                    <div class="layer layer-2">Layer 2</div>
-                    <div class="layer layer-3">Layer 3</div>
-                    <div class="layer layer-4">Layer 4</div> */}
+                    {/* <div className="layer layer-2">Layer 2</div>
+                    <div className="layer layer-2">Layer 2</div>
+                    <div className="layer layer-3">Layer 3</div>
+                    <div className="layer layer-4">Layer 4</div> */}
 
                 </div>
-                {/* <div class="Dashcontainer2">
-                    <div class="layer layer-5">Layer 5</div>
-                    <div class="layer layer-6">Layer 6</div>
-                    <div class="layer layer-7">Layer 7</div>
+                {/* <div className="Dashcontainer2">
+                    <div className="layer layer-5">Layer 5</div>
+                    <div className="layer layer-6">Layer 6</div>
+                    <div className="layer layer-7">Layer 7</div>
                 </div > */}
-                {/* <div class="Dashcontainer3">
-                    <div class="layer layer-8">Layer 8</div>
-                    <div class="layer layer-9">Layer 9</div>
-                    <div class="layer layer-10">Layer 10</div>
+                {/* <div className="Dashcontainer3">
+                    <div className="layer layer-8">Layer 8</div>
+                    <div className="layer layer-9">Layer 9</div>
+                    <div className="layer layer-10">Layer 10</div>
                 </div > */}
 
-                {/* <div class="Dashcontainer4">
-                    <div class="layer layer-8">Layer 8</div>
-                    <div class="layer layer-9">Layer 9</div>
-                    <div class="layer layer-10">Layer 10</div>
+                {/* <div className="Dashcontainer4">
+                    <div className="layer layer-8">Layer 8</div>
+                    <div className="layer layer-9">Layer 9</div>
+                    <div className="layer layer-10">Layer 10</div>
                 </div > */}
             </div>
 

@@ -6,13 +6,11 @@ import Menu from '@mui/joy/Menu';
 import MenuButton from '@mui/joy/MenuButton';
 import MenuItem from '@mui/joy/MenuItem';
 import React, { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Logout } from '../../Redux/actions/AuthActions';
-import { useDispatch } from 'react-redux';
 
 const DashHeader = () => {
     const navigate = useNavigate();
-    const dispatch = useDispatch();
     const location = useLocation();
     const [isBodyClassActive, setIsBodyClassActive] = useState(false);
 
@@ -20,8 +18,12 @@ const DashHeader = () => {
         // localStorage.removeItem('authUser');
         // localStorage.removeItem('authPerson');
         // localStorage.removeItem('authFullName');
-        // navigate('/login')
-        dispatch(Logout({ }, navigate));
+        localStorage.clear();
+        toast.success('Successfully Logout!', { duration: 2000, position: 'top-right' });
+        setTimeout(() => {
+            navigate('/login');
+        }, [1000])
+        // dispatch(Logout({ }, navigate));
     };
 
     useEffect(() => {

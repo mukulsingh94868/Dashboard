@@ -11,11 +11,15 @@ import Job from '../View/OtherPages/Job';
 import IndustriesSolutions from '../View/OtherPages/IndustriesSolutions';
 import ResetPassword from '../View/Pages/ResetPassword/ResetPassword';
 import ForgotPage from '../Auth/ForgotPage';
+import { useSelector } from 'react-redux';
 
 const Index = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     const [isUser, setIsUser] = useState(null);
+    const localUser = useSelector((state) => state.authReducer.authData);
+    const userd = localUser?.data?.role;
+    // console.log('localUser', localUser);
 
     useEffect(() => {
         const getLocalStorage = JSON.parse(localStorage.getItem('authPerson'));
@@ -24,7 +28,6 @@ const Index = () => {
 
     const checkUserToken = () => {
         const userToken = localStorage.getItem('authUser');
-
         if (!userToken || userToken === 'undefined') {
             setIsLoggedIn(false);
         }
@@ -50,7 +53,7 @@ const Index = () => {
 
 
                 {
-                    isUser === 'user' ? (
+                    !!userd && userd === 'user' ? (
                         <Route path="/dashboard/*" element={<Layout />} />
                     ) : (
                         <Route path="/dashboard/*" element={<AdminLayout />} />

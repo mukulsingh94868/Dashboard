@@ -1,9 +1,7 @@
 import * as actionType from '../Constants/actionTypes';
 
 const authReducer = (state = { authData: null }, action) => {
-    console.log('action?.data', action?.data);
     switch (action.type) {
-
         case actionType.REGISTER:
             return {
                 ...state,

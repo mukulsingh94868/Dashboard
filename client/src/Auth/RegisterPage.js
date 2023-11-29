@@ -1,7 +1,6 @@
 import BadgeRoundedIcon from '@mui/icons-material/BadgeRounded';
 import Box from '@mui/joy/Box';
 import Button from '@mui/joy/Button';
-import Checkbox from '@mui/joy/Checkbox';
 import CssBaseline from '@mui/joy/CssBaseline';
 import Divider from '@mui/joy/Divider';
 import FormControl from '@mui/joy/FormControl';
@@ -14,10 +13,9 @@ import Stack from '@mui/joy/Stack';
 import Typography from '@mui/joy/Typography';
 import { CssVarsProvider } from '@mui/joy/styles';
 import React, { useState } from "react";
+import { useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import GoogleIcon from "../Assets/GoogleIcon";
-import toast from 'react-hot-toast';
-import { useDispatch } from 'react-redux';
 import { Register } from '../Redux/actions/AuthActions';
 
 const RegisterPage = () => {

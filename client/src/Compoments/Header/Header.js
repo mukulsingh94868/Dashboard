@@ -29,8 +29,8 @@ const Header = () => {
                     <div className="dropdown">
                         <button className="dropbtn"> <img className='Langicon' src={LangIcon} alt="#" /> EN <img className='Arrow' src={Arrow} alt="#" /></button>
                         <div className="dropdown-content">
-                            <a href="#">English</a>
-                            <a href="#">Hindi</a>
+                            <a href="#/">English</a>
+                            <a href="#/">Hindi</a>
 
                         </div>
                     </div>

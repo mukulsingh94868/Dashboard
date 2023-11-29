@@ -16,11 +16,12 @@ import Stack from '@mui/joy/Stack';
 import Table from '@mui/joy/Table';
 import React, { useEffect, useState } from 'react';
 import AddUser from '../../View/Pages/AddUser/AddUser';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { getUserData } from '../../Redux/actions/AuthCrudActions';
 
 
 const TableData = () => {
-    const [data, setData] = useState([]);
+    const dispatch = useDispatch();
     const [open, setOpen] = useState(false);
     const [iden, setIden] = useState(null);
     // states for updated data only 
@@ -31,16 +32,18 @@ const TableData = () => {
     const [gender, setGender] = useState('');
     const [location, setLocation] = useState('');
 
+    const dataFetch = useSelector((data) =>  data.AuthCrudReducer.posts);
 
     useEffect(() => {
-        const getData = async () => {
-            const response = await fetch('http://localhost:5000/api/auth/getData');
-            const result = await response.json();
-            setData(result);
-        };
+        dispatch(getUserData());
+        // const getData = async () => {
+        //     const response = await fetch('http://localhost:5000/api/auth/getData');
+        //     const result = await response.json();
+        //     setData(result);
+        // };
 
-        getData();
-    }, []);
+        // getData();
+    }, [dispatch]);
 
     const getSingleData = async (id) => {
         const response = await fetch(`http://localhost:5000/api/auth/getData/${id}`);
@@ -154,7 +157,7 @@ const TableData = () => {
                     </thead>
                     <tbody>
                         {
-                            !!data && data?.map((item, index) => (
+                            !!dataFetch && dataFetch?.map((item, index) => (
                                 <tr key={index}>
                                     <td>{index + 1}</td>
                                     <td>{item.fullname}</td>

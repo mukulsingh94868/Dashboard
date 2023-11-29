@@ -5,6 +5,7 @@ import Menu from '@mui/joy/Menu';
 import MenuButton from '@mui/joy/MenuButton';
 import MenuItem from '@mui/joy/MenuItem';
 import React, { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -13,9 +14,14 @@ const DashAdminHeader = () => {
     const [isBodyClassActive, setIsBodyClassActive] = useState(false);
 
     const handleNavigate = () => {
-        localStorage.removeItem('authUser');
-        localStorage.removeItem('authPerson');
-        navigate('/login   ')
+        // localStorage.removeItem('authUser');
+        // localStorage.removeItem('authPerson');
+        // localStorage.removeItem('authFullName');
+        localStorage.clear();
+        toast.success('Successfully Logout Admin!', { duration: 2000, position: 'top-right' });
+        setTimeout(() => {
+            navigate('/login');
+        }, [1000])
     };
 
     useEffect(() => {
@@ -37,7 +43,7 @@ const DashAdminHeader = () => {
                 </button>
                 <ul className="breadcrumb d-flex align-items-center">
                     <li>
-                        <a href="#">Dashboards</a>
+                        <a href="#/">Dashboards</a>
                     </li>
                     <li>Default</li>
                 </ul>
@@ -49,10 +55,10 @@ const DashAdminHeader = () => {
                     <input type="search" placeholder="Search" />
                 </form>
                 <div className="header_right_icon">
-                    <a href="#">
+                    <a href="#/">
                         <img src="../images/light_mode.svg" alt="" />
                     </a>
-                    <a href="#">
+                    <a href="#/">
                         <img src="../images/notification.svg" alt="" />
                     </a>
                     <Dropdown>
