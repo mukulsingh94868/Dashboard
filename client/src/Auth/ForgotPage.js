@@ -13,49 +13,35 @@ import Link from '@mui/joy/Link';
 import Stack from '@mui/joy/Stack';
 import Typography from '@mui/joy/Typography';
 import { CssVarsProvider } from '@mui/joy/styles';
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import GoogleIcon from "../Assets/GoogleIcon";
-import toast from 'react-hot-toast';
 
-const RegisterPage = () => {
+const ForgotPage = () => {
     const navigate = useNavigate();
-    const [fullname, setFullname] = useState('');
-    const [username, setUsername] = useState('');
-    const [email, setEmail] = useState('');
-    const [phone, setPhone] = useState('');
-    const [gender, setGender] = useState('');
-    const [location, setLocation] = useState('');
-    const [password, setPassword] = useState('');
-    // const [role, setRole] = useState('');
+	const [email, setEmail] = useState('');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch('http://localhost:5000/api/auth/register', {
+            const response = await fetch('http://localhost:5000/api/auth/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    fullname,
-                    username,
                     email,
-                    phone,
-                    gender,
-                    location,
-                    password,
                 }),
                 // body: JSON.stringify(data)
             });
-            if (response.status === 201) {
-                toast.success('Successfully Registered !!', {
-                    duration: 3000,
-                    position: 'top-right'
-                });
+            const data = await response.json();
+            if (response.status === 200) {
+                localStorage.setItem('authUser', JSON.stringify(data?.token));
+                localStorage.setItem('authPerson', JSON.stringify(data?.data?.role));
+                localStorage.setItem('authFullName', JSON.stringify(data?.data?.fullname));
                 setTimeout(() => {
-                    navigate('/login');
-                }, [1000])
+                    navigate('/dashboard');
+                }, [500]);
             } else {
                 alert('error found')
             }
@@ -153,117 +139,24 @@ const RegisterPage = () => {
                         >
                             <Stack gap={4} sx={{ mb: 2 }}>
                                 <Stack gap={1}>
-                                    <Typography level="h3">Sign in</Typography>
-                                    <Typography level="body-sm">
-                                        New to company?{' '}
-                                        <Link href="/login" level="title-sm">
-                                            Sign in!
-                                        </Link>
-                                    </Typography>
+                                    <Typography level="h3">Forgot your password</Typography>
                                 </Stack>
-
-                                <Button
-                                    variant="soft"
-                                    color="neutral"
-                                    fullWidth
-                                    startDecorator={<GoogleIcon />}
-                                >
-                                    Continue with Google
-                                </Button>
                             </Stack>
-                            <Divider
-                                sx={(theme) => ({
-                                    [theme.getColorSchemeSelector('light')]: {
-                                        color: { xs: '#FFF', md: 'text.tertiary' },
-                                        '--Divider-lineColor': {
-                                            xs: '#FFF',
-                                            md: 'var(--joy-palette-divider)',
-                                        },
-                                    },
-                                })}
-                            >
-                                or
-                            </Divider>
+                            
                             <Stack gap={4} sx={{ mt: 2 }}>
                                 <form onSubmit={(e) => handleSubmit(e)}>
                                     <FormControl required>
-                                        <FormLabel>Full Name</FormLabel>
-                                        <Input
-                                            size="sm"
-                                            type="text"
-                                            placeholder="Enter your Fullname"
-                                            name="fullname"
-                                            value={fullname}
-                                            onChange={(e) => setFullname(e.target.value)}
-                                        />
-                                    </FormControl>
-                                    <FormControl required>
-                                        <FormLabel>UserName</FormLabel>
-                                        <Input
-                                            size="sm"
-                                            type="text"
-                                            placeholder="Enter your Username"
+                                        <FormLabel>Email/Username</FormLabel>
+
+                                        <Input type="text"
+                                            placeholder="Enter your username"
                                             name="username"
-                                            value={username}
-                                            onChange={(e) => setUsername(e.target.value)}
-                                        />
-                                    </FormControl>
-                                    <FormControl required>
-                                        <FormLabel>Email Address</FormLabel>
-                                        <Input
-                                            size="sm"
-                                            type="email"
-                                            placeholder="Enter your Email"
-                                            name="email"
                                             value={email}
-                                            onChange={(e) => setEmail(e.target.value)}
-                                        />
-                                    </FormControl>
-                                    <FormControl required>
-                                        <FormLabel>Contact Details</FormLabel>
-                                        <Input
-                                            size="sm"
-                                            type="tel"
-                                            placeholder="Enter your Phone"
-                                            name="phone"
-                                            value={phone}
-                                            maxLength='10'
-                                            onChange={(e) => setPhone(e.target.value)}
-                                        />
-                                    </FormControl>
-                                    <FormControl required>
-                                        <FormLabel>Gender</FormLabel>
-                                        <Input
-                                            size="sm"
-                                            type="text"
-                                            placeholder="Enter your Gender"
-                                            name="gender"
-                                            value={gender}
-                                            onChange={(e) => setGender(e.target.value)}
-                                        />
-                                    </FormControl>
-                                    <FormControl required>
-                                        <FormLabel>Location</FormLabel>
-                                        <Input
-                                            size="sm"
-                                            type="text"
-                                            placeholder="Enter your Location"
-                                            name="location"
-                                            value={location}
-                                            onChange={(e) => setLocation(e.target.value)}
-                                        />
-                                    </FormControl>
-                                    <FormControl required>
-                                        <FormLabel>Password</FormLabel>
-                                        <Input type="password"
-                                            placeholder="Enter your password"
-                                            name="password"
-                                            value={password}
-                                            onChange={(e) => setPassword(e.target.value)} />
+                                            onChange={(e) => setEmail(e.target.value)} />
                                     </FormControl>
                                     <Stack gap={4} sx={{ mt: 2 }}>
                                         <Button type="submit" fullWidth>
-                                            Sign in
+                                            Forgot Password
                                         </Button>
                                     </Stack>
                                 </form>
@@ -292,7 +185,7 @@ const RegisterPage = () => {
                         backgroundPosition: 'center',
                         backgroundRepeat: 'no-repeat',
                         backgroundImage:
-                            'url(https://images.unsplash.com/photo-1572072393749-3ca9c8ea0831?auto=format&w=1000&dpr=2)',
+                            'url(https://images.unsplash.com/photo-1527181152855-fc03fc7949c8?auto=format&w=1000&dpr=2)',
                         [theme.getColorSchemeSelector('dark')]: {
                             backgroundImage:
                                 'url(https://images.unsplash.com/photo-1572072393749-3ca9c8ea0831?auto=format&w=1000&dpr=2)',
@@ -304,4 +197,4 @@ const RegisterPage = () => {
     )
 }
 
-export default RegisterPage
+export default ForgotPage;

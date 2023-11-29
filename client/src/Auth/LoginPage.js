@@ -61,7 +61,7 @@ const LoginPage = () => {
 		if (!!localStorage.getItem('authUser')) {
 			navigate('/dashboard');
 		}
-	}, [])
+	}, [navigate])
 	return (
 		<>
 			<CssVarsProvider>
@@ -211,9 +211,9 @@ const LoginPage = () => {
 											}}
 										>
 											<Checkbox size="sm" label="Remember me" name="persistent" />
-											<Link level="title-sm" href="#replace-with-a-link">
+											<Typography onClick={() => navigate('/forgot-password')} style={{ fontWeight: 700, cursor: 'pointer', fontSize: '14px' }}>
 												Forgot your password?
-											</Link>
+											</Typography>
 										</Box>
 										<Button type="submit" fullWidth>
 											Sign in

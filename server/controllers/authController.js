@@ -1,6 +1,7 @@
 const AuthModel = require('../models/authModel');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const { transporter } = require('../nodeMailer');
 
 module.exports.register = async (req, res) => {
     try {
@@ -115,5 +116,51 @@ module.exports.deleteData = async (req, res) => {
         res.status(200).json({ message: 'User deleted' });
     } catch (error) {
         res.status(500).json({ message: error.message });
+    }
+}
+
+
+module.exports.forgotPassword = async (req, res) => {
+    try {
+        const { email } = req.body;
+        const user = await AuthModel.findOne({ email });
+
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        const resetToken = await bcrypt.hash(email + new Date().toISOString(), 10);
+        const resetTokenExpiration = new Date(Date.now() + 3600000);
+
+        user.resetToken = resetToken;
+        user.resetTokenExpiration = resetTokenExpiration;
+        await user.save();
+
+        const resetLink = `?token=${resetToken}`;
+        const mailOptions = {
+            from: 'mukulsingh94868@gmail.com',
+            to: email,
+            subject: 'Password Reset',
+            html: `
+            <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+            <h2 style="color: #3498db;">Password Reset</h2>
+            <p>Hello,</p>
+            <p>We received a request to reset your password. Click the link below to reset it:</p>
+            <a href="http://localhost:3000/reset-password/${resetToken}" style="display: inline-block; padding: 10px 20px; background-color: #3498db; color: #ffffff; text-decoration: none; border-radius: 5px;">Reset Password</a>
+            <p>If you did not request a password reset, please ignore this email.</p>
+            <p>Thanks,<br>Your Company Name</p>
+          </div>
+            `
+        };
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                console.error('Error sending email:', error);
+                return res.status(500).json({ message: 'Failed to send reset email' });
+            }
+            res.json({ message: 'Password reset email sent successfully' });
+        });
+    } catch (error) {
+        console.log('error sending email:', error);
+        res.status(500).json({ message: 'Internal Server Error' });
     }
 }

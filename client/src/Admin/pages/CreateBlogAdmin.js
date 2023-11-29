@@ -15,9 +15,8 @@ const CreateBlogAdmin = () => {
     const [title, setTitle] = useState('');
     const [summary, setSummary] = useState('');
     const [content, setContent] = useState('');
-    const [files, setFiles] = useState('');
 
-    const handleSubmit = async (e, values) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         try {
             const response = await fetch('http://localhost:5000/api/blog/post', {

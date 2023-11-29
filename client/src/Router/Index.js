@@ -9,6 +9,8 @@ import Resource from '../View/OtherPages/Resource';
 import About from '../View/OtherPages/About';
 import Job from '../View/OtherPages/Job';
 import IndustriesSolutions from '../View/OtherPages/IndustriesSolutions';
+import ResetPassword from '../View/Pages/ResetPassword/ResetPassword';
+import ForgotPage from '../Auth/ForgotPage';
 
 
 const Index = () => {
@@ -43,8 +45,9 @@ const Index = () => {
                 <Route path="/IndustriesSolutions" element={<IndustriesSolutions />} />
                 <Route path="/resource" element={<Resource />} />
                 <Route path="/register" exact element={<RegisterPage />} />
-                {/* <Route path="/login" element={<Login />} /> */}
                 <Route path="/login" element={<LoginPage />} />
+                <Route path="/reset-password/:id" element={<ResetPassword />} />
+                <Route path="/forgot-password" element={<ForgotPage />} />
 
 
                 {
