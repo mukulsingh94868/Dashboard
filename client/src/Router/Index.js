@@ -11,8 +11,6 @@ import Job from '../View/OtherPages/Job';
 import IndustriesSolutions from '../View/OtherPages/IndustriesSolutions';
 import ResetPassword from '../View/Pages/ResetPassword/ResetPassword';
 import ForgotPage from '../Auth/ForgotPage';
-import Header from '../Compoments/Header/Header';
-
 
 const Index = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -39,7 +37,6 @@ const Index = () => {
 
     return (
         <BrowserRouter>
-            <Header />
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/job" element={<Job />} />

@@ -17,9 +17,12 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import GoogleIcon from "../Assets/GoogleIcon";
 import toast from 'react-hot-toast';
+import { useDispatch } from 'react-redux';
+import { Register } from '../Redux/actions/AuthActions';
 
 const RegisterPage = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const [fullname, setFullname] = useState('');
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
@@ -31,37 +34,38 @@ const RegisterPage = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        try {
-            const response = await fetch('http://localhost:5000/api/auth/register', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    fullname,
-                    username,
-                    email,
-                    phone,
-                    gender,
-                    location,
-                    password,
-                }),
-                // body: JSON.stringify(data)
-            });
-            if (response.status === 201) {
-                toast.success('Successfully Registered !!', {
-                    duration: 3000,
-                    position: 'top-right'
-                });
-                setTimeout(() => {
-                    navigate('/login');
-                }, [1000])
-            } else {
-                alert('error found')
-            }
-        } catch (error) {
-            console.log(error);
-        }
+        dispatch(Register({ fullname, username, email, phone, gender, location, password }, navigate));
+        // try {
+        //     const response = await fetch('http://localhost:5000/api/auth/register', {
+        //         method: 'POST',
+        //         headers: {
+        //             'Content-Type': 'application/json',
+        //         },
+        //         body: JSON.stringify({
+        //             fullname,
+        //             username,
+        //             email,
+        //             phone,
+        //             gender,
+        //             location,
+        //             password,
+        //         }),
+        //         // body: JSON.stringify(data)
+        //     });
+        //     if (response.status === 201) {
+        //         toast.success('Successfully Registered !!', {
+        //             duration: 3000,
+        //             position: 'top-right'
+        //         });
+        //         setTimeout(() => {
+        //             navigate('/login');
+        //         }, [1000])
+        //     } else {
+        //         alert('error found')
+        //     }
+        // } catch (error) {
+        //     console.log(error);
+        // }
     };
     return (
         <>
@@ -227,7 +231,6 @@ const RegisterPage = () => {
                                             placeholder="Enter your Phone"
                                             name="phone"
                                             value={phone}
-                                            maxLength='10'
                                             onChange={(e) => setPhone(e.target.value)}
                                         />
                                     </FormControl>

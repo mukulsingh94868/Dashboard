@@ -17,45 +17,47 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import GoogleIcon from "../Assets/GoogleIcon";
 import toast from 'react-hot-toast';
+import { useDispatch } from 'react-redux';
+import { Login } from '../Redux/actions/AuthActions';
 
 const LoginPage = () => {
-
-
+	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		try {
-			const response = await fetch('http://localhost:5000/api/auth/login', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				body: JSON.stringify({
-					username,
-					password,
-				}),
-				// body: JSON.stringify(data)
-			});
-			const data = await response.json();
-			if (response.status === 200) {
-				localStorage.setItem('authUser', JSON.stringify(data?.token));
-				localStorage.setItem('authPerson', JSON.stringify(data?.data?.role));
-				localStorage.setItem('authFullName', JSON.stringify(data?.data?.fullname));
-				setTimeout(() => {
-					navigate('/dashboard');
-				}, [500]);
-			} else {
-				toast.error('Invalid credentials', {
-					duration: 3000,
-					position: 'top-right'
-				});
-			}
-		} catch (error) {
-			console.log(error);
-		}
+		dispatch(Login({ username, password }, navigate));
+		// try {
+		// 	const response = await fetch('http://localhost:5000/api/auth/login', {
+		// 		method: 'POST',
+		// 		headers: {
+		// 			'Content-Type': 'application/json',
+		// 		},
+		// 		body: JSON.stringify({
+		// 			username,
+		// 			password,
+		// 		}),
+		// 		// body: JSON.stringify(data)
+		// 	});
+		// 	const data = await response.json();
+		// 	if (response.status === 200) {
+		// 		localStorage.setItem('authUser', JSON.stringify(data?.token));
+		// 		localStorage.setItem('authPerson', JSON.stringify(data?.data?.role));
+		// 		localStorage.setItem('authFullName', JSON.stringify(data?.data?.fullname));
+		// 		setTimeout(() => {
+		// 			navigate('/dashboard');
+		// 		}, [500]);
+		// 	} else {
+		// 		toast.error('Invalid credentials', {
+		// 			duration: 3000,
+		// 			position: 'top-right'
+		// 		});
+		// 	}
+		// } catch (error) {
+		// 	console.log(error);
+		// }
 	};
 
 
