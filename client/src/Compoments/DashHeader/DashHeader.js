@@ -46,7 +46,7 @@ const DashHeader = () => {
                 </button>
                 <ul className="breadcrumb d-flex align-items-center">
                     <li>
-                        <a href="/dashboard/blogs">Dashboard</a>
+                        <a href="/dashboard">Dashboard</a>
                     </li>
                     <li>{location?.pathname?.substring(11)?.toUpperCase()}</li>
                 </ul>

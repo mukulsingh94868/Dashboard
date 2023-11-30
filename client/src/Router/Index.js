@@ -52,8 +52,16 @@ const Index = () => {
                 <Route path="/reset-password/:id" element={<ResetPassword />} />
 
 
-                {
+                {/* {
                     !!userd && userd === 'user' ? (
+                        <Route path="/dashboard/*" element={<Layout />} />
+                    ) : (
+                        <Route path="/dashboard/*" element={<AdminLayout />} />
+                    )
+                } */}
+
+                {
+                    !!isUser && isUser === 'user' ? (
                         <Route path="/dashboard/*" element={<Layout />} />
                     ) : (
                         <Route path="/dashboard/*" element={<AdminLayout />} />
