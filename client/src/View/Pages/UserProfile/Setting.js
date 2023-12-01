@@ -6,6 +6,8 @@ import Grid from '@mui/material/Grid';
 import useStyles from './style';
 import Switch from '@mui/joy/Switch';
 import Checkbox from '@mui/joy/Checkbox';
+import SwitchButton from '../../../Compoments/Switch/SwitchButton';
+import Button from '@mui/joy/Button';
 
 
 const emailSettingData = [
@@ -87,10 +89,7 @@ const Setting = () => {
                                                                     <Typography className={classes.emailTypo}>{email?.text}</Typography>
                                                                 </div>
                                                                 <span className={classes.switch}>
-                                                                    <Switch
-                                                                        checked={checked}
-                                                                        onChange={(event) => setChecked(event.target.checked)}
-                                                                    />
+                                                                    <SwitchButton />
                                                                 </span>
                                                             </div>
                                                         )
@@ -150,10 +149,7 @@ const Setting = () => {
                                                             <Typography className={classes.emailTypo}>{email?.text}</Typography>
                                                         </div>
                                                         <span className={classes.switch}>
-                                                            <Switch
-                                                                checked={checked}
-                                                                onChange={(event) => setChecked(event.target.checked)}
-                                                            />
+                                                            <SwitchButton />
                                                         </span>
                                                     </div>
                                                 )
@@ -173,10 +169,7 @@ const Setting = () => {
                                                             <Typography className={classes.emailTypo}>{email?.text}</Typography>
                                                         </div>
                                                         <span className={classes.switch}>
-                                                            <Switch
-                                                                checked={checked}
-                                                                onChange={(event) => setChecked(event.target.checked)}
-                                                            />
+                                                            <SwitchButton />
                                                         </span>
                                                     </div>
                                                 )
@@ -185,6 +178,13 @@ const Setting = () => {
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </Grid>
+
+                    <Grid item xs={12}>
+                        <div className={classes.buttons}>
+                            <Button className={classes.cancelBut}>Cancel</Button>
+                            <Button className={classes.updateBut}>Update Setting</Button>
                         </div>
                     </Grid>
                 </Grid>

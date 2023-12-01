@@ -344,5 +344,35 @@ export default makeStyles(() => ({
         display: "flex",
         width: "44px",
         height: "22px"
+    },
+    buttons: {
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "flex-end",
+        alignItems: "center"
+    },
+    cancelBut: {
+        color: "rgb(140, 140, 140)",
+        border: "1px solid rgb(140, 140, 140)",
+        cursor: "pointer",
+        margin: "0px",
+        padding: "5px 15px",
+        fontSize: "0.875rem",
+        minWidth: "64px",
+        alignItems: "center",
+        fontWeight: 400,
+        lineHeight: 1.75,
+        borderRadius: "4px",
+        backgroundColor: "transparent"
+    },
+    updateBut: {
+        color: "rgb(255, 255, 255)",
+        border: "0px",
+        cursor: "pointer",
+        padding: "6px 16px",
+        fontWeight: 400,
+        marginLeft: "16px",
+        borderRadius: "4px",
+        backgroundColor: "rgb(22, 119, 255)"
     }
 }))
