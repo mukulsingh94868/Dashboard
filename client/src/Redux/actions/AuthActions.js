@@ -7,7 +7,6 @@ import { REGISTER, LOGIN, LOGOUT, CHANGE_PASSWORD } from '../Constants/actionTyp
 export const Register = (formData, navigate) => async (dispatch) => {
     try {
         const { data } = await Api.register(formData);
-        console.log('data', data);
         dispatch({ type: REGISTER, data });
         toast.success('Successfully Register!', { duration: 2000, position: 'top-right' });
         navigate('/login');

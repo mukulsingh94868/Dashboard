@@ -17,3 +17,6 @@ export const changePassword = (formData) => API.post('/auth/change-password', fo
 // auth for the CRUD operations for the admin account for user-management
 export const getData = () => API.get('/auth/getData');
 export const getDataId = (id) => API.get(`/auth/getData/${id}`);
+
+// product operations
+export const getProducts = () => API.get('/product/products');

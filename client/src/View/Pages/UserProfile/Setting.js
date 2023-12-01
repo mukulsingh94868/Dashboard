@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
 import Box from '@mui/joy/Box';
-import Typography from '@mui/joy/Typography';
-import Divider from '@mui/joy/Divider';
-import Grid from '@mui/material/Grid';
-import useStyles from './style';
-import Switch from '@mui/joy/Switch';
-import Checkbox from '@mui/joy/Checkbox';
-import SwitchButton from '../../../Compoments/Switch/SwitchButton';
 import Button from '@mui/joy/Button';
+import Checkbox from '@mui/joy/Checkbox';
+import Divider from '@mui/joy/Divider';
+import Typography from '@mui/joy/Typography';
+import Grid from '@mui/material/Grid';
+import React from 'react';
+import SwitchButton from '../../../Compoments/Switch/SwitchButton';
+import useStyles from './style';
 
 
 const emailSettingData = [
@@ -64,7 +63,6 @@ const SystemData = [
 
 const Setting = () => {
     const classes = useStyles();
-    const [checked, setChecked] = useState(false);
     return (
         <>
             <Box className={classes.mainBox}>

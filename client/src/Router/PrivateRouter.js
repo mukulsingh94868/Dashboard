@@ -6,6 +6,7 @@ import Products from '../View/Pages/Products/Products';
 import Blogs from '../View/Pages/Blogs/Blogs';
 import BlogFullContent from "../View/Pages/Blogs/BlogFullContent";
 import CreateBlogAdmin from "../Admin/pages/CreateBlogAdmin";
+import ProductPage from "../View/Pages/Products/ProductPage";
   
 // export const roles = {
 //     INDIVIDUAL: 'Employee',
@@ -31,7 +32,7 @@ export const LayoutItem = [
     {
         path: "/products",
         exact: true,
-        component: Products
+        component: ProductPage
     },
     {
         path: "/blogs",
