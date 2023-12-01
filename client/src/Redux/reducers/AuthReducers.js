@@ -15,6 +15,7 @@ const authReducer = (state = { authData: null }, action) => {
             localStorage.setItem('authUser', JSON.stringify(action?.data?.token));
             localStorage.setItem('authPerson', JSON.stringify(action?.data?.data?.role));
             localStorage.setItem('authFullName', JSON.stringify(action?.data?.data?.fullname));
+            localStorage.setItem('authId', JSON.stringify(action?.data?.data?._id));
             return { ...state, authData: action.data, loading: false, errors: null };
 
         case actionType.LOGOUT:
@@ -23,6 +24,12 @@ const authReducer = (state = { authData: null }, action) => {
             // localStorage.removeItem('authPerson');
             // localStorage.removeItem('authFullName');
             return { ...state, authData: null, loading: false, errors: null };
+
+        case actionType.CHANGE_PASSWORD:
+            return {
+                ...state,
+                authData: action.data
+            }    
         default:
             return state;
     }

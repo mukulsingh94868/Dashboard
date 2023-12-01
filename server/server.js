@@ -10,7 +10,7 @@ const cookieParser = require('cookie-parser');
 const authRoutes = require('./routes/authRoutes');
 const blogRoutes = require('./routes/blogRoutes');
 
-app.use(cors());
+app.use(cors('*'));
 app.use(express.json());
 app.use(cookieParser());
 dotenv.config();

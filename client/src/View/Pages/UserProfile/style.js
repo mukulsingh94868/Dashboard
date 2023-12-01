@@ -138,7 +138,8 @@ export default makeStyles(() => ({
     name: {
         fontWeight: 600,
         fontSize: "1rem",
-        lineHeight: 1.5
+        lineHeight: 1.5,
+        textTransform: 'capitalize',
     },
     deignation: {
         fontSize: "0.875rem",
@@ -289,5 +290,11 @@ export default makeStyles(() => ({
         fontWeight: 600,
         fontSize: '20px',
         marginBottom: '10px',
+    },
+    mainName: {
+        fontSize: '16px',
+        fontWeight: 700,
+        color: 'black',
+        textTransform: 'capitalize'
     }
 }))

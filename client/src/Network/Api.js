@@ -12,6 +12,7 @@ API.interceptors.request.use((req) => {
 // auth for the login and register
 export const register = (formData) => API.post('/auth/register', formData);
 export const login = (formData) => API.post('/auth/login', formData);
+export const changePassword = (formData) => API.post('/auth/change-password', formData);
 
 // auth for the CRUD operations for the admin account for user-management
 export const getData = () => API.get('/auth/getData');

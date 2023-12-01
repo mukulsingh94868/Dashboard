@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Box from '@mui/joy/Box';
 import Typography from '@mui/joy/Typography';
 import Divider from '@mui/joy/Divider';
@@ -9,6 +9,9 @@ import FormLabel from '@mui/joy/FormLabel';
 import Input from '@mui/joy/Input';
 import Stack from '@mui/joy/Stack';
 import useStyles from './style';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from "react-router-dom";
+import { ChangePasswords } from '../../../Redux/actions/AuthActions';
 
 const changePasswordData = [
     {
@@ -35,6 +38,28 @@ const changePasswordData = [
 
 const ChangePassword = () => {
     const classes = useStyles();
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [newPassword, setNewPassword] = useState('');
+    const [confirmPass, setConfirmPass] = useState('');
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        dispatch(ChangePasswords({ username, password, newPassword }, navigate));
+        setUsername('');
+        setPassword('');
+        setNewPassword('');
+        setConfirmPass('');
+    };
+
+    const handleCancel = () => {
+        setUsername('');
+        setPassword('');
+        setNewPassword('');
+        setConfirmPass('');
+    };
     return (
         <>
             <Box className={classes.mainBox}>
@@ -47,36 +72,53 @@ const ChangePassword = () => {
                     <Grid container spacing={10}>
                         <Grid item xs={7}>
                             <Stack gap={4} sx={{ mt: 2 }}>
-                                <form>
+                                <form onSubmit={(e) => handleSubmit(e)} method='POST'>
                                     <FormControl required className={classes.formControl}>
-                                        <FormLabel className={classes.formLabel}>Old Password</FormLabel>
+                                        <FormLabel className={classes.formLabel}>Username</FormLabel>
                                         <Input
                                             className={classes.input}
                                             type="text"
-                                            placeholder="Enter Your Old Password"
+                                            value={username}
+                                            placeholder="Enter Your Username"
                                             name="username"
+                                            onChange={(e) => setUsername(e.target.value)}
+                                        />
+                                    </FormControl>
+                                    <FormControl required className={classes.formControl}>
+                                        <FormLabel className={classes.formLabel}>Current Password</FormLabel>
+                                        <Input
+                                            className={classes.input}
+                                            type="text"
+                                            value={password}
+                                            placeholder="Enter Your Current Password"
+                                            name="password"
+                                            onChange={(e) => setPassword(e.target.value)}
                                         />
                                     </FormControl>
                                     <FormControl required className={classes.formControl}>
                                         <FormLabel className={classes.formLabel}>New Password</FormLabel>
                                         <Input
                                             type="password"
+                                            value={newPassword}
                                             className={classes.input}
                                             placeholder="Enter Your New Password"
-                                            name="password"
+                                            name="newPassword"
+                                            onChange={(e) => setNewPassword(e.target.value)}
                                         />
                                     </FormControl>
                                     <FormControl required className={classes.formControl}>
-                                        <FormLabel className={classes.formLabel}>New Password</FormLabel>
+                                        <FormLabel className={classes.formLabel}>Confirm Password</FormLabel>
                                         <Input
                                             type="password"
+                                            value={confirmPass}
                                             className={classes.input}
                                             placeholder="Enter Your New Password"
-                                            name="password"
+                                            name="confirmPass"
+                                            onChange={(e) => setConfirmPass(e.target.value)}
                                         />
                                     </FormControl>
                                     <Stack gap={4} sx={{ mt: 2 }} className={classes.stackMatter}>
-                                        <Button className={classes.cancelButton}>
+                                        <Button className={classes.cancelButton} onClick={handleCancel}>
                                             Cancel
                                         </Button>
                                         <Button type="submit" className={classes.changeButton}>
@@ -89,7 +131,7 @@ const ChangePassword = () => {
 
                         <Grid item xs={5}>
                             <div className={classes.instructionDiv}>
-                                <Typography className={classes.newPass}>New Password must contain:</Typography>
+                                <Typography className={classes.newPassword}>New Password must contain:</Typography>
                                 {
                                     !!changePasswordData && changePasswordData?.map((change, index) => {
                                         return (

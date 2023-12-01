@@ -1,6 +1,6 @@
 import toast from 'react-hot-toast';
 import * as Api from '../../Network/Api';
-import { REGISTER, LOGIN, LOGOUT } from '../Constants/actionTypes';
+import { REGISTER, LOGIN, LOGOUT, CHANGE_PASSWORD } from '../Constants/actionTypes';
 
 
 // register
@@ -25,7 +25,7 @@ export const Login = (formData, navigate) => async (dispatch) => {
         toast.success('Successfully Login!', { duration: 2000, position: 'top-right' });
         navigate('/dashboard');
     } catch (error) {
-        console.error(error.message)
+        console.error('error', error)
     }
 };
 
@@ -37,6 +37,21 @@ export const Logout = (navigate) => async (dispatch) => {
         navigate('/login');
     } catch (error) {
         console.error(error.message)
+    }
+};
+
+//change password
+export const ChangePasswords = (formData, navigate) => async (dispatch) => {
+    try {
+        const { data } = await Api.changePassword(formData);
+        console.log('data', data);
+        dispatch({ type: CHANGE_PASSWORD, payload: data });
+        toast.success(data.message, {
+            duration: 2000,
+            position: 'top-right'
+        })
+    } catch (error) {
+        console.error('error', error);
     }
 };
 

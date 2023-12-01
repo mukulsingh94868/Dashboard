@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Box from '@mui/joy/Box';
 import Typography from '@mui/joy/Typography';
 import Divider from '@mui/joy/Divider';
@@ -9,25 +9,9 @@ import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
 import MyLocationOutlinedIcon from '@mui/icons-material/MyLocationOutlined';
 import FmdGoodOutlinedIcon from '@mui/icons-material/FmdGoodOutlined';
+import { useDispatch, useSelector } from 'react-redux';
+import { getUserData } from '../../../Redux/actions/AuthCrudActions';
 
-const dataIcon = [
-  {
-    icon: <EmailOutlinedIcon fontSize='small' />,
-    data: 'mukul@gmail.com'
-  },
-  {
-    icon: <LocalPhoneOutlinedIcon fontSize='small' />,
-    data: '8654 239 581'
-  },
-  {
-    icon: <MyLocationOutlinedIcon fontSize='small' />,
-    data: 'India'
-  },
-  {
-    icon: <FmdGoodOutlinedIcon fontSize='small' />,
-    data: 'https://anshan.dh.url'
-  }
-];
 
 const dataSkills = [
   {
@@ -50,6 +34,33 @@ const dataSkills = [
 
 const Profile = () => {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const ID = JSON.parse(localStorage.getItem('authId'));
+
+  useEffect(() => {
+    dispatch(getUserData());
+  }, [dispatch]);
+
+  const SingleDataFetch = useSelector((data) => data.AuthCrudReducer.posts?.filter((post) => post?._id === ID));
+
+  const dataIcon = [
+    {
+      icon: <EmailOutlinedIcon fontSize='small' />,
+      data: SingleDataFetch?.[0]?.email
+    },
+    {
+      icon: <LocalPhoneOutlinedIcon fontSize='small' />,
+      data: SingleDataFetch?.[0]?.phone
+    },
+    {
+      icon: <MyLocationOutlinedIcon fontSize='small' />,
+      data: SingleDataFetch?.[0]?.location
+    },
+    {
+      icon: <FmdGoodOutlinedIcon fontSize='small' />,
+      data: 'https://mantisdashboard.io/login'
+    }
+  ];
   return (
     <>
       <Box className={classes.mainBox}>
@@ -64,7 +75,7 @@ const Profile = () => {
                         <Avatar src="../images/user.jpg" alt="" className={classes.avatarImage} />
                       </div>
                       <div className={classes.underSecondGrid}>
-                        <Typography className={classes.name}>Mukul Singh</Typography>
+                        <Typography className={classes.name}>{SingleDataFetch?.[0]?.fullname}</Typography>
                         <Typography className={classes.deignation}>Software Engineer</Typography>
                       </div>
                     </div>
@@ -96,7 +107,7 @@ const Profile = () => {
                   <Grid item xs={12}>
                     <div className={classes.nav}>
                       {
-                        !!dataIcon && dataIcon?.map((data, index) => {
+                        !!SingleDataFetch && dataIcon?.map((data, index) => {
                           return (
                             <>
                               <div key={index} className={classes.list}>
@@ -157,9 +168,9 @@ const Profile = () => {
                       <Divider className={classes.profileDivider} />
                       <div className={classes.cardBottom}>
                         <Typography className={classes.aboutData}>
-                          I’m Mukul Singh! I’m a web developer with in-depth experience in UI/UX design. In a nutshell, I create websites 
-                          that help organizations address business challenges and meet their needs. I manage everything from website 
-                          navigation and layout to a company’s web hosting and security architecture. My expertise lies within 
+                          I’m <span className={classes.mainName}>{SingleDataFetch?.[0]?.fullname}</span> I’m a web developer with in-depth experience in UI/UX design. In a nutshell, I create websites
+                          that help organizations address business challenges and meet their needs. I manage everything from website
+                          navigation and layout to a company’s web hosting and security architecture. My expertise lies within
                           front-end web apps, and the main languages in my tech stack are JavaScript, React, and of course HTML/CSS.
                         </Typography>
                       </div>
@@ -178,11 +189,11 @@ const Profile = () => {
                             <div container item spacing={3} className={classes.gridClass}>
                               <div className={classes.gridWidth}>
                                 <Typography className={classes.label}>Full Name</Typography>
-                                <Typography className={classes.labelName}>Mukul Singh</Typography>
+                                <Typography className={classes.labelName}>{SingleDataFetch?.[0]?.fullname}</Typography>
                               </div>
                               <div className={classes.gridWidth}>
                                 <Typography className={classes.label}>User Name</Typography>
-                                <Typography className={classes.labelName}>mukul65</Typography>
+                                <Typography className={classes.labelName}>{SingleDataFetch?.[0]?.username}</Typography>
                               </div>
                             </div>
                           </div>
@@ -193,11 +204,11 @@ const Profile = () => {
                             <div className={classes.gridClass}>
                               <div className={classes.gridWidth}>
                                 <Typography className={classes.label}>Email</Typography>
-                                <Typography className={classes.labelName}>mukul@gmail.com</Typography>
+                                <Typography className={classes.labelName}>{SingleDataFetch?.[0]?.email}</Typography>
                               </div>
                               <div className={classes.gridWidth}>
                                 <Typography className={classes.label}>Contact No.</Typography>
-                                <Typography className={classes.labelName}>7657565655</Typography>
+                                <Typography className={classes.labelName}>{SingleDataFetch?.[0]?.phone}</Typography>
                               </div>
                             </div>
                           </div>
@@ -207,11 +218,11 @@ const Profile = () => {
                             <div className={classes.gridClass}>
                               <div className={classes.gridWidth}>
                                 <Typography className={classes.label}>Gender</Typography>
-                                <Typography className={classes.labelName}>male</Typography>
+                                <Typography className={classes.labelName}>{SingleDataFetch?.[0]?.gender}</Typography>
                               </div>
                               <div className={classes.gridWidth}>
                                 <Typography className={classes.label}>Location</Typography>
-                                <Typography className={classes.labelName}>Malviya Nagar</Typography>
+                                <Typography className={classes.labelName}>{SingleDataFetch?.[0]?.location}</Typography>
                               </div>
                             </div>
                           </div>
@@ -221,7 +232,7 @@ const Profile = () => {
                             <div className={classes.gridClass}>
                               <div className={classes.gridWidth}>
                                 <Typography className={classes.label}>Role</Typography>
-                                <Typography className={classes.labelName}>user</Typography>
+                                <Typography className={classes.labelName}>{SingleDataFetch?.[0]?.role}</Typography>
                               </div>
                             </div>
                           </div>

@@ -180,3 +180,24 @@ module.exports.resetPassword = async (req, res) => {
         res.status(500).json({ message: 'Internal Server Error' });
     }
 };
+
+module.exports.changePassword = async (req, res) => {
+    try {
+        const { username, password, newPassword } = req.body;
+        const user = await AuthModel.findOne({ username });
+        if (!user) {
+          return res.status(404).json({ message: 'User not found' });
+        }
+        const isPasswordValid = await bcrypt.compare(password, user.password);
+        if (!isPasswordValid) {
+            return res.status(401).json({ message: 'Current password is incorrect' });
+        }
+        const hashedNewPassword = await bcrypt.hash(newPassword, 10);
+        user.password = hashedNewPassword;
+        await user.save();
+        res.status(200).json({ message: 'Password changed successfully', data: user.password });
+    } catch (error) {
+        console.log('error', error);
+        res.status(500).json({ message: 'Internal Server Error' });
+    }
+};
