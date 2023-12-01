@@ -5,6 +5,7 @@ import Tabs from '@mui/joy/Tabs';
 import React from 'react';
 import ChangePassword from './ChangePassword';
 import Profile from './Profile';
+import Setting from './Setting';
 
 const UserProfile = () => {
   return (
@@ -29,12 +30,16 @@ const UserProfile = () => {
           <Tab disableIndicator>Settings</Tab>
         </TabList>
 
-        <TabPanel value={0} style={{ width: '1400px' }}>
+        <TabPanel value={0} style={{ width: '1485px' }}>
           <Profile />
         </TabPanel>
 
-        <TabPanel value={1} style={{ width: '1400px' }}>
+        <TabPanel value={1} style={{ width: '1485px' }}>
           <ChangePassword />
+        </TabPanel>
+
+        <TabPanel value={2} style={{ width: '1485px' }}>
+          <Setting />
         </TabPanel>
       </Tabs>
     </>

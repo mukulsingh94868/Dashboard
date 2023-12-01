@@ -296,5 +296,53 @@ export default makeStyles(() => ({
         fontWeight: 700,
         color: 'black',
         textTransform: 'capitalize'
+    },
+    emailSet: {
+        display: 'flex',
+        flexDirection: 'column',
+    },
+    emailTypo: {
+        margin: "0px",
+        fontSize: "0.875rem",
+        lineHeight: 1.57,
+        fontFamily: '"Public Sans", sans-serif',
+        fontWeight: 400,
+        color: "rgb(140, 140, 140)"
+    },
+    itemEmail: {
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        padding: '2px 0px'
+    },
+    setUpEmail: {
+        fontSize: "0.875rem",
+        fontWeight: 600,
+        lineHeight: 1.57,
+        fontFamily: '"Public Sans", sans-serif',
+        margin: "0px"
+    },
+    settingSwitch: {
+        marginTop: '20px'
+    },
+    itemText: {
+        flex: "1 1 auto",
+        minWidth: "0px",
+        marginTop: "4px",
+        marginBottom: "4px"
+    },
+    switch: {
+        overflow: "hidden",
+        boxSizing: "border-box",
+        position: "relative",
+        flexShrink: 0,
+        zIndex: 0,
+        verticalAlign: "middle",
+        color: "rgb(38, 38, 38)",
+        padding: "0px",
+        margin: "8px",
+        display: "flex",
+        width: "44px",
+        height: "22px"
     }
 }))

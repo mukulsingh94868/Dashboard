@@ -29,7 +29,15 @@ const dataSkills = [
   {
     tech: "NodeJS",
     percent: 70
-  }
+  },
+  {
+    tech: "Redux",
+    percent: 80
+  },
+  {
+    tech: "Material UI",
+    percent: 90
+  },
 ];
 
 const Profile = () => {
@@ -142,7 +150,7 @@ const Profile = () => {
 
                                 <div className={classes.linearProgress}>
                                   <LinearProgress variant="determinate" value={data?.percent} className={classes.progress} />
-                                  <Typography className={classes.listText}>{data?.percent}</Typography>
+                                  <Typography className={classes.listText}>{`${data?.percent}%`}</Typography>
                                 </div>
                               </div>
                             </>
