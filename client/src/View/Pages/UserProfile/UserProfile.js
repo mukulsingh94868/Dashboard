@@ -22,7 +22,7 @@ const UserProfile = () => {
               // boxShadow: 'sm',
               // bgcolor: 'background.surface',
             },
-            width: '400px'
+            // width: '400px'
           }}
         >
           <Tab disableIndicator>Profile</Tab>
@@ -30,15 +30,15 @@ const UserProfile = () => {
           <Tab disableIndicator>Settings</Tab>
         </TabList>
 
-        <TabPanel value={0} style={{ width: '1485px' }}>
+        <TabPanel value={0}>
           <Profile />
         </TabPanel>
 
-        <TabPanel value={1} style={{ width: '1485px' }}>
+        <TabPanel value={1}>
           <ChangePassword />
         </TabPanel>
 
-        <TabPanel value={2} style={{ width: '1485px' }}>
+        <TabPanel value={2}>
           <Setting />
         </TabPanel>
       </Tabs>

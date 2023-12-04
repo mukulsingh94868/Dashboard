@@ -67,7 +67,9 @@ export default makeStyles(() => ({
     stackMatter: {
         display: 'flex',
         flexDirection: 'row',
-        justifyContent: 'start'
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+        gap: '15px'
     },
     cancelButton: {
         background: '#cc5b5bdb',
@@ -78,7 +80,7 @@ export default makeStyles(() => ({
         fontSize: '12px',
     },
     input: {
-        width: '100%',
+        width: '80%',
         padding: '8.5px 14px 10.5px 12px',
         background: 'none',
         '& .MuiInput-input': {
@@ -374,5 +376,8 @@ export default makeStyles(() => ({
         marginLeft: "16px",
         borderRadius: "4px",
         backgroundColor: "rgb(22, 119, 255)"
+    },
+    formProfile: {
+        padding: "20px",
     }
 }))

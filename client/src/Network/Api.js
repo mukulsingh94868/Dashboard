@@ -20,3 +20,4 @@ export const getDataId = (id) => API.get(`/auth/getData/${id}`);
 
 // product operations
 export const getProducts = () => API.get('/product/products');
+export const getProductsById = (id) => API.get(`/product/products/${id}`);

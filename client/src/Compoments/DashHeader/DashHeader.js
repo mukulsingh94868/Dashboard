@@ -74,6 +74,7 @@ const DashHeader = () => {
                         <Menu>
                             <MenuItem>Profile</MenuItem>
                             <MenuItem>My account</MenuItem>
+                            <MenuItem>Cart</MenuItem>
                             <MenuItem onClick={handleNavigate}>Logout</MenuItem>
                         </Menu>
                     </Dropdown>

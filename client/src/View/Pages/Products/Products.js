@@ -8,18 +8,26 @@ import Typography from '@mui/joy/Typography';
 import { Grid } from '@mui/material';
 import React, { useState } from 'react';
 import useStyles from './style';
+import { useNavigate } from 'react-router-dom';
 
 
 const Products = ({ prod }) => {
   const classes = useStyles();
+  const navigate = useNavigate();
   const [varient, setVarient] = useState('small');
   const [quantity, setQuantity] = useState(1);
 
+  const cardClick = (id) => {
+    navigate(`/dashboard/products/${id}`);
+  };
+
   return (
-    <Grid item xs={4}>
-      <Card sx={{ width: 400 }}>
-        <CardOverflow>
-          <AspectRatio sx={{ minWidth: 200 }}><img src={prod?.imageUrl} alt="" /></AspectRatio>
+    <Grid item xs={3}>
+      <Card className={classes.cardPointer}>
+        <CardOverflow onClick={() => cardClick(prod?._id)}>
+          <AspectRatio sx={{ minWidth: 200 }}>
+            <img src={prod?.imageUrl} alt="" />
+          </AspectRatio>
         </CardOverflow>
 
         <CardContent>
@@ -71,7 +79,7 @@ const Products = ({ prod }) => {
         <CardOverflow>
           <div className={classes.selectPart}>
             <div>
-              <h1>Price: {prod.prices[0][varient] * quantity}Rs</h1>
+              <Typography className={classes.priceTag}>Price: {prod.prices[0][varient] * quantity}Rs</Typography>
             </div>
 
             <div>

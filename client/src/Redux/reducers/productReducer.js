@@ -7,6 +7,11 @@ const productReducer = (state = { product: [] }, action) => {
                 ...state,
                 product: action.payload,
             }; 
+        case actionType.GET_ALL_PRODUCT_BY_ID:
+            return {
+                ...state,
+                product: action.payload
+            }    
         default:
             return state;
     }

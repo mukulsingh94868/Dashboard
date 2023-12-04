@@ -10,3 +10,4 @@ export const GET_DATA_BY_ID = 'GET_DATA_BY_ID';
 
 // product CRUD
 export const GET_ALL_PRODUCT = 'GET_ALL_PRODUCT';
+export const GET_ALL_PRODUCT_BY_ID = 'GET_ALL_PRODUCT_BY_ID';

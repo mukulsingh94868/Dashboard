@@ -54,3 +54,18 @@ module.exports.getProductData = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
+
+module.exports.getProductDataById = async (req, res) => {
+    try {
+        const id = req.params.id;
+        const productData = await ProductModel.findById(id);
+
+        if (!productData) {
+            return res.status(404).json({ message: 'Product not found' });
+        }
+        res.status(200).json(productData);
+    } catch (error) {
+        console.log('error', error);
+        res.status(500).json({ message: error.message });
+    }
+};
