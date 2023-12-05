@@ -31,11 +31,8 @@ const Header = () => {
                         <div className="dropdown-content">
                             <a href="#/">English</a>
                             <a href="#/">Hindi</a>
-
                         </div>
                     </div>
-
-
                 </div>
             </div>
         </>

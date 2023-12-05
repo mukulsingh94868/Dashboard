@@ -13,7 +13,6 @@ export const getProductData = () => async (dispatch) => {
 export const getProductDataById = (id) => async (dispatch) => {
     try {
         const { data } = await Api.getProductsById(id);
-        console.log('data', data);
         dispatch({ type: GET_ALL_PRODUCT_BY_ID, payload: data });
     } catch (error) {
         console.log(error);

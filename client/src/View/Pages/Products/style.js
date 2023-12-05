@@ -25,5 +25,39 @@ export default makeStyles(() => ({
     priceTag: {
         fontWeight: 500,
         fontSize: '22px',
+    },
+    productName: {
+        fontWeight: 600,
+        fontSize: "1.5rem",
+        lineHeight: 1.33,
+    },
+    productDetails: {
+        fontSize: "0.875rem",
+        lineHeight: 1.57,
+        fontWeight: 400,
+        color: "rgb(140, 140, 140)",
+        marginTop: '30px'
+    },
+    productDetailName: {
+        fontSize: "0.875rem",
+        lineHeight: 1.57,
+        fontWeight: 700,
+        color: "black"
+    },
+    varients: {
+        display: 'flex',
+        flexDirection: 'column',
+    },
+    colorQuality: {
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "center"
+    },
+    colorName: {
+        fontSize: "0.875rem",
+        lineHeight: 1.57,
+        fontFamily: '"Public Sans", sans-serif',
+        fontWeight: 400,
+        color: "rgb(140, 140, 140)"
     }
 }))

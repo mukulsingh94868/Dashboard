@@ -15,7 +15,7 @@ const ProductPage = () => {
         <>
             <Grid container spacing={3}>
                 {
-                    !!prodData && prodData?.map((prod) => {
+                    !!prodData && prodData?.length !== 0 && prodData?.map((prod) => {
                         return (
                             <Products prod={prod} />
                         )
