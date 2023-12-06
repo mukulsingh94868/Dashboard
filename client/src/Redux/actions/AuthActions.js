@@ -43,7 +43,6 @@ export const Logout = (navigate) => async (dispatch) => {
 export const ChangePasswords = (formData, navigate) => async (dispatch) => {
     try {
         const { data } = await Api.changePassword(formData);
-        console.log('data', data);
         dispatch({ type: CHANGE_PASSWORD, payload: data });
         toast.success(data.message, {
             duration: 2000,
