@@ -6,23 +6,22 @@ import { Grid } from '@mui/material';
 
 const ProductPage = () => {
     const dispatch = useDispatch();
-    const prodData = useSelector((state) => state.productReducer.product);
+
+    const prodData = useSelector((state) => state?.productReducer?.product);
 
     useEffect(() => {
         dispatch(getProductData());
     }, [dispatch]);
     return (
-        <>
-            <Grid container spacing={3}>
-                {
-                    !!prodData && prodData?.length !== 0 && prodData?.map((prod) => {
-                        return (
-                            <Products prod={prod} />
-                        )
-                    })
-                }
-            </Grid>
-        </>
+        <Grid container spacing={3}>
+            {
+                !!prodData && prodData?.map((prod, index) => {
+                    return (
+                        <Products prod={prod} index={index} />
+                    )
+                })
+            }
+        </Grid>
     )
 }
 

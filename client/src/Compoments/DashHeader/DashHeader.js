@@ -5,8 +5,10 @@ import Dropdown from '@mui/joy/Dropdown';
 import Menu from '@mui/joy/Menu';
 import MenuButton from '@mui/joy/MenuButton';
 import MenuItem from '@mui/joy/MenuItem';
+import { Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
+import { useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 const DashHeader = () => {
@@ -14,11 +16,15 @@ const DashHeader = () => {
     const location = useLocation();
     const [isBodyClassActive, setIsBodyClassActive] = useState(false);
 
+    const cartState = useSelector((state) => state?.productReducer);
+    console.log('cartState', cartState)
+
     const handleNavigate = () => {
-        // localStorage.removeItem('authUser');
-        // localStorage.removeItem('authPerson');
-        // localStorage.removeItem('authFullName');
-        localStorage.clear();
+        localStorage.removeItem('authUser');
+        localStorage.removeItem('authId');
+        localStorage.removeItem('authPerson');
+        localStorage.removeItem('authFullName');
+        // localStorage.clear();
         toast.success('Successfully Logout!', { duration: 2000, position: 'top-right' });
         setTimeout(() => {
             navigate('/login');
@@ -57,6 +63,18 @@ const DashHeader = () => {
                     </button>
                     <input type="search" placeholder="Search" />
                 </form>
+
+                {
+                    cartState?.cartItems?.length >= 1 ?
+                        <div className='cart_module'>
+                            <Typography className='cart_text'>Cart
+                                <span className='cardItemLength'> {cartState?.cartItems?.length ? cartState?.cartItems?.length : ''}</span>
+                            </Typography>
+                        </div>
+                        :
+                        null
+                }
+
                 <div className="header_right_icon">
                     <a href="#/">
                         <img src="../images/light_mode.svg" alt="" />
@@ -74,7 +92,6 @@ const DashHeader = () => {
                         <Menu>
                             <MenuItem>Profile</MenuItem>
                             <MenuItem>My account</MenuItem>
-                            <MenuItem>Cart</MenuItem>
                             <MenuItem onClick={handleNavigate}>Logout</MenuItem>
                         </Menu>
                     </Dropdown>

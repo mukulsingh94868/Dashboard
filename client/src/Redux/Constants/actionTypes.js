@@ -12,3 +12,4 @@ export const GET_DATA_BY_ID = 'GET_DATA_BY_ID';
 export const GET_ALL_PRODUCT = 'GET_ALL_PRODUCT';
 export const GET_ALL_PRODUCT_BY_ID = 'GET_ALL_PRODUCT_BY_ID';
 export const ADD_TO_CART = 'ADD_TO_CART';
+export const DELETE_FROM_CART = 'DELETE_FROM_CART';

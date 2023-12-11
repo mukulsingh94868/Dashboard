@@ -1,4 +1,4 @@
-import { GET_ALL_PRODUCT, GET_ALL_PRODUCT_BY_ID, ADD_TO_CART } from "../Constants/actionTypes";
+import { GET_ALL_PRODUCT, GET_ALL_PRODUCT_BY_ID, ADD_TO_CART, DELETE_FROM_CART } from "../Constants/actionTypes";
 import * as Api from '../../Network/Api';
 
 export const getProductData = () => async (dispatch) => {
@@ -44,10 +44,10 @@ export const addToCart = (product, quantity, varient) => async (dispatch, getSta
         alert('You cannot add more than 10 items');
     } else {
         if (cardItem?.quantity < 1) {
-            dispatch({
-                type: 'DELETE_FROM_CART',
-                payload: product
-            });
+            // dispatch({
+            //     type: DELETE_FROM_CART,
+            //     payload: product
+            // });
         } else {
             dispatch({
                 type: ADD_TO_CART,
@@ -55,16 +55,16 @@ export const addToCart = (product, quantity, varient) => async (dispatch, getSta
             });
         }
     }
-    const cartItems = getState().cartReducer.cartItems;
+    const cartItems = getState()?.productReducer?.cartItems;
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
 };
 
 export const deleteFromCart = (pizza) => async (dispatch, getState) => {
     dispatch({
-        type: 'DELETE_FROM_CART',
+        type: DELETE_FROM_CART,
         payload: pizza
     });
 
-    const cartItems = getState().cartReducer.cartItems;
+    const cartItems = getState().productReducer.cartItems;
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
 };

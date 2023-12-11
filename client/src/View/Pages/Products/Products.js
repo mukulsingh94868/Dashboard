@@ -9,11 +9,14 @@ import { Grid } from '@mui/material';
 import React, { useState } from 'react';
 import useStyles from './style';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../../../Redux/actions/productActions';
 
 
-const Products = ({ prod }) => {
+const Products = ({ prod, index }) => {
   const classes = useStyles();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [varient, setVarient] = useState('small');
   const [quantity, setQuantity] = useState(1);
 
@@ -21,8 +24,12 @@ const Products = ({ prod }) => {
     navigate(`/dashboard/products/${id}`);
   };
 
+  const addtocart = () => {
+    dispatch(addToCart(prod, quantity, varient));
+  };
+
   return (
-    <Grid item xs={3}>
+    <Grid item xs={3} key={index}>
       <Card className={classes.cardPointer}>
         <CardOverflow onClick={() => cardClick(prod?._id)}>
           <AspectRatio sx={{ minWidth: 200 }}>
@@ -83,7 +90,7 @@ const Products = ({ prod }) => {
             </div>
 
             <div>
-              <Button>Add to Cart</Button>
+              <Button onClick={addtocart}>Add to Cart</Button>
             </div>
           </div>
         </CardOverflow>
