@@ -185,5 +185,24 @@ export default makeStyles(() => ({
     },
     featDiv: {
         marginTop: '20px'
+    },
+    dividerScale: {
+        marginTop: '20px',
+        marginBottom: '20px'
+    },
+    deleteIcon: {
+        color: 'red',
+        margin: '5px',
+        cursor: 'pointer',
+        marginTop: '20px'
+    },
+    cartContainer: {
+        
+    },
+    myCart: {
+        fontSize: '40px',
+        fontWeight: 700,
+        marginBottom: '50px',
+        textAlign: 'center'
     }
 }))

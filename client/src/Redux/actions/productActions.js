@@ -33,9 +33,10 @@ export const addToCart = (product, quantity, varient) => async (dispatch, getSta
     var cardItem = {
         name: product?.name,
         _id: product?._id,
-        image: product?.image,
+        image: product?.imageUrl,
         varient: varient,
         quantity: Number(quantity),
+        description: product?.description,
         prices: product?.prices,
         price: product?.prices[0][varient] * quantity
     };
@@ -44,10 +45,10 @@ export const addToCart = (product, quantity, varient) => async (dispatch, getSta
         alert('You cannot add more than 10 items');
     } else {
         if (cardItem?.quantity < 1) {
-            // dispatch({
-            //     type: DELETE_FROM_CART,
-            //     payload: product
-            // });
+            dispatch({
+                type: DELETE_FROM_CART,
+                payload: product
+            });
         } else {
             dispatch({
                 type: ADD_TO_CART,
@@ -59,10 +60,10 @@ export const addToCart = (product, quantity, varient) => async (dispatch, getSta
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
 };
 
-export const deleteFromCart = (pizza) => async (dispatch, getState) => {
+export const deleteFromCart = (product) => async (dispatch, getState) => {
     dispatch({
         type: DELETE_FROM_CART,
-        payload: pizza
+        payload: product
     });
 
     const cartItems = getState().productReducer.cartItems;

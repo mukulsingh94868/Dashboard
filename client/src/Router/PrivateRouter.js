@@ -7,6 +7,8 @@ import BlogFullContent from "../View/Pages/Blogs/BlogFullContent";
 import CreateBlogAdmin from "../Admin/pages/CreateBlogAdmin";
 import ProductPage from "../View/Pages/Products/ProductPage";
 import ProductDetails from "../View/Pages/Products/ProductDetails";
+import ProductCartScreen from "../View/Pages/Products/ProductCartScreen";
+import CheckoutPage from "../View/Pages/Products/CheckoutPage";
   
 // export const roles = {
 //     INDIVIDUAL: 'Employee',
@@ -38,6 +40,16 @@ export const LayoutItem = [
         path: "/products/:id",
         exact: true,
         component: ProductDetails
+    },
+    {
+        path: "/products/cart",
+        exact: true,
+        component: ProductCartScreen
+    },
+    {
+        path: "/products/cart/checkout",
+        exact: true,
+        component: CheckoutPage
     },
     {
         path: "/blogs",

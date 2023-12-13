@@ -17,7 +17,6 @@ const DashHeader = () => {
     const [isBodyClassActive, setIsBodyClassActive] = useState(false);
 
     const cartState = useSelector((state) => state?.productReducer);
-    console.log('cartState', cartState)
 
     const handleNavigate = () => {
         localStorage.removeItem('authUser');
@@ -67,7 +66,7 @@ const DashHeader = () => {
                 {
                     cartState?.cartItems?.length >= 1 ?
                         <div className='cart_module'>
-                            <Typography className='cart_text'>Cart
+                            <Typography className='cart_text' onClick={() => navigate('/dashboard/products/cart')}>Cart
                                 <span className='cardItemLength'> {cartState?.cartItems?.length ? cartState?.cartItems?.length : ''}</span>
                             </Typography>
                         </div>

@@ -4,14 +4,15 @@ import Button from '@mui/joy/Button';
 import { Grid, Typography } from '@mui/material';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import { getProductDataById } from '../../../Redux/actions/productActions';
+import { useNavigate, useParams } from 'react-router-dom';
+import { addToCart, getProductDataById } from '../../../Redux/actions/productActions';
 import useStyles from './style';
 
 
 const ProductDetails = () => {
     const { id } = useParams();
     const classes = useStyles();
+    const navigate = useNavigate();
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -19,6 +20,11 @@ const ProductDetails = () => {
     }, [id, dispatch]);
 
     const getProductData = useSelector((state) => state.productReducer.product);
+
+    const addtocart = () => {
+        // dispatch(addToCart(getProductData, quantity, varient));
+        alert('Addtocart');
+    };
     return (
         <>
             <div className={classes.productContainer}>
@@ -48,14 +54,14 @@ const ProductDetails = () => {
                                                     <Typography className={classes.colorName2}> {getProductData?.color}</Typography>
                                                 </div>
 
-                                                <div className={classes.colorQuality}>
+                                                {/* <div className={classes.colorQuality}>
                                                     <Typography className={classes.varientQuantity}> Quantity: </Typography>
                                                     <div className={classes.minusPlus}>
                                                         <AddIcon className={classes.addIcon} />
                                                         <Typography className={classes.productQuantity}>{getProductData?.quantity}</Typography>
                                                         <RemoveIcon className={classes.removeIcon} />
                                                     </div>
-                                                </div>
+                                                </div> */}
 
                                                 <div className={classes.colorQuality}>
                                                     <Typography className={classes.price}>Price: </Typography>
@@ -64,8 +70,8 @@ const ProductDetails = () => {
                                             </div>
 
                                             <div className={classes.cartButton}>
-                                                <Button className={classes.buyNow}>Buy Now</Button>
-                                                <Button className={classes.addToCart}>Add To Cart</Button>
+                                                <Button className={classes.buyNow} onClick={() => navigate('/dashboard/products/cart')}>Buy Now</Button>
+                                                <Button className={classes.addToCart} onClick={addtocart}>Add To Cart</Button>
                                             </div>
                                         </form>
                                     </div>
@@ -96,15 +102,6 @@ const ProductDetails = () => {
                                 <div className={classes.featDiv}>
                                     <Typography className={classes.features}>Description: <span className={classes.featuresData}>{getProductData?.description}</span></Typography>
                                     <Typography className={classes.features}>Vendor: <span className={classes.featuresData}>{getProductData?.vendor}</span></Typography>
-                                    {/* <Typography className={classes.features}>Varients:
-                                        <span className={classes.featuresData}>
-                                            {Object?.values(getProductData?.varients)?.map((key, value) => {
-                                                return (
-                                                    <Typography>{`${key},`}</Typography>
-                                                )
-                                            })}
-                                        </span>
-                                    </Typography> */}
                                     <Typography className={classes.features}>Varients: <span className={classes.featuresData}>{getProductData?.varients}</span></Typography>
                                 </div>
                             </div>
