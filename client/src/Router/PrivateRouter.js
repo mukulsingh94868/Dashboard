@@ -47,11 +47,6 @@ export const LayoutItem = [
         component: ProductCartScreen
     },
     {
-        path: "/products/cart/checkout",
-        exact: true,
-        component: CheckoutPage
-    },
-    {
         path: "/blogs",
         exact: true,
         component: Blogs

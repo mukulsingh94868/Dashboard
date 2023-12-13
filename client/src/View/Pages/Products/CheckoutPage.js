@@ -1,21 +1,20 @@
+import Button from '@mui/joy/Button';
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import StripeCheckout from 'react-stripe-checkout';
+import useStyles from './style';
+import { PlacedOrderData } from '../../../Redux/actions/orderActions';
 
-const CheckoutPage = () => {
+const CheckoutPage = ({ SubTotal }) => {
     const dispatch = useDispatch();
-
-    const cartState = useSelector((state) => state.productReducer);
-    const cartItems = cartState.cartItems;
-
-    const SubTotal = cartItems.reduce((x, item) => x + item.price, 0);
+    const classes = useStyles();
 
     const tokenHander = (token) => {
-        // dispatch(placeOrder(token, SubTotal));
+        dispatch(PlacedOrderData(token, SubTotal));
     };
     return (
         <>
-            <div>
+            <div className={classes.checkout}>
                 <StripeCheckout
                     amount={SubTotal * 100}
                     shippingAddress
@@ -23,7 +22,7 @@ const CheckoutPage = () => {
                     stripeKey='pk_test_51JtnAbSCYDML1dwkChRjpFPJfXk3bKgZRsTsSpQ7MZuTSzSsESDlMD6GmOGfoeitMZhVPy171yUsdloZUDTWtNez00amRTOhao'
                     currency='INR'
                 >
-                    <button className='btn'>Pay Now</button>
+                    <Button className={classes.checkoutPage}>Buy Now</Button>
                 </StripeCheckout>
             </div>
         </>

@@ -3,11 +3,13 @@ import thunk from 'redux-thunk';
 import authReducer from './reducers/AuthReducers';
 import AuthCrudReducer from './reducers/AuthCrudReducer';
 import productReducer from './reducers/productReducer';
+import orderReducer from './reducers/orderReducer';
 
 const reducers = combineReducers({
     authReducer: authReducer,
     AuthCrudReducer: AuthCrudReducer,
-    productReducer: productReducer
+    productReducer: productReducer,
+    orderReducer: orderReducer
 });
 
 const cartItems = localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')) : [];

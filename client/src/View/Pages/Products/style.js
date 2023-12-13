@@ -63,10 +63,13 @@ export default makeStyles(() => ({
         color: "rgb(140, 140, 140)"
     },
     cartButton: {
-        display: "flex",
-        flexDirection: "row",
-        alignItems: "center",
-        marginTop: "32px"
+        marginTop: "32px",
+        border: "1px solid gray",
+        padding: "20px 30px",
+        borderRadius: "8px",
+        background: "#c3baba2e",
+        width: "70%",
+        height: "30%"
     },
     buyNow: {
         display: "inline-flex",
@@ -197,12 +200,87 @@ export default makeStyles(() => ({
         marginTop: '20px'
     },
     cartContainer: {
-        
+        width: '1530px'
     },
     myCart: {
         fontSize: '40px',
         fontWeight: 700,
         marginBottom: '50px',
         textAlign: 'center'
+    },
+    noProducts: {
+        fontSize: '20px',
+        fontWeight: 700,
+        whiteSpace: 'nowrap'
+    },
+    checkoutPage: {
+        display: "inline-flex",
+        alignItems: "center",
+        justifyContent: "center",
+        position: "relative",
+        boxSizing: "border-box",
+        cursor: "pointer",
+        textDecoration: "none",
+        textTransform: "capitalize",
+        fontSize: "0.9375rem",
+        lineHeight: 1.75,
+        minWidth: "64px",
+        padding: "8px 22px",
+        borderRadius: "4px",
+        color: "rgb(255, 255, 255)",
+        backgroundColor: "rgb(22, 119, 255)",
+        width: "100%",
+        boxShadow: "none",
+        fontWeight: 400,
+        marginTop: '40px'
+    },
+    checkout: {
+        marginTop: 100
+    },
+    checkOutBox: {
+        display: 'flex',
+        flexDirection: 'column',
+    },
+    orderSummary: {
+        backgroundColor: "rgb(255, 255, 255)",
+        color: "rgb(38, 38, 38)",
+        transition: "box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
+        overflow: "hidden",
+        position: "relative",
+        border: "1px solid rgb(230, 235, 241)",
+        borderRadius: "4px",
+        boxShadow: "inherit"
+    },
+    orderPadd: {
+        padding: '20px'
+    },
+    orderStack: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+    },
+    orderTotal: {
+        margin: "0px",
+        fontSize: "0.875rem",
+        fontWeight: 600,
+        lineHeight: 1.57,
+        fontFamily: '"Public Sans", sans-serif',
+        textAlign: "right"
+    },
+    orderTotal1: {
+        lineHeight: 1.66,
+        fontWeight: 400,
+        display: "table-cell",
+        verticalAlign: "inherit",
+        textAlign: "left",
+        color: "rgb(38, 38, 38)",
+        fontSize: "0.875rem",
+        borderTopColor: "rgb(240, 240, 240)",
+        borderRightColor: "rgb(240, 240, 240)",
+        borderLeftColor: "rgb(240, 240, 240)",
+        padding: "8px",
+        borderBottom: "none",
+        opacity: 0.5
     }
 }))
