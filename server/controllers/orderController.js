@@ -5,25 +5,20 @@ const OrderModel = require('../models/orderModel');
 module.exports.PlaceOrder = async (req, res) => {
     try {
         const { token, subtotal, cartItems } = req.body;
-        console.log('token: ', token);
-        console.log('subtotal: ', subtotal);
-        console.log('cartItems: ', cartItems);
 
-        const customer = await stripe.customers.create({
-            email: token.email,
-            source: token.id
+        const customer = await stripe?.customers?.create({
+            email: token?.email,
+            source: token?.id
         });
-        console.log('customer', customer)
 
         const payment = await stripe.charges.create({
             amount: subtotal * 100,
             currency: 'inr',
-            customer: customer.id,
-            receipt_email: token.email
+            customer: customer?.id,
+            receipt_email: token?.email
         }, {
             idempotencyKey: uuidv4()
         });
-        console.log('payment', payment);
 
         if (payment) {
             const neworder = new OrderModel({
@@ -35,7 +30,7 @@ module.exports.PlaceOrder = async (req, res) => {
                     country: token?.card?.address_country,
                     pincode: token?.card?.address_zip
                 },
-                transactionId: payment.source.id
+                transactionId: payment?.source?.id
             })
             neworder.save();
             res.send('order Placed Successfully !');

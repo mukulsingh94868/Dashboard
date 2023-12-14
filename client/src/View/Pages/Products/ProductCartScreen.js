@@ -17,7 +17,7 @@ const ProductCartScreen = () => {
     const cartState = useSelector((state) => state.productReducer);
     const cartItems = cartState.cartItems;
 
-    const SubTotal = cartItems.reduce((x, item) => x + item.price, 0);
+    const subTotal = cartItems.reduce((x, item) => x + item.price, 0);
 
     return (
         <>
@@ -29,13 +29,13 @@ const ProductCartScreen = () => {
                             !!cartItems && cartItems?.map((cart, index) => {
                                 return (
                                     <>
-                                        <Grid item xs={5}>
+                                        <Grid item xs={5} key={index}>
                                             <div>
                                                 <img src={cart?.image} alt="" style={{ width: 300, height: 250 }} />
                                             </div>
                                         </Grid>
                                         <Grid item xs={7}>
-                                            <div key={index}>
+                                            <div>
                                                 <div className='text-left m-1 w-100' style={{ textAlign: 'justify' }}>
                                                     <Typography className={classes.productName}>{cart?.name} [{cart?.varient}]</Typography>
 
@@ -85,7 +85,7 @@ const ProductCartScreen = () => {
                                             <div className={classes.orderPadd}>
                                                 <div className={classes.orderStack}>
                                                     <Typography className={classes.orderTotal1}>Sub Total</Typography>
-                                                    <Typography className={classes.orderTotal}>{SubTotal}</Typography>
+                                                    <Typography className={classes.orderTotal}>{subTotal}</Typography>
                                                 </div>
                                                 <div className={classes.orderStack}>
                                                     <Typography className={classes.orderTotal1}>Estimated Delivery</Typography>
@@ -102,12 +102,12 @@ const ProductCartScreen = () => {
                                             <div className={classes.orderPadd}>
                                                 <div className={classes.orderStack}>
                                                     <Typography className={classes.orderTotal}>Total</Typography>
-                                                    <Typography className={classes.orderTotal}>{SubTotal}</Typography>
+                                                    <Typography className={classes.orderTotal}>{subTotal}</Typography>
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <CheckoutPage SubTotal={SubTotal} />
+                                        <CheckoutPage subTotal={subTotal} />
                                     </div>
                                 </div>
                             )

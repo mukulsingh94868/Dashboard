@@ -5,18 +5,18 @@ import StripeCheckout from 'react-stripe-checkout';
 import useStyles from './style';
 import { PlacedOrderData } from '../../../Redux/actions/orderActions';
 
-const CheckoutPage = ({ SubTotal }) => {
+const CheckoutPage = ({ subTotal }) => {
     const dispatch = useDispatch();
     const classes = useStyles();
 
     const tokenHander = (token) => {
-        dispatch(PlacedOrderData(token, SubTotal));
+        dispatch(PlacedOrderData(token, subTotal));
     };
     return (
         <>
             <div className={classes.checkout}>
                 <StripeCheckout
-                    amount={SubTotal * 100}
+                    amount={subTotal * 100}
                     shippingAddress
                     token={tokenHander}
                     stripeKey='pk_test_51JtnAbSCYDML1dwkChRjpFPJfXk3bKgZRsTsSpQ7MZuTSzSsESDlMD6GmOGfoeitMZhVPy171yUsdloZUDTWtNez00amRTOhao'
