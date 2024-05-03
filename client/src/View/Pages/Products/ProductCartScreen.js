@@ -1,18 +1,17 @@
-import React from 'react';
-import useStyles from './style';
-import { useDispatch, useSelector } from 'react-redux';
-import { Button, Divider, Grid, Typography } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
-import RemoveIcon from '@mui/icons-material/Remove';
 import DeleteIcon from '@mui/icons-material/Delete';
+import RemoveIcon from '@mui/icons-material/Remove';
+import { Divider, Grid, Typography } from '@mui/material';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { addToCart, deleteFromCart } from '../../../Redux/actions/productActions';
 import CheckoutPage from './CheckoutPage';
-import { useNavigate } from 'react-router-dom';
+import useStyles from './style';
 
 const ProductCartScreen = () => {
     const classes = useStyles();
-    const navigate = useNavigate();
     const dispatch = useDispatch();
+    const [orderDone, setOrderDone] = useState(false);
 
     const cartState = useSelector((state) => state.productReducer);
     const cartItems = cartState.cartItems;
@@ -77,37 +76,52 @@ const ProductCartScreen = () => {
                             !!cartItems && cartItems?.length > 0 ? (
                                 <div className={classes.checkOutBox}>
                                     <div className={classes.checkOutBox}>
-                                        <div className={classes.orderSummary}>
-                                            <div className={classes.orderPadd}>
-                                                <Typography style={{ fontWeight: 700 }}>Order Summary</Typography>
-                                            </div>
-                                            <hr />
-                                            <div className={classes.orderPadd}>
-                                                <div className={classes.orderStack}>
-                                                    <Typography className={classes.orderTotal1}>Sub Total</Typography>
-                                                    <Typography className={classes.orderTotal}>{subTotal}</Typography>
-                                                </div>
-                                                <div className={classes.orderStack}>
-                                                    <Typography className={classes.orderTotal1}>Estimated Delivery</Typography>
-                                                    <Typography>0</Typography>
-                                                </div>
-                                                <div className={classes.orderStack}>
-                                                    <Typography className={classes.orderTotal1}>Voucher</Typography>
-                                                    <Typography>0</Typography>
-                                                </div>
-                                            </div>
-                                        </div>
 
-                                        <div className={classes.orderSummary} style={{ marginTop: '20px' }}>
-                                            <div className={classes.orderPadd}>
-                                                <div className={classes.orderStack}>
-                                                    <Typography className={classes.orderTotal}>Total</Typography>
-                                                    <Typography className={classes.orderTotal}>{subTotal}</Typography>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        {
+                                            !!orderDone && orderDone ? (
+                                                <>
+                                                    <div className={classes.orderPlaced}>
+                                                        <Typography>Your order is placed Successfully!</Typography>
+                                                        <Typography>Go to orders section for more information</Typography>
+                                                    </div>
+                                                </>
+                                            ) : (
+                                                <>
+                                                    <div className={classes.orderSummary}>
+                                                        <div className={classes.orderPadd}>
+                                                            <Typography style={{ fontWeight: 700 }}>Order Summary</Typography>
+                                                        </div>
+                                                        <hr />
+                                                        <div className={classes.orderPadd}>
+                                                            <div className={classes.orderStack}>
+                                                                <Typography className={classes.orderTotal1}>Sub Total</Typography>
+                                                                <Typography className={classes.orderTotal}>{subTotal}</Typography>
+                                                            </div>
+                                                            <div className={classes.orderStack}>
+                                                                <Typography className={classes.orderTotal1}>Estimated Delivery</Typography>
+                                                                <Typography>0</Typography>
+                                                            </div>
+                                                            <div className={classes.orderStack}>
+                                                                <Typography className={classes.orderTotal1}>Voucher</Typography>
+                                                                <Typography>0</Typography>
+                                                            </div>
+                                                        </div>
+                                                    </div>
 
-                                        <CheckoutPage subTotal={subTotal} />
+                                                    <div className={classes.orderSummary} style={{ marginTop: '20px' }}>
+                                                        <div className={classes.orderPadd}>
+                                                            <div className={classes.orderStack}>
+                                                                <Typography className={classes.orderTotal}>Total</Typography>
+                                                                <Typography className={classes.orderTotal}>{subTotal}</Typography>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <CheckoutPage subTotal={subTotal} setOrderDone={setOrderDone} />
+                                                </>
+                                            )
+                                        }
+
                                     </div>
                                 </div>
                             )

@@ -282,5 +282,12 @@ export default makeStyles(() => ({
         padding: "8px",
         borderBottom: "none",
         opacity: 0.5
+    },
+    orderPlaced: {
+        backgroundColor: "green",
+        color: '#fff',
+        fontSize: '16px',
+        fontWeight: 700,
+        padding: "20px",
     }
 }))

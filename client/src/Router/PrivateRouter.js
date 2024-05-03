@@ -1,14 +1,14 @@
-import TableData from "../Compoments/table/TableData";
-import Dashboard from '../Admin/Dashboard';
 import AdminDashboard from "../Admin/AdminDashboard";
-import UserProfile from '../View/Pages/UserProfile/UserProfile';
-import Blogs from '../View/Pages/Blogs/Blogs';
-import BlogFullContent from "../View/Pages/Blogs/BlogFullContent";
+import Dashboard from '../Admin/Dashboard';
 import CreateBlogAdmin from "../Admin/pages/CreateBlogAdmin";
-import ProductPage from "../View/Pages/Products/ProductPage";
-import ProductDetails from "../View/Pages/Products/ProductDetails";
+import TableData from "../Compoments/table/TableData";
+import BlogFullContent from "../View/Pages/Blogs/BlogFullContent";
+import Blogs from '../View/Pages/Blogs/Blogs';
+import OrderScreen from "../View/Pages/Products/OrderScreen";
 import ProductCartScreen from "../View/Pages/Products/ProductCartScreen";
-import CheckoutPage from "../View/Pages/Products/CheckoutPage";
+import ProductDetails from "../View/Pages/Products/ProductDetails";
+import ProductPage from "../View/Pages/Products/ProductPage";
+import UserProfile from '../View/Pages/UserProfile/UserProfile';
   
 // export const roles = {
 //     INDIVIDUAL: 'Employee',
@@ -55,6 +55,11 @@ export const LayoutItem = [
         path: "/blogs/:id",
         exact: true,
         component: BlogFullContent
+    },
+    {
+        path: "/orders",
+        exact: true,
+        component: OrderScreen
     }
 ];
 

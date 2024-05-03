@@ -91,6 +91,7 @@ const DashHeader = () => {
                         <Menu>
                             <MenuItem>Profile</MenuItem>
                             <MenuItem>My account</MenuItem>
+                            <MenuItem onClick={() => navigate('/dashboard/orders')}>My Orders</MenuItem>
                             <MenuItem onClick={handleNavigate}>Logout</MenuItem>
                         </Menu>
                     </Dropdown>

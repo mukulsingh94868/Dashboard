@@ -7,6 +7,11 @@ const orderReducer = (state = { orders: [] }, action) => {
                 ...state,
                 orders: action.payload
             };    
+        case actionType.GET_ALL_ORDERS:
+            return {
+                ...state,
+                orders: action.payload
+            }    
         default:
             return state;
     }

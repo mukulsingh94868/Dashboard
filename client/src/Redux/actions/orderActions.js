@@ -1,5 +1,5 @@
 import * as Api from '../../Network/Api';
-import { ORDER_PLACED } from '../Constants/actionTypes';
+import { GET_ALL_ORDERS, ORDER_PLACED } from '../Constants/actionTypes';
 
 export const PlacedOrderData = (token, subtotal) => async (dispatch, getState) => {
     try {
@@ -9,4 +9,14 @@ export const PlacedOrderData = (token, subtotal) => async (dispatch, getState) =
     } catch (error) {
         console.log(error);
     }
-}
+};
+
+export const GetAllOrdersData = () => async (dispatch) => {
+    try {
+        const { data } = await Api.getProducts();
+        console.log('data', data);
+        dispatch({ type: GET_ALL_ORDERS, payload: data });
+    } catch (error) {
+        console.log(error);
+    }
+};
