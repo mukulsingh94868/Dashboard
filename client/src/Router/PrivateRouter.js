@@ -9,6 +9,7 @@ import ProductPage from "../View/Pages/Products/ProductPage";
 import ProductDetails from "../View/Pages/Products/ProductDetails";
 import ProductCartScreen from "../View/Pages/Products/ProductCartScreen";
 import CheckoutPage from "../View/Pages/Products/CheckoutPage";
+import KanbanBoard from "../Compoments/KanbanBoard/KanbanBoard";
   
 // export const roles = {
 //     INDIVIDUAL: 'Employee',
@@ -55,6 +56,11 @@ export const LayoutItem = [
         path: "/blogs/:id",
         exact: true,
         component: BlogFullContent
+    },
+    {
+        path: "/kanban",
+        exact: true,
+        component: KanbanBoard
     }
 ];
 

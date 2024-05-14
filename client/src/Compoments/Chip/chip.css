@@ -1,0 +1,8 @@
+.chip {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 10px;
+    border-radius: 40px;
+    font-size: 14px;
+}

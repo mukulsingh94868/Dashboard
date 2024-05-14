@@ -42,14 +42,12 @@ const DashSidebar = () => {
                             </Link>
                         </li>
                         <li>
-                            <Link to="/dashboard/payroll">
-                                <img src="../images/payroll.svg" alt="" /> Payroll
+                            <Link to="/dashboard/kanban">
+                                <img src="../images/payroll.svg" alt="" /> Kanban Board
                             </Link>
                         </li>
                     </ul>
                 </nav>
-
-
             </div>
         </>
     )
