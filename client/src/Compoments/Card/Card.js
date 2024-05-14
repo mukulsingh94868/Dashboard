@@ -1,6 +1,6 @@
 import React from 'react';
 import './card.css';
-import { MoreHorizontal } from 'react-feather';
+import { CheckSquare, Clock, MoreHorizontal } from 'react-feather';
 import Chip from '../Chip/Chip';
 
 const Card = () => {
@@ -11,6 +11,19 @@ const Card = () => {
                 <Chip text="Frontend" color="green" />
             </div>
             <MoreHorizontal />
+        </div>
+
+        <div className='card_title'>dfgdfg</div>
+        <div className='card_footer'>
+            <p>
+                <Clock />
+                29 Sept
+            </p>
+
+            <p>
+                <CheckSquare />
+                1/4
+            </p>
         </div>
     </div>
   )
