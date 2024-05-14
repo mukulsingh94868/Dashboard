@@ -41,3 +41,13 @@ module.exports.PlaceOrder = async (req, res) => {
         return res.status(400).json({ messgae: 'Something went wrong' });
     }
 };
+
+module.exports.getOrders = async (req, res) => {
+    // const { userid } = req.body;
+    try {
+        const orders = await OrderModel.find();
+        res.send(orders)
+    } catch (error) {
+        return res.status(400).json({ messgae: 'Something went wrong' });
+    }
+}

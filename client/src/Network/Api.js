@@ -24,3 +24,4 @@ export const getProductsById = (id) => API.get(`/product/products/${id}`);
 
 // orders operations
 export const placedOrders = (formData) => API.post('/order/place-order', formData);
+export const getOrders = () => API.get('/order/get-orders');
