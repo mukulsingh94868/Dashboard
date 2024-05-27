@@ -136,28 +136,34 @@
 
 /* 
 Css Started */
+
+
 .main_wrap,
 #root,
 html {
   height: 100%;
 }
+
 body {
   font-family: "Roboto", sans-serif;
   color: #1c1c1c;
   background: #f2f4f9;
   height: 100%;
 }
+
 input {
   padding: 10px;
   background: rgba(30, 76, 240, 0.05);
   border: 0;
   border-radius: 4px;
 }
+
 input:focus,
 input:active {
   outline: none;
   border: 0;
 }
+
 h1,
 h2,
 h3,
@@ -171,30 +177,39 @@ a {
   text-decoration: none;
   transition: 0.4s ease all;
 }
+
 .flex-wrap {
   flex-wrap: wrap;
 }
+
 .col {
   padding: 0 8px;
 }
+
 .row {
   margin: 0 -8px;
 }
+
 .ms-auto {
   margin-left: auto;
 }
+
 .mb-0 {
   margin-bottom: 0;
 }
+
 .align-items-center {
   align-items: center;
 }
+
 .d-flex {
   display: flex;
 }
+
 .mb-2 {
   margin-bottom: 6px;
 }
+
 .pb-2 {
   padding-bottom: 6px;
 }
@@ -203,17 +218,21 @@ a {
 .hide_sidebar .left_sidebar {
   width: 52px;
 }
+
 .hide_sidebar .profile_img {
   padding: 11px 9px;
 }
+
 .hide_sidebar .profile_img h6 {
   font-size: 0;
 }
+
 .hide_sidebar .sidebar_nav ul li a {
   font-size: 0;
   background-image: none;
   padding: 10px 10px 10px 12px;
 }
+
 .hide_sidebar .sidebar_nav {
   padding-right: 10px;
 }
@@ -225,18 +244,22 @@ a {
   border-radius: 4px;
   margin-right: 10px;
 }
+
 .profile_img h6 {
   font-size: 14px;
 }
+
 .profile_img {
   transition: 0.4s ease all;
   padding: 12px 28px;
   border-bottom: 1px solid #ececec;
   border-right: 1px solid #ececec;
 }
+
 .main_wrap {
   display: flex;
 }
+
 .left_sidebar {
   width: 16%;
   box-shadow: 2px 0px 10px 0px rgba(112, 112, 112, 0.25);
@@ -244,16 +267,19 @@ a {
   background-color: #fff;
   transition: 0.4s ease all;
 }
+
 .breadcrumb,
 .sidebar_nav ul {
   margin: 0;
   padding: 0;
 }
+
 .sidebar_nav ul li {
   list-style: none;
   margin: 0 0 5px;
   padding: 0;
 }
+
 .sidebar_nav ul li a {
   color: #1c1c1c;
   font-size: 12px;
@@ -271,14 +297,18 @@ a {
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
-  line-height: 0px; /* 0% */
+  line-height: 0px;
+  /* 0% */
 }
+
 .sidebar_nav {
   padding: 20px 20px 0 0;
 }
+
 .sidebar_nav ul li a img {
   margin-right: 10px;
 }
+
 .sidebar_nav ul li a.active,
 .sidebar_nav ul li a:hover {
   background-color: rgba(126, 178, 255, 0.14);
@@ -305,23 +335,28 @@ header {
   padding: 10px 18px;
   background-color: #fff;
 }
+
 .right_panel {
   flex-grow: 1;
   width: 82%;
 }
+
 .breadcrumb li,
 .breadcrumb li a {
   list-style: none;
   font-size: 12px;
 }
-.breadcrumb li + li:before {
+
+.breadcrumb li+li:before {
   padding: 5px;
   color: rgba(28, 28, 28, 0.2);
   content: "/\00a0";
 }
+
 .breadcrumb li a {
   color: #51708d;
 }
+
 .header_search button,
 #menu_icon {
   background: none;
@@ -338,21 +373,25 @@ header {
   width: 100%;
   margin-right: 15px;
 }
+
 .header_search button {
   margin: 0;
   position: absolute;
   top: 8px;
   left: 10px;
 }
+
 .header_search input {
   border-radius: 20px;
   font-size: 12px;
   width: 100%;
   padding: 11px 11px 11px 40px;
 }
+
 .header_right_icon a {
   padding: 0 6px;
 }
+
 .header_right_icon a img {
   width: 22px;
 }
@@ -363,6 +402,7 @@ header {
   padding: 20px 20px;
   position: fixed;
 }
+
 .card {
   background-color: #fff;
   border-radius: 4px;
@@ -377,29 +417,35 @@ header {
   color: #656575;
   font-size: 10px;
 }
+
 .day_exp {
   border-bottom: 1px solid rgba(163, 163, 163, 0.2);
 }
+
 .sm_box {
   font-size: 12px;
   background: #f4f5f7;
   padding: 3px 6px;
   border-radius: 2px;
 }
+
 .analyse h4 {
   font-size: 18px;
   color: #1a1919;
 }
+
 .status {
   color: #52c93f;
   font-weight: 500;
 }
+
 .analyse h5 {
   color: #525256;
   font-size: 12px;
   font-weight: 500;
   width: 100%;
 }
+
 .analyse .col {
   flex-grow: 1;
 }
@@ -458,8 +504,7 @@ ExtraCss
 }
 
 
-.contentheading
-{
+.contentheading {
 
   font-size: 20px;
   padding: 0px;
@@ -484,10 +529,9 @@ Grid Of Dashboards
 
 
 
-.d-flex
-{
+.d-flex {
   display: flex;
-  
+
 }
 
 
@@ -500,9 +544,10 @@ Grid Of Dashboards
   /* grid-template-rows: repeat(3, 1fr) 3fr; */
   grid-gap: 5px;
 }
+
 .Dashcontainer1 {
   display: grid;
- 
+
   grid-template-columns: repeat(5, 1fr);
 
   grid-gap: 5px;
@@ -510,7 +555,7 @@ Grid Of Dashboards
 
 .Dashcontainer2 {
   display: grid;
-  
+
   grid-template-columns: repeat(3, 1fr);
 
   grid-gap: 5px;
@@ -518,14 +563,14 @@ Grid Of Dashboards
 
 .Dashcontainer3 {
   display: grid;
-  
+
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 5px;
 }
 
 .Dashcontainer4 {
-   display: grid;
- 
+  display: grid;
+
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 5px;
 }
@@ -546,6 +591,7 @@ Grid Of Dashboards
     grid-template-columns: 1fr;
     grid-template-rows: auto;
   }
+
   .layer-6 {
     grid-column: auto;
     grid-row: auto;
@@ -561,8 +607,7 @@ Grid Of Dashboards
   }
 }
 
-.LinkColorLight
-{
+.LinkColorLight {
   color: rgb(53, 53, 53);
 
 }

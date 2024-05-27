@@ -1,6 +1,7 @@
 import React from "react";
 import './kanban.css';
 import Board from "../Board/Board";
+import Editable from "../Editable/Editable";
 
 const Kanban = () => {
   return (
@@ -15,8 +16,14 @@ const Kanban = () => {
             <Board />
             <Board />
             <Board />
-            <Board />
-            <Board />
+
+            <div className="app_boards_board">
+              <Editable
+                text="Add Board"
+                placeholder="Enter Board Title"
+                displayClass="app_boards_board_app"
+              />
+            </div>
           </div>
         </div>
       </div>

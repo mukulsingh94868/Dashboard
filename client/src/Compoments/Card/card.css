@@ -9,7 +9,8 @@
 
 .card_top {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .card_top_labels {
@@ -54,6 +55,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  p {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
 }
 
 .card_footer_item {
