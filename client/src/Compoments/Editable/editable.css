@@ -46,6 +46,7 @@
   transition: 100ms ease;
   padding: 10px;
 }
+
 .editable_edit_footer button:hover {
   background-color: #046daa;
 }

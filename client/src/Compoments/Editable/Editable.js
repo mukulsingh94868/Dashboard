@@ -35,12 +35,11 @@ const Editable = (props) => {
         </form>
       ) : (
         <p
-          className={`editable_display ${
-            props.displayClass ? props.displayClass : ""
-          }`}
+          className={`editable_display ${props.displayClass ? props.displayClass : ""
+            }`}
           onClick={() => setIsEditable(true)}
         >
-          {props.text || 'Add Item'}
+          {props.text}
         </p>
       )}
     </div>
