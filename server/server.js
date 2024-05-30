@@ -11,6 +11,7 @@ const authRoutes = require('./routes/authRoutes');
 const blogRoutes = require('./routes/blogRoutes');
 const productRoutes = require('./routes/productRoutes');
 const orderRoutes = require('./routes/orderRoutes');
+const calenderRoutes = require('./routes/calendraRoutes');
 
 app.use(cors('*'));
 app.use(express.json());
@@ -22,6 +23,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/blog', blogRoutes);
 app.use('/api/product', productRoutes);
 app.use('/api/order', orderRoutes);
+app.use('/api/calender', calenderRoutes);
 
 const PORT = 5000;
 const MONGO_URL = 'mongodb+srv://admin_dashboard:admin_dashboard_123@cluster0.t5q7pda.mongodb.net/admin_dashboard';

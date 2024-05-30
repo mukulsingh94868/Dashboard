@@ -11,6 +11,7 @@ import KanbanBoard from "../Compoments/KanbanBoard/KanbanBoard";
 import ProductDetails from "../View/Pages/Products/ProductDetails";
 import ProductPage from "../View/Pages/Products/ProductPage";
 import UserProfile from '../View/Pages/UserProfile/UserProfile';
+import Calender from "../View/Pages/Calender/Calender";
   
 // export const roles = {
 //     INDIVIDUAL: 'Employee',
@@ -62,6 +63,11 @@ export const LayoutItem = [
         path: "/kanban",
         exact: true,
         component: KanbanBoard
+    },
+    {
+        path: "/calender",
+        exact: true,
+        component: Calender
     },
     {
         path: "/orders",
