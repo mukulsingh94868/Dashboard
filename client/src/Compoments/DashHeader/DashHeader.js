@@ -57,7 +57,7 @@ const DashHeader = () => {
                 </ul>
 
                 <form className="header_search">
-                    <button type="submit">
+                    <button>
                         <img src="../images/search.svg" alt="" />
                     </button>
                     <input type="search" placeholder="Search" />
@@ -89,7 +89,7 @@ const DashHeader = () => {
                             <MoreVert />
                         </MenuButton>
                         <Menu>
-                            <MenuItem>Profile</MenuItem>
+                            <MenuItem onClick={() => navigate('/dashboard/profile')}>Profile</MenuItem>
                             <MenuItem>My account</MenuItem>
                             <MenuItem onClick={() => navigate('/dashboard/orders')}>My Orders</MenuItem>
                             <MenuItem onClick={handleNavigate}>Logout</MenuItem>

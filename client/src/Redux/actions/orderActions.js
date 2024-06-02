@@ -13,8 +13,8 @@ export const PlacedOrderData = (token, subtotal) => async (dispatch, getState) =
 
 export const GetAllOrdersData = () => async (dispatch) => {
     try {
-        const { data } = await Api.getProducts();
-        console.log('data', data);
+        // const { data } = await Api.getProducts();
+        const { data } = await Api.getOrders();
         dispatch({ type: GET_ALL_ORDERS, payload: data });
     } catch (error) {
         console.log(error);

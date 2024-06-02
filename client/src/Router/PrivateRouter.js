@@ -12,6 +12,7 @@ import ProductDetails from "../View/Pages/Products/ProductDetails";
 import ProductPage from "../View/Pages/Products/ProductPage";
 import UserProfile from '../View/Pages/UserProfile/UserProfile';
 import Calender from "../View/Pages/Calender/Calender";
+import AddProducts from "../Admin/pages/AddProducts";
   
 // export const roles = {
 //     INDIVIDUAL: 'Employee',
@@ -91,5 +92,10 @@ export const AdminLayoutItem = [
         path: "/create-blog",
         exact: true,
         component: CreateBlogAdmin
+    },
+    {
+        path: "/add-products",
+        exact: true,
+        component: AddProducts
     },
 ];

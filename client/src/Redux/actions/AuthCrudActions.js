@@ -14,7 +14,6 @@ export const getUserData = () => async (dispatch) => {
 export const getUserById = (id) => async (dispatch) => {
     try {
         const { data } = await Api.getDataId(id);
-        console.log('data', data);
         dispatch({ type: GET_DATA_BY_ID, payload: data });
     } catch (error) {
         console.log(error);

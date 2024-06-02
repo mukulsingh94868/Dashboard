@@ -21,7 +21,7 @@ const Calendar = () => {
   const [currentEvents, setCurrentEvents] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/calender   /events')
+    axios.get('http://localhost:5000/api/calender/events')
       .then(response => setCurrentEvents(response.data))
       .catch(error => console.error('Error fetching events:', error));
   }, []);

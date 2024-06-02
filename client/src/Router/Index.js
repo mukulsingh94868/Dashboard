@@ -19,7 +19,6 @@ const Index = () => {
     const [isUser, setIsUser] = useState(null);
     const localUser = useSelector((state) => state.authReducer.authData);
     const userd = localUser?.data?.role;
-    // console.log('localUser', localUser);
 
     useEffect(() => {
         const getLocalStorage = JSON.parse(localStorage.getItem('authPerson'));

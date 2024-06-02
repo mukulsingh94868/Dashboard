@@ -49,7 +49,7 @@ const DashAdminHeader = () => {
                 </ul>
 
                 <form className="header_search">
-                    <button type="submit">
+                    <button>
                         <img src="../images/search.svg" alt="" />
                     </button>
                     <input type="search" placeholder="Search" />

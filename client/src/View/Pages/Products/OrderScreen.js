@@ -6,23 +6,23 @@ import { GetAllOrdersData } from '../../../Redux/actions/orderActions';
 const OrderScreen = () => {
     const dispatch = useDispatch();
     const orderState = useSelector((state) => state.orderReducer);
-    console.log('orderState', orderState);
 
     const { orders } = orderState;
+
 
     useEffect(() => {
         dispatch(GetAllOrdersData());
     }, [dispatch])
     return (
         <>
-            <div style={{width: '1400px'}}>
+            <div style={{ width: '1400px' }}>
                 <Typography className='text-center m-2 registerText'>My Order</Typography>
                 <hr />
                 <div className='row justify-content-center'>
                     {orders && orders?.map((order, index) => {
                         return (
-                            <div className='col-md-8 m-2 p-1' style={{ background: 'gray', color: 'white' }}>
-                                <div className='flex-container'>
+                            <div key={index} className='col-md-8 m-2 p-1' style={{ background: 'gray', color: 'white' }}>
+                                <div className='flex-container' style={{ display: 'flex', justifyContent: 'space-between', marginTop: '30px' }}>
                                     <div className='text-left w-100 m-1'>
                                         <Typography variant='h2' style={{ fontSize: '25px' }}>ITEMS</Typography>
                                         <hr />
