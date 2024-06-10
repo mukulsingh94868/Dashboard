@@ -1,6 +1,7 @@
 import AdminDashboard from "../Admin/AdminDashboard";
 import Dashboard from '../Admin/Dashboard';
 import CreateBlogAdmin from "../Admin/pages/CreateBlogAdmin";
+import OrderList from "../Admin/pages/OrderList";
 import ProductList from "../Admin/pages/ProductList";
 import KanbanBoard from "../Compoments/KanbanBoard/KanbanBoard";
 import TableData from "../Compoments/table/TableData";
@@ -96,5 +97,10 @@ export const AdminLayoutItem = [
         path: "/products-list",
         exact: true,
         component: ProductList
+    },
+    {
+        path: "/orders-list",
+        exact: true,
+        component: OrderList
     },
 ];
