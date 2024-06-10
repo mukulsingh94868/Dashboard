@@ -13,6 +13,7 @@ import ProductPage from "../View/Pages/Products/ProductPage";
 import UserProfile from '../View/Pages/UserProfile/UserProfile';
 import Calender from "../View/Pages/Calender/Calender";
 import AddProducts from "../Admin/pages/AddProducts";
+import OrderList from "../Admin/pages/OrderList";
   
 // export const roles = {
 //     INDIVIDUAL: 'Employee',
@@ -97,5 +98,10 @@ export const AdminLayoutItem = [
         path: "/add-products",
         exact: true,
         component: AddProducts
+    },
+    {
+        path: "/orders-list",
+        exact: true,
+        component: OrderList
     },
 ];

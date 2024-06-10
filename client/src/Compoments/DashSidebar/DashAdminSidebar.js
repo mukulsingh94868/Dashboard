@@ -18,7 +18,7 @@ const DashAdminSidebar = () => {
           <img src="../images/user.jpg" alt="" />
 
           <h6 className="mb-0">{isFullName} <br /> {isUser} </h6>
-         
+
         </div>
 
         <nav className="sidebar_nav">
@@ -43,6 +43,11 @@ const DashAdminSidebar = () => {
                 <img src="../images/payroll.svg" alt="" /> Add Product
               </Link>
             </li> */}
+            <li>
+              <Link to="/dashboard/orders-list">
+                <img src="../images/payroll.svg" alt="" /> Order List
+              </Link>
+            </li>
           </ul>
         </nav>
       </div>
