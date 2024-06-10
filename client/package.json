@@ -26,6 +26,7 @@
     "moment": "^2.29.4",
     "npm": "^10.8.1",
     "react": "^18.2.0",
+    "react-csv": "^2.2.2",
     "react-dnd": "^9.4.0",
     "react-dnd-html5-backend": "^9.4.0",
     "react-dom": "^18.2.0",

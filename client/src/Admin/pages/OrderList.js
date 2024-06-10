@@ -9,6 +9,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { GetAllOrdersData } from '../../Redux/actions/orderActions';
 import moment from 'moment';
 import { Button } from '@mui/material';
+import './addProduct.css';
+import { CSVLink } from 'react-csv';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -36,17 +38,42 @@ const OrderList = () => {
   useEffect(() => {
     dispatch(GetAllOrdersData());
   }, [dispatch]);
+
+  const convertToCSV = (data) => {
+    const headers = Object.keys(data[0]).join(',');
+    const rows = data.map(row => Object.values(row).join(',')).join('\n');
+    return `${headers}\n${rows}`;
+  };
+
+  const downloadCSV = (data, filename = 'data.csv') => {
+    const csv = convertToCSV(data);
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.setAttribute('hidden', '');
+    a.setAttribute('href', url);
+    a.setAttribute('download', filename);
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  };
   return (
     <>
       <div className="form-container">
-        <div>
+        <div className='exportTech'>
           <div>
             <input type='text' placeholder='Search' />
           </div>
 
           <div>
-            <Button>Export To Export</Button>
+            <CSVLink data={orderState?.orders} filename="data.csv">
+              <Button variant='outlined'>Export</Button>
+            </CSVLink>
           </div>
+
+          {/* <div>
+            <Button variant='outlined' onClick={() => downloadCSV(orderState?.orders)}>Export</Button>
+          </div> */}
         </div>
         <Table sx={{ minWidth: 700 }} aria-label="customized table">
           <TableHead>

@@ -55,3 +55,10 @@ button[type="submit"] {
 /* button[type="submit"]:hover {
     background-color: #0056b3;
 } */
+
+.exportTech {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
