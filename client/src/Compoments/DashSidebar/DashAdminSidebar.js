@@ -38,11 +38,11 @@ const DashAdminSidebar = () => {
                 <img src="../images/payroll.svg" alt="" /> Create Blog
               </Link>
             </li>
-            {/* <li>
-              <Link to="/dashboard/add-products">
-                <img src="../images/payroll.svg" alt="" /> Add Product
+            <li>
+              <Link to="/dashboard/products-list">
+                <img src="../images/payroll.svg" alt="" /> Product List
               </Link>
-            </li> */}
+            </li>
           </ul>
         </nav>
       </div>

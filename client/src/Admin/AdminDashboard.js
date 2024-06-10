@@ -9,9 +9,19 @@ import SvgIcon from '@mui/joy/SvgIcon';
 import Typography from '@mui/joy/Typography';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { getProductData } from '../Redux/actions/productActions';
 
 const AdminDashboard = () => {
     const [data, setData] = useState([]);
+
+    const dispatch = useDispatch();
+
+    const prodData = useSelector((state) => state?.productReducer?.product);
+
+    useEffect(() => {
+        dispatch(getProductData());
+    }, [dispatch]);
 
     useEffect(() => {
         const getData = async () => {
@@ -24,22 +34,11 @@ const AdminDashboard = () => {
     }, []);
     return (
         <>
-            {/* <h1 style={{ color: '#ccc', textAlign: 'center' }}>Welcome to Admin Dashboard</h1>
-
-            <Grid container spacing={3}>
-                <Grid item xs={4}>
-                    <div>
-                        <h2>{data?.length}</h2>00000000000
-                        <Typography variant='h5'>Users</Typography>
-                    </div>
-                </Grid>
-            </Grid> */}
             <div className="Dashcontainer">
                 <div className="Dashcontainer1">
                     <div className="layer layer-1">
                         <Card variant="solid" color="primary" invertedColors>
                             <CardContent orientation="horizontal">
-                               
                                 <IconButton
                                     variant="outlined"
                                     size="sm"
@@ -65,53 +64,63 @@ const AdminDashboard = () => {
                                     </SvgIcon>
                                 </CircularProgress>
                                 <CardContent>
-
                                     <Typography level="body-md">Total User</Typography>
                                     <Typography level="h2">{data?.length}</Typography>
                                 </CardContent>
                             </CardContent>
                             <CardActions>
-                                
-                                
-
-                               
-                                    <Button variant="solid" size="md">
+                                <Button variant="solid" size="md">
                                     <Link className='LinkColorLight' to="/dashboard/user-management/"  >
                                         View User List
-
-                                        </Link>
-                                    </Button>
-                              
-
+                                    </Link>
+                                </Button>
                             </CardActions>
                         </Card>
-
                     </div>
-                    {/* <div className="layer layer-2">Layer 2</div>
-                    <div className="layer layer-2">Layer 2</div>
-                    <div className="layer layer-3">Layer 3</div>
-                    <div className="layer layer-4">Layer 4</div> */}
 
+                    <div className="layer layer-1">
+                        <Card variant="solid" color="primary" invertedColors>
+                            <CardContent orientation="horizontal">
+                                <IconButton
+                                    variant="outlined"
+                                    size="sm"
+                                    sx={{ position: 'absolute', top: '0.75rem', right: '0.75rem' }}
+                                >
+                                    <BookmarkOutlinedIcon />
+                                </IconButton>
+                                <CircularProgress size="lg" determinate value={data?.length / 100}>
+                                    <SvgIcon>
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            strokeWidth={1.5}
+                                            stroke="currentColor"
+                                        >
+                                            <path
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941"
+                                            />
+                                        </svg>
+                                    </SvgIcon>
+                                </CircularProgress>
+                                <CardContent>
+                                    <Typography level="body-md">Total Products</Typography>
+                                    <Typography level="h2">{prodData?.length}</Typography>
+                                </CardContent>
+                            </CardContent>
+                            <CardActions>
+                                <Button variant="solid" size="md">
+                                    <Link className='LinkColorLight' to="/dashboard/products-list"  >
+                                        View Product List
+                                    </Link>
+                                </Button>
+                            </CardActions>
+                        </Card>
+                    </div>
                 </div>
-                {/* <div className="Dashcontainer2">
-                    <div className="layer layer-5">Layer 5</div>
-                    <div className="layer layer-6">Layer 6</div>
-                    <div className="layer layer-7">Layer 7</div>
-                </div > */}
-                {/* <div className="Dashcontainer3">
-                    <div className="layer layer-8">Layer 8</div>
-                    <div className="layer layer-9">Layer 9</div>
-                    <div className="layer layer-10">Layer 10</div>
-                </div > */}
-
-                {/* <div className="Dashcontainer4">
-                    <div className="layer layer-8">Layer 8</div>
-                    <div className="layer layer-9">Layer 9</div>
-                    <div className="layer layer-10">Layer 10</div>
-                </div > */}
             </div>
-
-
         </>
     )
 }

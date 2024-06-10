@@ -1,18 +1,17 @@
 import AdminDashboard from "../Admin/AdminDashboard";
 import Dashboard from '../Admin/Dashboard';
 import CreateBlogAdmin from "../Admin/pages/CreateBlogAdmin";
+import ProductList from "../Admin/pages/ProductList";
+import KanbanBoard from "../Compoments/KanbanBoard/KanbanBoard";
 import TableData from "../Compoments/table/TableData";
 import BlogFullContent from "../View/Pages/Blogs/BlogFullContent";
 import Blogs from '../View/Pages/Blogs/Blogs';
+import Calender from "../View/Pages/Calender/Calender";
 import OrderScreen from "../View/Pages/Products/OrderScreen";
 import ProductCartScreen from "../View/Pages/Products/ProductCartScreen";
-import CheckoutPage from "../View/Pages/Products/CheckoutPage";
-import KanbanBoard from "../Compoments/KanbanBoard/KanbanBoard";
 import ProductDetails from "../View/Pages/Products/ProductDetails";
 import ProductPage from "../View/Pages/Products/ProductPage";
 import UserProfile from '../View/Pages/UserProfile/UserProfile';
-import Calender from "../View/Pages/Calender/Calender";
-import AddProducts from "../Admin/pages/AddProducts";
   
 // export const roles = {
 //     INDIVIDUAL: 'Employee',
@@ -94,8 +93,8 @@ export const AdminLayoutItem = [
         component: CreateBlogAdmin
     },
     {
-        path: "/add-products",
+        path: "/products-list",
         exact: true,
-        component: AddProducts
+        component: ProductList
     },
 ];
