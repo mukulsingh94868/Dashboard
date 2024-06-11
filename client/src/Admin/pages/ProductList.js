@@ -15,10 +15,22 @@ import Avatar from '@mui/material/Avatar';
 
 const ProductList = () => {
     const [open, setOpen] = useState(false);
+    const [searchQuery, setSearchQuery] = useState('');
 
     const dispatch = useDispatch();
 
     const prodData = useSelector((state) => state?.productReducer?.product);
+
+    const handleSearchChange = (e) => {
+        setSearchQuery(e.target.value);
+    };
+
+    const filteredProducts = prodData?.filter(prod =>
+        prod?.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        prod?.color.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        prod?.type.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        prod?.vendor.toLowerCase().includes(searchQuery.toLowerCase())
+    ) || [];
 
     useEffect(() => {
         dispatch(getProductData());
@@ -30,6 +42,16 @@ const ProductList = () => {
             <Modal open={open} onClose={() => setOpen(false)}>
                 <ProductForm />
             </Modal>
+
+            <div style={{ margin: '20px 0' }}>
+                <input
+                    type='text'
+                    placeholder='Search'
+                    value={searchQuery}
+                    onChange={handleSearchChange}
+                    style={{ padding: '10px', width: '100%' }}
+                />
+            </div>
 
             <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -46,7 +68,7 @@ const ProductList = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {prodData?.map((prod, index) => (
+                        {filteredProducts?.map((prod, index) => (
                             <TableRow
                                 key={index}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}

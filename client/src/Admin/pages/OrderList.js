@@ -4,7 +4,7 @@ import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { styled } from '@mui/material/styles';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { GetAllOrdersData } from '../../Redux/actions/orderActions';
 import moment from 'moment';
@@ -33,47 +33,36 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 const OrderList = () => {
   const dispatch = useDispatch();
+  const [searchQuery, setSearchQuery] = useState('');
   const orderState = useSelector((state) => state.orderReducer);
 
   useEffect(() => {
     dispatch(GetAllOrdersData());
   }, [dispatch]);
 
-  const convertToCSV = (data) => {
-    const headers = Object.keys(data[0]).join(',');
-    const rows = data.map(row => Object.values(row).join(',')).join('\n');
-    return `${headers}\n${rows}`;
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
   };
 
-  const downloadCSV = (data, filename = 'data.csv') => {
-    const csv = convertToCSV(data);
-    const blob = new Blob([csv], { type: 'text/csv' });
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.setAttribute('hidden', '');
-    a.setAttribute('href', url);
-    a.setAttribute('download', filename);
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-  };
+  const filteredOrders = orderState?.orders?.filter(order =>
+    order?._id.includes(searchQuery) ||
+    order?.orderItems[0]?.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    order?.transactionId.includes(searchQuery) ||
+    order?.shippingAddress?.city.toLowerCase().includes(searchQuery.toLowerCase())
+  );
   return (
     <>
       <div className="form-container">
         <div className='exportTech'>
           <div>
-            <input type='text' placeholder='Search' />
+            <input type='text' placeholder='Search' value={searchQuery} onChange={handleSearchChange} />
           </div>
 
           <div>
-            <CSVLink data={orderState?.orders} filename="data.csv">
+            <CSVLink data={filteredOrders} filename="data.csv">
               <Button variant='outlined'>Export</Button>
             </CSVLink>
           </div>
-
-          {/* <div>
-            <Button variant='outlined' onClick={() => downloadCSV(orderState?.orders)}>Export</Button>
-          </div> */}
         </div>
         <Table sx={{ minWidth: 700 }} aria-label="customized table">
           <TableHead>
@@ -89,7 +78,7 @@ const OrderList = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {orderState?.orders?.map((row, index) => {
+            {filteredOrders?.map((row, index) => {
               return (
                 <StyledTableRow key={index}>
                   <StyledTableCell component="th" scope="row">{index + 1}</StyledTableCell>
