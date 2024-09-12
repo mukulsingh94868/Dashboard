@@ -35,7 +35,7 @@ const Blog = (post) => {
                     </div>
                     <AspectRatio minHeight="120px" maxHeight="200px">
                         <img
-                            src="https://images.unsplash.com/photo-1527549993586-dff825b37782?auto=format&fit=crop&w=286"
+                            src={post?.post.image ? `http://localhost:5000/${post?.post.image}` : "https://images.unsplash.com/photo-1527549993586-dff825b37782?auto=format&fit=crop&w=286"}
                             srcSet="https://images.unsplash.com/photo-1527549993586-dff825b37782?auto=format&fit=crop&w=286&dpr=2 2x"
                             loading="lazy"
                             alt=""

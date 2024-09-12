@@ -6,14 +6,13 @@ const jwt = require('jsonwebtoken');
 
 module.exports.blogPost = async (req, res) => {
     try {
-        const title = req.body.title
-        const summary = req.body.summary
-        const content = req.body.content
-
+        const { title, summary, content } = req.body;
+        const imagePath = req.file ? req.file.path : null;
         const blog = new BlogModel({
             title: title,
             content: content,
-            summary: summary
+            summary: summary,
+            image: imagePath
         })
         const savedBlog = await blog.save();
         res.status(201).json({

@@ -4,17 +4,19 @@ import { useParams } from 'react-router-dom';
 import './blog.css';
 
 const BlogFullContent = () => {
-    const {id} = useParams();
+    const { id } = useParams();
 
     const [post, setPost] = useState([]);
 
     useEffect(() => {
-      fetch(`http://localhost:5000/api/blog/post/${id}`).then((response) => {
-        response.json().then((posts) => {
-            setPost(posts);
+        fetch(`http://localhost:5000/api/blog/post/${id}`).then((response) => {
+            response.json().then((posts) => {
+                setPost(posts);
+            })
         })
-      })
-    }, [id])
+    }, [id]);
+
+
 
     return (
         <div>
@@ -23,7 +25,7 @@ const BlogFullContent = () => {
             </div>
             <div className='imagePost'>
                 <img
-                    src="https://images.unsplash.com/photo-1527549993586-dff825b37782?auto=format&fit=crop&w=286"
+                    src={post?.image ? `http://localhost:5000/${post?.image}` : "https://images.unsplash.com/photo-1527549993586-dff825b37782?auto=format&fit=crop&w=286"}
                     srcSet="https://images.unsplash.com/photo-1527549993586-dff825b37782?auto=format&fit=crop&w=286&dpr=2 2x"
                     loading="lazy"
                     alt=""
