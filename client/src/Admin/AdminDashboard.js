@@ -112,7 +112,7 @@ const AdminDashboard = () => {
                             </CardContent>
                             <CardActions>
                                 <Button variant="solid" size="md">
-                                    <Link className='LinkColorLight' to="/dashboard/products-list"  >
+                                    <Link className='LinkColorLight' to="/dashboard/products-list">
                                         View Product List
                                     </Link>
                                 </Button>

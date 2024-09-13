@@ -3,6 +3,7 @@ const fs = require('fs');
 const uploadMiddleware = multer({ dest: 'uploads/' });
 const BlogModel = require('../models/blogModel');
 const jwt = require('jsonwebtoken');
+const { default: mongoose } = require('mongoose');
 
 module.exports.blogPost = async (req, res) => {
     try {
@@ -39,6 +40,52 @@ module.exports.getPost = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
+
+// module.exports.getPost = async (req, res) => {
+//     try {
+//         const userId = res.locals.userId; 
+
+//         const blogData = await BlogModel.aggregate([
+//             {
+//                 $lookup: {
+//                     from: 'favourites',
+//                     let: { blogId: '$_id' },
+//                     pipeline: [
+//                         {
+//                             $match: {
+//                                 $expr: {
+//                                     $and: [
+//                                         { $eq: ['$userId', mongoose.Types.ObjectId(userId)] }, // Match userId
+//                                         { $in: ['$$blogId', '$blogIds'] } // Check if blogId is in user's favorites
+//                                     ]
+//                                 }
+//                             }
+//                         }
+//                     ],
+//                     as: 'likedByUser'
+//                 }
+//             },
+//             {
+//                 $addFields: {
+//                     liked: { $cond: { if: { $gt: [{ $size: '$likedByUser' }, 0] }, then: true, else: false } }
+//                 }
+//             },
+//             {
+//                 $project: {
+//                     likedByUser: 0 // We don't need to include the likedByUser array in the final result
+//                 }
+//             }
+//         ]);
+
+//         if (!blogData || blogData.length === 0) {
+//             return res.status(404).json({ message: 'No blogs found' });
+//         }
+
+//         res.status(200).json(blogData);
+//     } catch (error) {
+//         res.status(500).json({ message: error.message });
+//     }
+// };
 
 module.exports.getPostById = async (req, res) => {
     try {

@@ -147,12 +147,13 @@ const CreateBlogAdmin = () => {
                                         <Editor onChange={setContent} value={content} />
                                     </FormControl>
 
-                                    <FormControl required>
+                                    <FormControl required sx={{ mt: 5 }}>
                                         <FormLabel>Enter the Image</FormLabel>
                                         <Input
                                             type="file"
                                             name="image"
                                             onChange={(e) => setImage(e.target.files[0])}
+                                            sx={{ padding: 1 }}
                                         />
                                     </FormControl>
 

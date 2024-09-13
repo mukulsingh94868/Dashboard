@@ -23,6 +23,7 @@
     "formik": "^2.4.6",
     "i": "^0.3.7",
     "immutability-helper": "^3.0.1",
+    "lucide-react": "^0.441.0",
     "moment": "^2.29.4",
     "npm": "^10.8.1",
     "react": "^18.2.0",
