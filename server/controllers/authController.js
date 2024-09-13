@@ -42,9 +42,16 @@ module.exports.login = async (req, res) => {
         if (!passwordCheck) {
             return res.status(401).json({ message: 'Password incorrect' });
         }
-        const token = jwt.sign({ username: usernameCheck.username }, process.env.SECRET_KEY, { expiresIn: '1hr' });
+        const token = jwt.sign({ username: usernameCheck.username, userId: usernameCheck._id }, process.env.SECRET_KEY, { expiresIn: '1hr' });
         res.status(200).json({
-            data: usernameCheck,
+            data: {
+                name: usernameCheck.username,
+                email: usernameCheck.email,
+                phone: usernameCheck.phone,
+                gender: usernameCheck.gender,
+                location: usernameCheck.location,
+                username: usernameCheck.username,
+            },
             token: token,
             message: 'Token Registered'
         });

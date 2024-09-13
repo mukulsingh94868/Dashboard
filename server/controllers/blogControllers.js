@@ -9,6 +9,7 @@ module.exports.blogPost = async (req, res) => {
         const { title, summary, content } = req.body;
         const imagePath = req.file ? req.file.path : null;
         const blog = new BlogModel({
+            userId: res.locals.userId,
             title: title,
             content: content,
             summary: summary,
@@ -46,7 +47,7 @@ module.exports.blogPost = async (req, res) => {
 
 module.exports.getPost = async (req, res) => {
     try {
-        const blogData = await BlogModel.find();
+        const blogData = await BlogModel.find({ userId: res.locals.userId });
 
         if (!blogData) {
             return res.status(404).json({ message: 'Blog not found' });
