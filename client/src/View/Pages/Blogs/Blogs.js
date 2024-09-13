@@ -6,12 +6,24 @@ const Blogs = () => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/blog/post').then((response) => {
-      response.json().then((posts) => {
-        setPosts(posts);
-      })
+    const token = JSON.parse(localStorage.getItem("authUser"));
+  
+    fetch('http://localhost:5000/api/blog/post', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `${token}`
+      }
     })
-  }, [])
+    .then((response) => response.json())
+    .then((posts) => {
+      setPosts(posts);
+    })
+    .catch((error) => {
+      console.error('Error fetching posts:', error);
+    });
+  }, []);
+  
   return (
     <>
       <Grid container spacing={3}>

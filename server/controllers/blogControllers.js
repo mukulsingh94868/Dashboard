@@ -9,7 +9,7 @@ module.exports.blogPost = async (req, res) => {
         const { title, summary, content } = req.body;
         const imagePath = req.file ? req.file.path : null;
         const blog = new BlogModel({
-            userId: res.locals.userId,
+            // userId: res.locals.userId,
             title: title,
             content: content,
             summary: summary,
@@ -25,29 +25,11 @@ module.exports.blogPost = async (req, res) => {
     }
 };
 
-// const { originalname, path } = req.file;
-// const parts = originalname.split('.');
-// const ext = parts[parts.length - 1];
-// const newPath = path + '.' + ext;
-// fs.renameSync(path, newPath);
-
-// const { token } = req.cookies;
-// jwt.verify(token, secret, {}, async (err, info) => {
-//     if (err) throw err;
-//     const { title, summary, content } = req.body;
-//     const postDoc = await Post.create({
-//         title,
-//         summary,
-//         content,
-//         cover: newPath,
-//         author: info.id,
-//     });
-//     res.json(postDoc);
-// });
-
 module.exports.getPost = async (req, res) => {
     try {
-        const blogData = await BlogModel.find({ userId: res.locals.userId });
+        const blogData = await BlogModel.find(
+            // { userId: res.locals.userId }
+        );
 
         if (!blogData) {
             return res.status(404).json({ message: 'Blog not found' });

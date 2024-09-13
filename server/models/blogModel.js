@@ -21,7 +21,7 @@ const blogSchema = new mongoose.Schema({
     summary: { type: String },                    
     content: { type: String, required: true },   
     image: { type: String },                      
-    userId: { type: mongoose.Types.ObjectId, ref: "users", required: true },
+    // userId: { type: mongoose.Types.ObjectId, ref: "users", required: true },
 }, {
     timestamps: true,  // Automatically add createdAt and updatedAt fields
 });

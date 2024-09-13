@@ -15,37 +15,50 @@ const CreateBlogAdmin = () => {
     const [title, setTitle] = useState('');
     const [summary, setSummary] = useState('');
     const [content, setContent] = useState('');
+    const [image, setImage] = useState(null);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        // Ensure the form has the image before submitting
+        if (!image) {
+            toast.error('Please upload an image');
+            return;
+        }
+
         try {
+            // Create a FormData object to send both file and other data
+            const formData = new FormData();
+            formData.append('title', title);
+            formData.append('summary', summary);
+            formData.append('content', content);
+            formData.append('image', image);
+
             const response = await fetch('http://localhost:5000/api/blog/post', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                	title,
-                	summary,
-                    content
-                }),
+                body: formData, // Send the formData
             });
+
             const result = await response.json();
+
             if (response.status === 201) {
                 toast.success(result?.message, {
                     duration: 4000,
                     position: 'top-right',
-                })
+                });
                 setTitle('');
                 setSummary('');
                 setContent('');
+                setImage(null);
             } else {
-                alert('error found')
+                toast.error('Error while creating the post');
             }
         } catch (error) {
-            console.log(error);
+            console.error('Error creating blog post:', error);
+            toast.error('Something went wrong, please try again.');
         }
     };
+
     return (
         <>
             <CssVarsProvider>
@@ -91,15 +104,11 @@ const CreateBlogAdmin = () => {
                         <Box
                             component="main"
                             sx={{
-                                // my: 'auto',
-                                // py: 2,
-                                // pb: 5,
                                 display: 'flex',
                                 flexDirection: 'column',
                                 gap: 2,
                                 width: '100%',
                                 maxWidth: '100%',
-                                // mx: 'auto',
                                 borderRadius: 'sm',
                                 '& form': {
                                     display: 'flex',
@@ -109,7 +118,7 @@ const CreateBlogAdmin = () => {
                             }}
                         >
                             <Stack gap={4} sx={{ mt: 2 }}>
-                                <form onSubmit={(e) => handleSubmit(e)}>
+                                <form onSubmit={handleSubmit}>
                                     <FormControl required>
                                         <FormLabel>Enter the Title</FormLabel>
                                         <Input
@@ -138,8 +147,19 @@ const CreateBlogAdmin = () => {
                                         <Editor onChange={setContent} value={content} />
                                     </FormControl>
 
-                                    <Stack gap={4} sx={{ mt: 2 }} style={{ marginTop: '50px' }}>
-                                        <Button type="submit" fullWidth>Create position</Button>
+                                    <FormControl required>
+                                        <FormLabel>Enter the Image</FormLabel>
+                                        <Input
+                                            type="file"
+                                            name="image"
+                                            onChange={(e) => setImage(e.target.files[0])}
+                                        />
+                                    </FormControl>
+
+                                    <Stack gap={4} sx={{ mt: 2 }}>
+                                        <Button type="submit" fullWidth>
+                                            Create Blog Post
+                                        </Button>
                                     </Stack>
                                 </form>
                             </Stack>
@@ -148,7 +168,7 @@ const CreateBlogAdmin = () => {
                 </Box>
             </CssVarsProvider>
         </>
-    )
-}
+    );
+};
 
 export default CreateBlogAdmin;

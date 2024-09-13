@@ -51,6 +51,9 @@ module.exports.login = async (req, res) => {
                 gender: usernameCheck.gender,
                 location: usernameCheck.location,
                 username: usernameCheck.username,
+                fullname: usernameCheck.fullname,
+                role: usernameCheck.role,
+                _id: usernameCheck._id,
             },
             token: token,
             message: 'Token Registered'
