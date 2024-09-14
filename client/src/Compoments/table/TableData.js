@@ -32,7 +32,7 @@ const TableData = () => {
     const [gender, setGender] = useState('');
     const [location, setLocation] = useState('');
 
-    const dataFetch = useSelector((data) =>  data.AuthCrudReducer.posts);
+    const dataFetch = useSelector((data) => data.AuthCrudReducer.posts);
 
     useEffect(() => {
         dispatch(getUserData());
@@ -90,100 +90,99 @@ const TableData = () => {
     }
     return (
         <>
-        <div className=''>
+            <div className="form-container">
+                <Modal open={open} onClose={() => setOpen(false)}>
+                    <ModalDialog>
+                        <DialogTitle>Edit User</DialogTitle>
+                        <DialogContent>Fill in the information of the User.</DialogContent>
+                        <form
+                            onSubmit={() => updateData()}
+                        >
+                            <Stack spacing={2}>
+                                <FormControl>
+                                    <FormLabel>Full Name</FormLabel>
+                                    <Input type='text' value={fullname} onChange={(e) => setFullname(e.target.value)} autoFocus required />
+                                </FormControl>
+                                <FormControl>
+                                    <FormLabel>Username</FormLabel>
+                                    <Input type='text' value={username} onChange={(e) => setUsername(e.target.value)} required />
+                                </FormControl>
+                                <FormControl>
+                                    <FormLabel>Email Address</FormLabel>
+                                    <Input type='email' value={email} onChange={(e) => setEmail(e.target.value)} required />
+                                </FormControl>
+                                <FormControl>
+                                    <FormLabel>Contact Details</FormLabel>
+                                    <Input type='tel' value={phone} onChange={(e) => setPhone(e.target.value)} required />
+                                </FormControl>
+                                <FormControl>
+                                    <FormLabel>Gender</FormLabel>
+                                    <Input type='text' value={gender} onChange={(e) => setGender(e.target.value)} required />
+                                </FormControl>
+                                <FormControl>
+                                    <FormLabel>Location</FormLabel>
+                                    <Input type='text' value={location} onChange={(e) => setLocation(e.target.value)} required />
+                                </FormControl>
+                                <Button type="submit">Update</Button>
+                            </Stack>
+                        </form>
+                    </ModalDialog>
+                </Modal>
 
-        </div>
-            <Modal open={open} onClose={() => setOpen(false)}>
-                <ModalDialog>
-                    <DialogTitle>Edit User</DialogTitle>
-                    <DialogContent>Fill in the information of the User.</DialogContent>
-                    <form
-                        onSubmit={() => updateData()}
-                    >
-                        <Stack spacing={2}>
-                            <FormControl>
-                                <FormLabel>Full Name</FormLabel>
-                                <Input type='text' value={fullname} onChange={(e) => setFullname(e.target.value)} autoFocus required />
-                            </FormControl>
-                            <FormControl>
-                                <FormLabel>Username</FormLabel>
-                                <Input type='text' value={username} onChange={(e) => setUsername(e.target.value)} required />
-                            </FormControl>
-                            <FormControl>
-                                <FormLabel>Email Address</FormLabel>
-                                <Input type='email' value={email} onChange={(e) => setEmail(e.target.value)} required />
-                            </FormControl>
-                            <FormControl>
-                                <FormLabel>Contact Details</FormLabel>
-                                <Input type='tel' value={phone} onChange={(e) => setPhone(e.target.value)} required />
-                            </FormControl>
-                            <FormControl>
-                                <FormLabel>Gender</FormLabel>
-                                <Input type='text' value={gender} onChange={(e) => setGender(e.target.value)} required />
-                            </FormControl>
-                            <FormControl>
-                                <FormLabel>Location</FormLabel>
-                                <Input type='text' value={location} onChange={(e) => setLocation(e.target.value)} required />
-                            </FormControl>
-                            <Button type="submit">Update</Button>
-                        </Stack>
-                    </form>
-                </ModalDialog>
-            </Modal>
+                <div>
+                    <div className='pageHeading'>
+                        <div className='contentheading'>
+                            <h1 className='contentheading'>User List</h1>
+                        </div>
+                        <div className=''>
+                            <AddUser />
+                        </div>
+                    </div>
 
-            <div>
-                <div className='pageHeading'>
-                    <div className='contentheading'>
-                        <h1 className='contentheading'>User List</h1>
-                    </div>
-                    <div className=''>
-                        <AddUser />
-                    </div>
+                    <Table size="md" stickyHeader>
+                        <thead>
+                            <tr>
+                                <th>S No.</th>
+                                <th>Fullname</th>
+                                <th>Username</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Gender</th>
+                                <th>Location</th>
+                                <th>Role</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                !!dataFetch && dataFetch?.map((item, index) => (
+                                    <tr key={index}>
+                                        <td>{index + 1}</td>
+                                        <td>{item.fullname}</td>
+                                        <td>{item.username}</td>
+                                        <td>{item.email}</td>
+                                        <td>{item.phone}</td>
+                                        <td>{item.gender}</td>
+                                        <td>{item.location}</td>
+                                        <td>{item.role}</td>
+                                        <td>
+                                            <Dropdown>
+                                                <MenuButton
+                                                    slots={{ root: IconButton }}
+                                                    slotProps={{ root: { variant: '', color: 'neutral' } }}
+                                                ><MoreVertIcon fontSize="small" /></MenuButton>
+                                                <Menu>
+                                                    <MenuItem onClick={() => editData(item?._id)}>Edit</MenuItem>
+                                                    <MenuItem onClick={() => deleteModel(item?._id)}>Delete</MenuItem>
+                                                </Menu>
+                                            </Dropdown>
+                                        </td>
+                                    </tr>
+                                ))
+                            }
+                        </tbody>
+                    </Table>
                 </div>
-                
-                <Table size="md" stickyHeader>
-                    <thead>
-                        <tr>
-                            <th>S No.</th>
-                            <th>Fullname</th>
-                            <th>Username</th>
-                            <th>Email</th>
-                            <th>Phone</th>
-                            <th>Gender</th>
-                            <th>Location</th>
-                            <th>Role</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            !!dataFetch && dataFetch?.map((item, index) => (
-                                <tr key={index}>
-                                    <td>{index + 1}</td>
-                                    <td>{item.fullname}</td>
-                                    <td>{item.username}</td>
-                                    <td>{item.email}</td>
-                                    <td>{item.phone}</td>
-                                    <td>{item.gender}</td>
-                                    <td>{item.location}</td>
-                                    <td>{item.role}</td>
-                                    <td>
-                                        <Dropdown>
-                                            <MenuButton
-                                            slots={{ root: IconButton }}
-                                            slotProps={{ root: { variant: '', color: 'neutral' } }}
-                                            ><MoreVertIcon fontSize="small" /></MenuButton>
-                                            <Menu>
-                                                <MenuItem onClick={() => editData(item?._id)}>Edit</MenuItem>
-                                                <MenuItem onClick={() => deleteModel(item?._id)}>Delete</MenuItem>
-                                            </Menu>
-                                        </Dropdown>
-                                    </td>
-                                </tr>
-                            ))
-                        }
-                    </tbody>
-                </Table>
             </div>
         </>
     )
