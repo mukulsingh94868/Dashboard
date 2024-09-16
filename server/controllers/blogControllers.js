@@ -41,6 +41,8 @@ module.exports.getPost = async (req, res) => {
     }
 };
 
+
+
 // module.exports.getPost = async (req, res) => {
 //     try {
 //         const userId = res.locals.userId; 
