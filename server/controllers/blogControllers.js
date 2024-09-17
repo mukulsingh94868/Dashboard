@@ -40,9 +40,6 @@ module.exports.getPost = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
-
-
-
 // module.exports.getPost = async (req, res) => {
 //     try {
 //         const userId = res.locals.userId; 
