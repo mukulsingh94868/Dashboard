@@ -6,7 +6,6 @@ const dotenv = require('dotenv');
 const app = express();
 const cookieParser = require('cookie-parser');
 
-
 const authRoutes = require('./routes/authRoutes');
 const blogRoutes = require('./routes/blogRoutes');
 const productRoutes = require('./routes/productRoutes');
