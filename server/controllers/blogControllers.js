@@ -26,6 +26,8 @@ module.exports.blogPost = async (req, res) => {
     }
 };
 
+
+
 module.exports.getPost = async (req, res) => {
     try {
         const blogData = await BlogModel.find(
