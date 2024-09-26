@@ -6,7 +6,6 @@ const dotenv = require('dotenv');
 const app = express();
 const cookieParser = require('cookie-parser');
 
-
 const authRoutes = require('./routes/authRoutes');
 const blogRoutes = require('./routes/blogRoutes');
 const productRoutes = require('./routes/productRoutes');
@@ -20,6 +19,8 @@ app.use(cookieParser());
 dotenv.config();
 // app.use('/uploads', express.static(__dirname + '/uploads'));
 app.use("/uploads", express.static("uploads"));
+
+
 
 app.use('/api/auth', authRoutes);
 app.use('/api/blog', blogRoutes);
