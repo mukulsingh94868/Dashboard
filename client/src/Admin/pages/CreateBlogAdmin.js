@@ -58,9 +58,6 @@ const CreateBlogAdmin = () => {
             toast.error('Something went wrong, please try again.');
         }
     };
-
-    
-
     return (
         <>
             <CssVarsProvider>
