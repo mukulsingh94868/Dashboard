@@ -1,0 +1,44 @@
+/* MapStyles.css */
+
+/* Styling the world map container */
+.world-map {
+    width: 100%;
+    height: auto;
+}
+
+/* Styling individual countries on the map */
+.world-map .rsm-geographies path {
+    stroke: #ffffff;
+    /* Change the border color of each country */
+    stroke-width: 0.5;
+    /* Adjust the border width */
+    transition: fill 0.3s ease;
+    /* Smooth transition for hover effect */
+}
+
+.world-map .rsm-geographies path:hover {
+    fill: #f1c40f;
+    /* Color change on hover */
+    cursor: pointer;
+}
+
+/* Styling the title */
+.world-map-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+/* Styling the legend and labels */
+.world-map .rsm-legend {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.world-map .rsm-legend-label {
+    color: #34495e;
+    font-weight: 500;
+}
