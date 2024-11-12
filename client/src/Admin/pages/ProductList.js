@@ -53,7 +53,7 @@ const ProductList = () => {
                 />
             </div>
 
-            <TableContainer component={Paper}>
+            <TableContainer component={Paper} style={{ height: 650, overflowY: 'auto' }}>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                     <TableHead>
                         <TableRow>

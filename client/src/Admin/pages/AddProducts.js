@@ -65,7 +65,7 @@ const ProductForm = () => {
     };
 
     return (
-        <div className="form-container">
+        <div className="formProduct-container">
             <h1>Product Form</h1>
             <Formik
                 initialValues={initialValues}

@@ -7,6 +7,14 @@
     width: 100%;
 }
 
+.formProduct-container {
+    margin: 24px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 2px 0px 10px 0px rgba(112, 112, 112, 0.25);
+}
+
 .form-grid {
     display: grid;
     gap: 20px;
