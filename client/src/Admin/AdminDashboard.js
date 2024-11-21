@@ -28,7 +28,6 @@ const AdminDashboard = () => {
             const result = await response.json();
             setData(result);
         };
-
         getData();
         dispatch(GetAllOrdersData());
         dispatch(getProductData());
