@@ -8,7 +8,6 @@ import { MultipleYAxesScatterChart, ScaleExample } from '../Compoments/Charts/Pi
 import DashTableOne from '../Compoments/table/DashTableOne';
 import DashTableTwo from '../Compoments/table/DashTableTwo';
 
-
 const Dashboard = () => {
   return (
     <>
