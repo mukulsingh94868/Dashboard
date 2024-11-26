@@ -9,7 +9,6 @@ import DashTableOne from '../Compoments/table/DashTableOne';
 import DashTableTwo from '../Compoments/table/DashTableTwo';
 
 const Dashboard = () => {
-  
   return (
     <>
       <Box sx={{ width: '100%' }}>
