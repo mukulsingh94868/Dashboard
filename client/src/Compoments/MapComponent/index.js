@@ -17,7 +17,7 @@ const data = [
 
 const MapComponent = () => {
     return (
-        <>
+        <div className="map-container">
             <WorldMap
                 className="world-map"
                 color="red"
@@ -26,7 +26,7 @@ const MapComponent = () => {
                 size="lg"
                 data={data}
             />
-        </>
+        </div>
     )
 };
 

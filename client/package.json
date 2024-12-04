@@ -39,6 +39,7 @@
     "react-scripts": "5.0.1",
     "react-stripe-checkout": "^2.6.3",
     "react-svg-worldmap": "^2.0.0-alpha.16",
+    "recharts": "^2.14.1",
     "redux": "^4.2.1",
     "redux-thunk": "^2.4.2",
     "web-vitals": "^2.1.4"

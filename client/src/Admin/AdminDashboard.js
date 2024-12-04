@@ -14,6 +14,7 @@ import { getProductData } from '../Redux/actions/productActions';
 import { GetAllOrdersData } from '../Redux/actions/orderActions';
 import { Box, Grid } from '@mui/material';
 import MapComponent from '../Compoments/MapComponent';
+import AdminBarChart from '../Compoments/AdminBarChart';
 
 const AdminDashboard = () => {
     const [data, setData] = useState([]);
@@ -54,6 +55,13 @@ const AdminDashboard = () => {
             progressValue: orderState?.orders?.length / 100,
             link: "/dashboard/orders-list",
             buttonText: "View Order List"
+        },
+        {
+            title: "Total Valuation",
+            value: 1500,
+            progressValue: orderState?.orders?.length / 100,
+            link: "",
+            buttonText: "View Valuation"
         }
     ];
 
@@ -105,9 +113,12 @@ const AdminDashboard = () => {
                 ))}
             </Grid>
 
-            <Grid container spacing={3}>
-                <Grid item xs={12}>
+            <Grid container spacing={3} mt={1}>
+                <Grid item xs={6}>
                     <MapComponent />
+                </Grid>
+                <Grid item xs={6}>
+                    <AdminBarChart data={cardInfo} />
                 </Grid>
             </Grid>
         </Box>

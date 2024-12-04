@@ -1,44 +1,51 @@
-/* MapStyles.css */
+.map-container {
+    border: 1px solid #0b6bcb;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+    height: 300px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-/* Styling the world map container */
-.world-map {
+.map-container .world-map {
+    width: 100%;
+    height: 100%;
+}
+
+.map-container .world-map-title {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    color: #34495e;
+    margin-bottom: 5px;
+}
+
+/* Hover effect for the map container */
+.map-container:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Ensure the map fits perfectly */
+.map-container .world-map {
     width: 100%;
     height: auto;
 }
 
-/* Styling individual countries on the map */
-.world-map .rsm-geographies path {
-    stroke: #ffffff;
-    /* Change the border color of each country */
-    stroke-width: 0.5;
-    /* Adjust the border width */
-    transition: fill 0.3s ease;
-    /* Smooth transition for hover effect */
-}
-
-.world-map .rsm-geographies path:hover {
-    fill: #f1c40f;
-    /* Color change on hover */
-    cursor: pointer;
-}
-
-/* Styling the title */
-.world-map-title {
-    font-size: 24px;
+/* Adjust the map title */
+.map-container .world-map-title {
+    font-size: 20px;
     font-weight: bold;
     text-align: center;
-    color: #2c3e50;
+    color: #34495e;
     margin-bottom: 10px;
 }
 
-/* Styling the legend and labels */
-.world-map .rsm-legend {
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
-}
-
-.world-map .rsm-legend-label {
-    color: #34495e;
-    font-weight: 500;
+/* Optional: Add a unique background pattern */
+.map-container {
+    /* background: linear-gradient(145deg, #ffffff, #e0e0e0); */
+    background: #fff;
 }
