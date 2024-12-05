@@ -15,6 +15,7 @@ import { GetAllOrdersData } from '../Redux/actions/orderActions';
 import { Box, Grid } from '@mui/material';
 import MapComponent from '../Compoments/MapComponent';
 import AdminBarChart from '../Compoments/AdminBarChart';
+import AdminStackedAreaChart from '../Compoments/AdminStackedAreaChart';
 
 const AdminDashboard = () => {
     const [data, setData] = useState([]);
@@ -115,10 +116,19 @@ const AdminDashboard = () => {
 
             <Grid container spacing={3} mt={1}>
                 <Grid item xs={6}>
+                    <AdminBarChart data={cardInfo} />
+                </Grid>
+                <Grid item xs={6}>
+                    <AdminStackedAreaChart data={cardInfo} />
+                </Grid>
+            </Grid>
+
+            <Grid container spacing={3} mt={1}>
+                <Grid item xs={6}>
                     <MapComponent />
                 </Grid>
                 <Grid item xs={6}>
-                    <AdminBarChart data={cardInfo} />
+                    <AdminStackedAreaChart data={cardInfo} />
                 </Grid>
             </Grid>
         </Box>

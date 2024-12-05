@@ -14,27 +14,64 @@ const AdminBarChart = ({ data }) => {
         { name: "Jul", Sales: 3490, Expenses: 4300 },
     ];
 
-    
+
     const mergedData = data1.map((item, index) => ({
         ...item,
         ...data[index]
     }));
+
+    const sortData = [
+        {
+            id: 1,
+            name: 'Today'
+        },
+        {
+            id: 2,
+            name: 'Weekly'
+        },
+        {
+            id: 3,
+            name: 'Month'
+        },
+        {
+            id: 4,
+            name: 'Yearly'
+        },
+    ];
     return (
-        <div className="map-container">
-            <ResponsiveContainer width="100%" height={300}>
-                <BarChart data={mergedData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="title" />
-                    <YAxis />
-                    <Tooltip />
-                    <Legend />
-                    <Bar dataKey="value" fill="#8884d8" />
-                    <Bar dataKey="progressValue" fill="#82ca9d" />
-                    <Bar dataKey="Expenses" fill="#82ca9d" />
-                    <Bar dataKey="Sales" fill="#82ca9d" />
-                </BarChart>
-            </ResponsiveContainer>
-        </div>
+        <>
+            <div className="map-container">
+                <ResponsiveContainer width="100%" height={300}>
+                    <div className="cardHeader">
+                        <p>Total Product Sales</p>
+                        <div className="salesSelect">
+                            <p>Sort By:</p>
+                            <select name="cars" id="cars" className="select">
+                                {
+                                    sortData?.map((item) => {
+                                        return (
+                                            <option value={item?.name}>{item?.name}</option>
+                                        )
+                                    })
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div className="borderBot"></div>
+                    <BarChart data={mergedData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="title" />
+                        <YAxis />
+                        <Tooltip />
+                        <Legend />
+                        <Bar dataKey="value" fill="#8884d8" />
+                        <Bar dataKey="progressValue" fill="#82ca9d" />
+                        <Bar dataKey="Expenses" fill="#82ca9d" />
+                        <Bar dataKey="Sales" fill="#82ca9d" />
+                    </BarChart>
+                </ResponsiveContainer>
+            </div>
+        </>
 
     )
 };
