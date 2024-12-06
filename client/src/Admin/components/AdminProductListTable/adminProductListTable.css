@@ -1,0 +1,79 @@
+/* Container styles */
+.map-container {
+    border: 1px solid #0b6bcb;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+    padding: 20px;
+    margin: 20px;
+}
+
+.cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.cardHeader p {
+    font-size: 18px;
+    font-weight: bold;
+    color: #555;
+}
+
+.salesSelect button {
+    font-size: 14px;
+    color: #0b6bcb;
+}
+
+/* Table styles */
+.productTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.productTable th,
+.productTable td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.productTable th {
+    background-color: #f4f4f4;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+}
+
+.productTable tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.productTable tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Status styles */
+.status-available {
+    color: green;
+    font-weight: bold;
+}
+
+.status-out {
+    color: red;
+    font-weight: bold;
+}
+
+.status-limited {
+    color: orange;
+    font-weight: bold;
+}
+
+.status-discontinued {
+    color: gray;
+    font-weight: bold;
+}
