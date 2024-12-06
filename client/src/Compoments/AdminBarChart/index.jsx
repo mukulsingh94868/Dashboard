@@ -14,7 +14,6 @@ const AdminBarChart = ({ data }) => {
         { name: "Jul", Sales: 3490, Expenses: 4300 },
     ];
 
-
     const mergedData = data1.map((item, index) => ({
         ...item,
         ...data[index]
