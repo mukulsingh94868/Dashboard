@@ -35,12 +35,45 @@ const AdminProductListTable = ({ prodData }) => {
         }
     };
 
+    const handleExport = () => {
+        // Prepare CSV content
+        const headers = ["Name", "Color", "Inches", "Sale Price", "Type"];
+        const csvRows = prodData.map((prod) => [
+            prod.name,
+            prod.color,
+            prod.inches,
+            prod.salePrice,
+            prod.type,
+        ]);
+
+        // Add headers to the CSV content
+        const csvContent = [headers, ...csvRows]
+            .map((row) => row.map((item) => `"${item}"`).join(","))
+            .join("\n");
+
+        // Create a Blob for the CSV
+        const blob = new Blob([csvContent], { type: "text/csv" });
+        const url = URL.createObjectURL(blob);
+
+        // Create a temporary link element to download the file
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "ProductList.csv";
+        document.body.appendChild(a);
+        a.click();
+
+        // Clean up the URL and remove the temporary link
+        URL.revokeObjectURL(url);
+        document.body.removeChild(a);
+    };
+
+
     return (
         <div className="map-container">
             <div className="cardHeader">
                 <p>Total Company Valuation</p>
                 <div className="salesSelect">
-                    <Button variant="outlined">Add Product</Button>
+                    <Button variant="outlined" onClick={handleExport}>Export</Button>
                 </div>
             </div>
 
