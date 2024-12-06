@@ -68,7 +68,7 @@ const AdminDashboard = () => {
     ];
 
     return (
-        <Box sx={{ width: '100%', padding: '20px' }}>
+        <Box sx={{ width: '100%', padding: '20px', height: '800px', overflowY: 'auto' }}>
             <Grid container spacing={3}>
                 {cardInfo.map((card, index) => (
                     <Grid item xs={3} key={index}>

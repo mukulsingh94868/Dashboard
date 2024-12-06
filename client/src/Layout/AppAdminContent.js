@@ -4,22 +4,20 @@ import { AdminLayoutItem } from '../Router/PrivateRouter';
 
 const AppAdminContent = () => {
     return (
-        <>
-            <Routes>
-                {AdminLayoutItem?.map((route, index) => {
-                    return (
-                        !!route.component && (
-                            <Route
-                                key={index}
-                                path={route.path}
-                                exact={route.exact}
-                                element={<route.component />}
-                            />
-                        )
-                    );
-                })}
-            </Routes>
-        </>
+        <Routes>
+            {AdminLayoutItem?.map((route, index) => {
+                return (
+                    !!route.component && (
+                        <Route
+                            key={index}
+                            path={route.path}
+                            exact={route.exact}
+                            element={<route.component />}
+                        />
+                    )
+                );
+            })}
+        </Routes>
     );
 };
 
