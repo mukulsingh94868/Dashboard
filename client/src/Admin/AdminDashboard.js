@@ -66,7 +66,6 @@ const AdminDashboard = () => {
             buttonText: "View Valuation"
         }
     ];
-
     return (
         <Box sx={{ width: '100%', padding: '20px', height: '800px', overflowY: 'auto' }}>
             <Grid container spacing={3}>
