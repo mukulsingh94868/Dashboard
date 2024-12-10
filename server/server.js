@@ -11,7 +11,8 @@ const blogRoutes = require('./routes/blogRoutes');
 const productRoutes = require('./routes/productRoutes');
 const orderRoutes = require('./routes/orderRoutes');
 const calenderRoutes = require('./routes/calendraRoutes');
-const favouriteRoutes = require('./routes/favouriteRoutes');
+const favouriteRoutes = require('./routes/favouriteRoutes'); 
+const todoRoutes = require('./routes/todoRoutes'); 
 
 app.use(cors('*'));
 app.use(express.json());
@@ -28,6 +29,7 @@ app.use('/api/product', productRoutes);
 app.use('/api/order', orderRoutes);
 app.use('/api/calender', calenderRoutes);
 app.use('/api/favourite', favouriteRoutes);
+app.use('/api/todo', todoRoutes);
 
 const PORT = 5000;
 const MONGO_URL = 'mongodb+srv://admin_dashboard:admin_dashboard_123@cluster0.t5q7pda.mongodb.net/admin_dashboard';
