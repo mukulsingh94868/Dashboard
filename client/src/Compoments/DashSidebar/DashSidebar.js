@@ -51,6 +51,11 @@ const DashSidebar = () => {
                                 <img src="../images/payroll.svg" alt="" /> Calender
                             </Link>
                         </li>
+                        <li>
+                            <Link to="/dashboard/todo">
+                                <img src="../images/payroll.svg" alt="" /> To Do
+                            </Link>
+                        </li>
                     </ul>
                 </nav>
             </div>

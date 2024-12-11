@@ -24,3 +24,107 @@ export const getProductsById = (id) => API.get(`/product/products/${id}`);
 // orders operations
 export const placedOrders = (formData) => API.post('/order/place-order', formData);
 export const getOrders = () => API.get('/order/get-orders');
+
+
+
+
+
+
+
+
+
+
+
+// todo operations
+const API_NEW = "http://localhost:5000/api";
+
+const getToken = () => localStorage.getItem('token');
+
+// Fetch todos with filters
+export const fetchTodos = async (userId, filters = {}) => {
+    try {
+        const token = JSON.parse(localStorage.getItem('authUser'));
+        if (!token) throw new Error("No token found");
+
+        const query = new URLSearchParams(filters).toString();
+        const response = await axios.get(
+            `${API_NEW}/todo/getTodo/${userId}${query ? `?${query}` : ''}`,
+            {
+                headers: {
+                    Authorization: `${token}`,
+                },
+            }
+        );
+        return response.data;
+    } catch (error) {
+        console.error("Error fetching todos:", error);
+        throw error;
+    }
+};
+
+// Add a new todo
+export const addTodo = async (todo) => {
+    try {
+        const token = JSON.parse(localStorage.getItem('authUser'));
+        const userId = JSON.parse(localStorage.getItem('authId'));
+        if (!token) throw new Error("No token found");
+
+        const response = await axios.post(
+            `${API_NEW}/todo/addTodo`,
+            {...todo, userId},
+            {
+                headers: {
+                    Authorization: `${token}`,
+                },
+            }
+        );
+        return response.data;
+    } catch (error) {
+        console.error("Error adding todo:", error);
+        throw error;
+    }
+};
+
+// Update an existing todo
+export const updateTodo = async (id, updatedFields) => {
+    try {
+        const token = getToken();
+        if (!token) throw new Error("No token found");
+
+        const response = await axios.put(
+            `${API_NEW}/todo/updateTodo/${id}`,
+            updatedFields,
+            {
+                headers: {
+                    Authorization: `${token}`,
+                },
+            }
+        );
+        return response.data;
+    } catch (error) {
+        console.error("Error updating todo:", error);
+        throw error;
+    }
+};
+
+// Delete a todo
+export const deleteTodo = async (id) => {
+    try {
+        const token = getToken();
+        if (!token) throw new Error("No token found");
+
+        const response = await axios.delete(
+            `${API_NEW}/todo/deleteTodo/${id}`,
+            {
+                headers: {
+                    Authorization: `${token}`,
+                },
+            }
+        );
+        return response.data;
+    } catch (error) {
+        console.error("Error deleting todo:", error);
+        throw error;
+    }
+};
+

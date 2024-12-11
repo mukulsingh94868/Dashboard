@@ -12,6 +12,7 @@ import OrderScreen from "../View/Pages/Products/OrderScreen";
 import ProductCartScreen from "../View/Pages/Products/ProductCartScreen";
 import ProductDetails from "../View/Pages/Products/ProductDetails";
 import ProductPage from "../View/Pages/Products/ProductPage";
+import TodoComponent from "../View/Pages/Todo/Todo";
 import UserProfile from '../View/Pages/UserProfile/UserProfile';
   
 // export const roles = {
@@ -69,6 +70,11 @@ export const LayoutItem = [
         path: "/calender",
         exact: true,
         component: Calender
+    },
+    {
+        path: "/todo",
+        exact: true,
+        component: TodoComponent
     },
     {
         path: "/orders",
