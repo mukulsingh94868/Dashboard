@@ -75,6 +75,7 @@ const TodoComponent = () => {
         const matchesPriority = filters.priority === 'All' || todo.priority === filters.priority.toLowerCase();
         return matchesSearch && matchesStatus && matchesPriority;
     });
+    
     return (
         <div className="app">
             <header>
