@@ -21,8 +21,6 @@ dotenv.config();
 // app.use('/uploads', express.static(__dirname + '/uploads'));
 app.use("/uploads", express.static("uploads"));
 
-
-
 app.use('/api/auth', authRoutes);
 app.use('/api/blog', blogRoutes);
 app.use('/api/product', productRoutes);
