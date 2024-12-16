@@ -17,7 +17,7 @@ module.exports.addTodo = async (req, res) => {
         });
 
         const savedTodo = await newTodo.save();
-        res.status(201).json(savedTodo);
+        res.status(201).json({ statusCode: 201, message: 'Todo Saved Sucessfully', savedTodo });
     } catch (error) {
         res.status(500).json({ error: 'Failed to create todo.' });
     }
@@ -60,7 +60,7 @@ module.exports.updateTodo = async (req, res) => {
             return res.status(404).json({ error: 'Todo not found.' });
         }
 
-        res.status(200).json(updatedTodo);
+        res.status(200).json({ statusCode: 200, message: 'Todo Update Sucessfully', updatedTodo });
     } catch (error) {
         res.status(500).json({ error: 'Failed to update todo.' });
     }
@@ -73,8 +73,7 @@ module.exports.deleteTodo = async (req, res) => {
         if (!deletedTodo) {
             return res.status(404).json({ error: 'Todo not found.' });
         }
-
-        res.status(200).json({ message: 'Todo deleted successfully.' });
+        res.status(200).json({ statusCode: 200, message: 'Todo deleted successfully.' });
     } catch (error) {
         res.status(500).json({ error: 'Failed to delete todo.' });
     }

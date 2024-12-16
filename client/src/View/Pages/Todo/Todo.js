@@ -2,7 +2,18 @@ import React, { useState, useEffect } from 'react';
 import './todo.css';
 import { fetchTodos, addTodo, updateTodo, deleteTodo } from '../../../Network/Api';
 import Modal from '@mui/material/Modal';
-import { Box, Typography } from '@mui/material';
+import { Box } from '@mui/material';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+import toast from 'react-hot-toast';
+import moment from 'moment';
 
 const TodoComponent = () => {
     const [todos, setTodos] = useState([]);
@@ -10,6 +21,7 @@ const TodoComponent = () => {
     const [error, setError] = useState(null);
     const [filters, setFilters] = useState({ search: '', status: 'All', priority: 'All' });
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [editingTask, setEditingTask] = useState(null);
     const [newTask, setNewTask] = useState({
         taskTitle: '',
         status: 'pending',
@@ -49,35 +61,123 @@ const TodoComponent = () => {
 
     const handleDelete = async (id) => {
         try {
-            await deleteTodo(id);
-            setTodos(todos.filter((todo) => todo._id !== id));
+            const res = await deleteTodo(id);
+            if (res?.statusCode === 200) {
+                toast.success(res?.message, {
+                    duration: 4000,
+                    position: 'top-right',
+                });
+                setTodos(todos.filter((todo) => todo._id !== id));
+            }
         } catch (err) {
             alert('Failed to delete task.');
         }
     };
 
+    const updateTodoList = (id) => {
+        const taskToEdit = todos.find((todo) => todo._id === id);
+        setEditingTask(taskToEdit);
+        setIsModalOpen(true);
+    };
+
+    // const handleAddTask = async (e) => {
+    //     e.preventDefault();
+    //     try {
+    //         const createdTask = await addTodo(newTask);
+    //         if (createdTask?.statusCode === 201) {
+    //             toast.success(createdTask?.message, {
+    //                 duration: 4000,
+    //                 position: 'top-right',
+    //             });
+    //             setTodos((prevTodos) => [...prevTodos, createdTask]);
+    //             setNewTask({ taskTitle: '', status: 'pending', priority: 'medium', dueDate: '' });
+    //             setIsModalOpen(false);
+    //         }
+    //     } catch (err) {
+    //         console.log('error', err);
+    //         alert('Failed to add task.');
+    //     }
+    // };
+
     const handleAddTask = async (e) => {
         e.preventDefault();
         try {
-            const createdTask = await addTodo(newTask);
-            setTodos((prevTodos) => [...prevTodos, createdTask]);
+            if (editingTask) {
+                const updatedTask = await updateTodo(editingTask._id, newTask);
+                if (updatedTask?.statusCode === 200) {
+                    toast.success(updatedTask?.message, {
+                        duration: 4000,
+                        position: 'top-right',
+                    });
+                    setTodos((prevTodos) =>
+                        prevTodos.map((todo) => (todo._id === updatedTask._id ? updatedTask : todo))
+                    );
+                }
+            } else {
+                const createdTask = await addTodo(newTask);
+                if (createdTask?.statusCode === 201) {
+                    toast.success(createdTask?.message, {
+                        duration: 4000,
+                        position: 'top-right',
+                    });
+                    setTodos((prevTodos) => [...prevTodos, createdTask]);
+                }
+            }
             setNewTask({ taskTitle: '', status: 'pending', priority: 'medium', dueDate: '' });
+            setEditingTask(null);
             setIsModalOpen(false);
         } catch (err) {
-            console.log('error', err);
-            alert('Failed to add task.');
+            console.log('Error', err);
+            alert(`Failed to ${editingTask ? 'update' : 'add'} task.`);
         }
     };
 
-    const filteredTodos = todos.filter((todo) => {
-        const matchesSearch = todo.taskTitle.toLowerCase().includes(filters.search.toLowerCase());
-        const matchesStatus = filters.status === 'All' || todo.status === filters.status.toLowerCase();
-        const matchesPriority = filters.priority === 'All' || todo.priority === filters.priority.toLowerCase();
+    const filteredTodos = todos?.filter((todo) => {
+        const matchesSearch = todo?.taskTitle?.toLowerCase()?.includes(filters?.search?.toLowerCase());
+        const matchesStatus = filters?.status === 'All' || todo?.status === filters?.status?.toLowerCase();
+        const matchesPriority = filters?.priority === 'All' || todo.priority === filters?.priority?.toLowerCase();
         return matchesSearch && matchesStatus && matchesPriority;
     });
+
+    const colorData = (value) => {
+        switch (value) {
+            case 'pending':
+                return 'statusPending';
+            case 'in-progress':
+                return 'statusInprogress';
+            case 'completed':
+                return 'statusCompleted';
+            default:
+                return '';
+        }
+    };
+
+    const priorityData = (value) => {
+        switch (value) {
+            case 'low':
+                return 'statusPending';
+            case 'medium':
+                return 'statusInprogress';
+            case 'high':
+                return 'statusHigh';
+            default:
+                return '';
+        }
+    };
+
+    useEffect(() => {
+        if (editingTask) {
+            setNewTask({
+                taskTitle: editingTask.taskTitle,
+                status: editingTask.status,
+                priority: editingTask.priority,
+                dueDate: editingTask.dueDate,
+            });
+        }
+    }, [editingTask]);
     return (
-        <div className="app">
-            <header>
+        <div className="app1">
+            <div className='mainFilter'>
                 <div className="filter-container">
                     <select
                         onChange={(e) => setFilters((prev) => ({ ...prev, priority: e.target.value }))}
@@ -101,59 +201,57 @@ const TodoComponent = () => {
                         type="text"
                         placeholder="Search task name"
                         onChange={(e) => setFilters((prev) => ({ ...prev, search: e.target.value }))}
-                        className="search"
+                        className="searchBar"
                     />
                     <button className="add-task" onClick={() => setIsModalOpen(true)}>
                         + Add Task
                     </button>
                 </div>
-            </header>
+            </div>
 
             {loading ? (
                 <p>Loading tasks...</p>
             ) : error ? (
                 <p className="error">{error}</p>
             ) : (
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Task Name</th>
-                            <th>Assigned</th>
-                            <th>Due Date</th>
-                            <th>Status</th>
-                            <th>Priority</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {filteredTodos.map((todo) => (
-                            <tr key={todo._id}>
-                                <td>{todo.taskTitle}</td>
-                                <td>
-                                    <img
-                                        src="https://via.placeholder.com/30"
-                                        alt="avatar"
-                                        className="avatar"
-                                    />
-                                </td>
-                                <td>{new Date(todo.dueDate).toLocaleDateString()}</td>
-                                <td className={`status ${todo.status}`}>{todo.status}</td>
-                                <td className={`priority ${todo.priority}`}>{todo.priority}</td>
-                                <td>
-                                    <button onClick={() => alert('Edit functionality here!')} className="edit">
-                                        ✏️
-                                    </button>
-                                    <button
-                                        onClick={() => handleDelete(todo._id)}
-                                        className="delete"
-                                    >
-                                        🗑️
-                                    </button>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
+                <TableContainer component={Paper}>
+                    <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
+                        <TableHead>
+                            <TableRow>
+                                <TableCell>Task Name</TableCell>
+                                <TableCell align="right">Due Date</TableCell>
+                                <TableCell align="right">Status&nbsp;</TableCell>
+                                <TableCell align="right">Priority&nbsp;</TableCell>
+                                <TableCell align="right">Action&nbsp;</TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {filteredTodos.map((row) => (
+                                <TableRow
+                                    key={row._id}
+                                >
+                                    <TableCell component="th" scope="row">
+                                        {row.taskTitle}
+                                    </TableCell>
+                                    <TableCell>{moment(row.dueDate).format('DD MMM YYYY')}</TableCell>
+                                    <TableCell align="right"><p className={`${colorData(row?.status)} rowStatus`}>{row.status}</p></TableCell>
+                                    <TableCell align="right"><p className={`${priorityData(row?.priority)} rowStatus`}>{row.priority}</p></TableCell>
+                                    <TableCell align="right">
+                                        <button onClick={() => updateTodoList(row?._id)} className="edit">
+                                            <EditIcon className='editIcon' />
+                                        </button>
+                                        <button
+                                            onClick={() => handleDelete(row?._id)}
+                                            className="delete"
+                                        >
+                                            <DeleteIcon className='deleteIcon' />
+                                        </button>
+                                    </TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </TableContainer>
             )}
 
             <Modal
@@ -190,7 +288,7 @@ const TodoComponent = () => {
                                 </div>
                             </div>
 
-                            <div className='mainTitle'> 
+                            <div className='mainTitle'>
                                 <div className='titleTask'>
                                     <label>Priority</label>
                                     <select
@@ -218,7 +316,7 @@ const TodoComponent = () => {
                                 <button type="button" className='closeBtn' onClick={() => setIsModalOpen(false)}>
                                     Close
                                 </button>
-                                <button type="submit" className='addTaskBtn'>Add Task</button>
+                                <button type="submit" className='addTaskBtn'>{editingTask ? 'Update Task' : 'Add Task'}</button>
                             </div>
                         </form>
                     </div>

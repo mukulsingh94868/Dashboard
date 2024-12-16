@@ -88,7 +88,7 @@ export const addTodo = async (todo) => {
 // Update an existing todo
 export const updateTodo = async (id, updatedFields) => {
     try {
-        const token = getToken();
+        const token = JSON.parse(localStorage.getItem('authUser'));
         if (!token) throw new Error("No token found");
 
         const response = await axios.put(
@@ -110,7 +110,7 @@ export const updateTodo = async (id, updatedFields) => {
 // Delete a todo
 export const deleteTodo = async (id) => {
     try {
-        const token = getToken();
+        const token = JSON.parse(localStorage.getItem('authUser'));
         if (!token) throw new Error("No token found");
 
         const response = await axios.delete(

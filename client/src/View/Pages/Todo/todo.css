@@ -1,4 +1,4 @@
-.app {
+.app1 {
     font-family: Arial, sans-serif;
     margin: 20px auto;
     max-width: 1200px;
@@ -12,6 +12,7 @@ header {
     display: flex;
     justify-content: space-between;
     gap: 10px;
+    width: 100%;
 }
 
 .filter,
@@ -22,10 +23,16 @@ header {
     border-radius: 5px;
 }
 
+.searchBar {
+    width: 100%;
+    background-color: #fff;
+}
+
 .add-task {
     background-color: #007bff;
     color: white;
     cursor: pointer;
+    width: 150px;
 }
 
 .add-task:hover {
@@ -61,16 +68,32 @@ tbody td {
     font-weight: bold;
 }
 
-.status.pending {
+.rowStatus {
+    color: #fff;
+    width: fit-content;
+    padding: 3px 10px;
+    border-radius: 8px;
+    display: block;
+    margin: auto;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.statusPending {
     background-color: #f0ad4e;
 }
 
-.status.inprogress {
+.statusInprogress {
     background-color: #5bc0de;
 }
 
-.status.completed {
+.statusCompleted {
     background-color: #5cb85c;
+}
+
+.statusHigh {
+    background-color: red;
 }
 
 .priority {
@@ -114,7 +137,12 @@ tbody td {
 
 
 
-
+.mainFilter {
+    margin-bottom: 20px;
+    background: #8080802b;
+    padding: 10px;
+    border-radius: 8px;
+}
 
 
 .modal-overlay {
@@ -239,4 +267,20 @@ tbody td {
         background: blue;
         cursor: pointer;
     }
+}
+
+.editIcon {
+    color: #0000ffb5;
+    background: #a0a0c569;
+    padding: 6px 8px;
+    border-radius: 4px;
+    font-size: 12px !important;
+}
+
+.deleteIcon {
+    color: #ff00008f;
+    background: #e1acac61;
+    padding: 6px 8px;
+    border-radius: 4px;
+    font-size: 12px !important;
 }
