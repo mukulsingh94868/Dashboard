@@ -48,6 +48,11 @@ const DashAdminSidebar = () => {
                 <img src="../images/payroll.svg" alt="" /> Order List
               </Link>
             </li>
+            <li>
+              <Link to="/dashboard/timeline">
+                <img src="../images/payroll.svg" alt="" /> TimeLine
+              </Link>
+            </li>
           </ul>
         </nav>
       </div>

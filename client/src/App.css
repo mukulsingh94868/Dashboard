@@ -628,3 +628,52 @@ Grid Of Dashboards
   background: red;
   margin-left: 5px;
 }
+
+.verticalTimeline {
+  max-height: 880px;
+  overflow-y: auto;
+  width: 100%;
+}
+
+.timeline-container {
+  position: relative;
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.vertical-timeline-element {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.vertical-timeline-element.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Style the title and description */
+.timeline-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.timeline-description {
+  font-size: 1rem;
+  color: #666;
+}
+
+/* Add hover effects on icons */
+.vertical-timeline-element-icon {
+  transition: transform 0.3s ease-in-out;
+}
+
+.vertical-timeline-element:hover .vertical-timeline-element-icon {
+  transform: scale(1.2);
+}
+
+/* Timeline Background Improvements */
+.vertical-timeline::before {
+  background: linear-gradient(to bottom, #4caf50, #8bc34a);
+}

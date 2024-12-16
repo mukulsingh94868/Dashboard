@@ -3,6 +3,7 @@ import Dashboard from '../Admin/Dashboard';
 import CreateBlogAdmin from "../Admin/pages/CreateBlogAdmin";
 import OrderList from "../Admin/pages/OrderList";
 import ProductList from "../Admin/pages/ProductList";
+import TimeLine from "../Admin/pages/TimeLine";
 import KanbanBoard from "../Compoments/KanbanBoard/KanbanBoard";
 import TableData from "../Compoments/table/TableData";
 import BlogFullContent from "../View/Pages/Blogs/BlogFullContent";
@@ -108,5 +109,10 @@ export const AdminLayoutItem = [
         path: "/orders-list",
         exact: true,
         component: OrderList
+    },
+    {
+        path: "/timeline",
+        exact: true,
+        component: TimeLine
     },
 ];
