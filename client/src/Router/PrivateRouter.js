@@ -22,6 +22,7 @@ import UserProfile from '../View/Pages/UserProfile/UserProfile';
 //     ADMIN: 'Admin'
 // };
  
+
 // export const PrivateRouter = [
 //     { path: "/employee/*", exact: true, access: [roles.INDIVIDUAL, roles.ENTITY], name: 'Layout', component: Layout },
 // ];
