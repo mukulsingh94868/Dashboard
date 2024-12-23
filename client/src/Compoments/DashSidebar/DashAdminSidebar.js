@@ -10,15 +10,13 @@ const DashAdminSidebar = () => {
     const getFullName = JSON.parse(localStorage.getItem('authFullName'));
     setIsUser(getLocalStorage);
     setIsFullName(getFullName);
-  }, [])
+  }, []);
   return (
     <>
       <div className="left_sidebar">
         <div className="d-flex align-items-center profile_img">
           <img src="../images/user.jpg" alt="" />
-
           <h6 className="mb-0">{isFullName} <br /> {isUser} </h6>
-
         </div>
 
         <nav className="sidebar_nav">
@@ -51,6 +49,11 @@ const DashAdminSidebar = () => {
             <li>
               <Link to="/dashboard/timeline">
                 <img src="../images/payroll.svg" alt="" /> TimeLine
+              </Link>
+            </li>
+            <li>
+              <Link to="/dashboard/org-chart">
+                <img src="../images/dashboard.svg" alt="" /> Org Chart
               </Link>
             </li>
           </ul>

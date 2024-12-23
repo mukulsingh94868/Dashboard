@@ -2,6 +2,7 @@ import AdminDashboard from "../Admin/AdminDashboard";
 import Dashboard from '../Admin/Dashboard';
 import CreateBlogAdmin from "../Admin/pages/CreateBlogAdmin";
 import OrderList from "../Admin/pages/OrderList";
+import OrgChart from "../Admin/pages/OrgChart";
 import ProductList from "../Admin/pages/ProductList";
 import TimeLine from "../Admin/pages/TimeLine";
 import KanbanBoard from "../Compoments/KanbanBoard/KanbanBoard";
@@ -115,5 +116,10 @@ export const AdminLayoutItem = [
         path: "/timeline",
         exact: true,
         component: TimeLine
+    },
+    {
+        path: "/org-chart",
+        exact: true,
+        component: OrgChart
     },
 ];
