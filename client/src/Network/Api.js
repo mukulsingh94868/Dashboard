@@ -71,7 +71,7 @@ export const addTodo = async (todo) => {
 
         const response = await axios.post(
             `${API_NEW}/todo/addTodo`,
-            {...todo, userId},
+            { ...todo, userId },
             {
                 headers: {
                     Authorization: `${token}`,
@@ -128,3 +128,56 @@ export const deleteTodo = async (id) => {
     }
 };
 
+
+
+
+// calender operations
+
+// add calender
+export const addCalenderEvent = async (event) => {
+    try {
+        const token = JSON.parse(localStorage.getItem('authUser'));
+        const userId = JSON.parse(localStorage.getItem('authId'));
+        if (!token) throw new Error("No token found");
+
+        const response = await axios.post(
+            `${API_NEW}/calender/events`,
+            { ...event, userId },
+            {
+                headers: {
+                    Authorization: `${token}`,
+                },
+            }
+        );
+        return response.data;
+    } catch (error) {
+        console.error("Error adding event:", error);
+        throw error;
+    }
+};
+
+// get calender by userId
+export const getCalenderEventByUserId = async (userId) => {
+    try {
+        const token = JSON.parse(localStorage.getItem('authUser'));
+        if (!token) throw new Error("No token found");
+
+        const response = await axios.get(
+            `${API_NEW}/calender/events/${userId}`,
+            {
+                headers: {
+                    Authorization: `${token}`,
+                },
+            }
+        );
+        return response.data;
+    } catch (error) {
+        console.error("Error fetching todos:", error);
+        throw error;
+    }
+};
+
+// delete calender
+export const deleteCalenderEvent = async (id) => {
+
+};

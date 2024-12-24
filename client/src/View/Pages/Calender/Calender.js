@@ -15,34 +15,31 @@ import {
   useTheme,
 } from '@mui/material';
 import axios from 'axios';
+import { addCalenderEvent, getCalenderEventByUserId } from '../../../Network/Api';
 
 const Calendar = () => {
   const theme = useTheme();
   const [currentEvents, setCurrentEvents] = useState([]);
 
-  useEffect(() => {
-    axios.get('http://localhost:5000/api/calender/events')
-      .then(response => setCurrentEvents(response.data))
-      .catch(error => console.error('Error fetching events:', error));
-  }, []);
-
-  const handleDateClick = async (selected) => {
+  const handleAddEvent = async (selected) => {
     const title = prompt('Please enter a new title for your event');
     const calendarApi = selected.view.calendar;
     calendarApi.unselect();
 
     if (title) {
       try {
-        const response = await axios.post('http://localhost:5000/api/calender/events', {
+        const newCalender = {
           title,
           start: selected.startStr,
           end: selected.endStr,
           allDay: selected.allDay,
-        });
-        const newEvent = response.data;
+        }
+        const createdEvent = await addCalenderEvent(newCalender);
+        const newEvent = createdEvent.savedEvent;
         setCurrentEvents(prevEvents => [...prevEvents, newEvent]);
         calendarApi.addEvent({
           id: newEvent._id,
+          userId: newEvent?.userId,
           title: newEvent.title,
           start: newEvent.start,
           end: newEvent.end,
@@ -54,7 +51,7 @@ const Calendar = () => {
     }
   };
 
-  const handleEventClick = async (selected) => {
+  const handleEventDelete = async (selected) => {
     if (window.confirm(`Are you sure you want to delete the event '${selected.event.title}'`)) {
       try {
         await axios.delete(`http://localhost:5000/api/calender/events/${selected.event.id}`);
@@ -65,6 +62,20 @@ const Calendar = () => {
       }
     }
   };
+
+  useEffect(() => {
+    const UserID = JSON.parse(localStorage.getItem('authId'));
+    const getCalenderEvents = async () => {
+      try {
+        const data = await getCalenderEventByUserId(UserID);
+        setCurrentEvents(data);
+      } catch (err) {
+        console.log('err', err);
+      }
+    };
+
+    getCalenderEvents();
+  }, []);
 
   return (
     <Box m="20px">
@@ -118,8 +129,8 @@ const Calendar = () => {
               selectable={true}
               selectMirror={true}
               dayMaxEvents={true}
-              select={handleDateClick}
-              eventClick={handleEventClick}
+              select={handleAddEvent}
+              eventClick={handleEventDelete}
               initialEvents={currentEvents}
             />
           </Box>
