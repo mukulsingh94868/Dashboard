@@ -160,7 +160,7 @@ const TableData = () => {
                                         <td>{index + 1}</td>
                                         <td>{item.fullname}</td>
                                         <td>{item.username}</td>
-                                        <td>{item.email}</td>
+                                        <td style={{ wordWrap: 'break-word' }}>{item.email}</td>
                                         <td>{item.phone}</td>
                                         <td>{item.gender}</td>
                                         <td>{item.location}</td>
