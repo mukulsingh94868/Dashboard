@@ -15,9 +15,6 @@ const BlogFullContent = () => {
             })
         })
     }, [id]);
-
-
-
     return (
         <div>
             <div>
