@@ -7,6 +7,7 @@ const BlogFullContent = () => {
     const { id } = useParams();
 
     const [post, setPost] = useState([]);
+    
 
     useEffect(() => {
         fetch(`http://localhost:5000/api/blog/post/${id}`).then((response) => {
