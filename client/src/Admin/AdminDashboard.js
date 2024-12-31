@@ -35,6 +35,7 @@ const AdminDashboard = () => {
         dispatch(GetAllOrdersData());
         dispatch(getProductData());
     }, [dispatch]);
+    
 
     const cardInfo = [
         {
