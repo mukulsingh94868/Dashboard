@@ -25,7 +25,6 @@ const AdminDashboard = () => {
     const prodData = useSelector((state) => state?.productReducer?.product);
     const orderState = useSelector((state) => state.orderReducer);
     
-
     useEffect(() => {
         const getData = async () => {
             const response = await fetch('http://localhost:5000/api/auth/getData');
