@@ -36,7 +36,6 @@ const AdminDashboard = () => {
         dispatch(getProductData());
     }, [dispatch]);
     
-
     const cardInfo = [
         {
             title: "Total User",
