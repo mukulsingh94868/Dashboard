@@ -30,6 +30,7 @@ const createProductByCategory = async (req, res) => {
   }
 };
 
+
 // GET: Fetch blogs by category
 const getBlogsByCategory = async (req, res) => {
   const { category } = req.params;
