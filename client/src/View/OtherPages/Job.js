@@ -15,8 +15,7 @@ const Job = () => {
                 </p>
             </div>
         </>
-
     )
 }
 
-export default Job
+export default Job;
