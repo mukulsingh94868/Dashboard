@@ -56,6 +56,11 @@ const DashAdminSidebar = () => {
                 <img src="../images/dashboard.svg" alt="" /> Org Chart
               </Link>
             </li>
+            <li>
+              <Link to="/dashboard/product-categories">
+                <img src="../images/dashboard.svg" alt="" /> Product Categories
+              </Link>
+            </li>
           </ul>
         </nav>
       </div>
