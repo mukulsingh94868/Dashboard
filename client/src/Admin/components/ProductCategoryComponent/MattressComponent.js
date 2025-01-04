@@ -9,7 +9,6 @@ const MattressComponent = ({ data, fn }) => {
 
   const handleOpenModal = () => setIsModalOpen(true);
   const handleCloseModal = () => setIsModalOpen(false);
-
   const handleSubmit = async (formData) => {
     try {
       // Create a FormData object to handle file uploads
