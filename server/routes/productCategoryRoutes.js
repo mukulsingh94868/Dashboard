@@ -1,6 +1,6 @@
 // blogRoutes.js
 const express = require("express");
-const { createProductByCategory, getBlogsByCategory, getBlogById } = require("../controllers/productCategoryController");
+const { createProductByCategory, getBlogsByCategory, getBlogById, deleteBlogsByCategory } = require("../controllers/productCategoryController");
 const upload = require("../middleware/upload");
 const router = express.Router();
 
@@ -16,5 +16,7 @@ router.get("/:category", getBlogsByCategory);
 
 // GET API to fetch detailed blog by ID
 router.get("/detail/:id", getBlogById);
+
+router.delete("/:id", deleteBlogsByCategory);
 
 module.exports = router;

@@ -9,6 +9,7 @@ const MattressComponent = ({ data, fn }) => {
 
   const handleOpenModal = () => setIsModalOpen(true);
   const handleCloseModal = () => setIsModalOpen(false);
+
   const handleSubmit = async (formData) => {
     try {
       // Create a FormData object to handle file uploads
@@ -55,7 +56,7 @@ const MattressComponent = ({ data, fn }) => {
           Add Mattress
         </Button>
       </div>
-      <AdminTable data={data} />
+      <AdminTable data={data} handleOpenModal={handleOpenModal} />
 
       <AdminCustomModal
         open={isModalOpen}

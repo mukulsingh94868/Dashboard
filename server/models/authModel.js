@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const userModel = new mongoose.Schema({
     fullname: {
         type: String,
-        required: true
+        required: true,
     },
     username: {
         type: String,

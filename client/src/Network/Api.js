@@ -181,3 +181,13 @@ export const getProductCategory = async (cat) => {
     throw error;
   }
 };
+
+export const deleteBlogsByCategory = async (id) => {
+  try {
+    const response = await axios.delete(`${API_NEW}/categoryProduct/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error deleting todo:", error);
+    throw error;
+  }
+}

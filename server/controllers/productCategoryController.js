@@ -73,8 +73,26 @@ const getBlogById = async (req, res) => {
   }
 };
 
+const deleteBlogsByCategory = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const blog = await ProductCategory.findById(id);
+    if (!blog) {
+      return res.status(404).json({ message: "ProductCategory not found" });
+    }
+    await ProductCategory.findByIdAndDelete(id);
+    res.status(200).json({ statusCode: 200, message: "ProductCategory deleted successfully" });
+  } catch (error) {
+    res
+      .status(500)
+      .json({ error: "Failed to fetch blog", details: error.message });
+  }
+};
+
 module.exports = {
   createProductByCategory,
   getBlogsByCategory,
   getBlogById,
+  deleteBlogsByCategory
 };
