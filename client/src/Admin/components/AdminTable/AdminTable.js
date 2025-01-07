@@ -40,6 +40,7 @@ const AdminTable = ({ data, handleOpenModal }) => {
     console.error("Expected 'data' to be an array, but received:", data);
     return <p>No data available to display</p>;
   }
+  
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
