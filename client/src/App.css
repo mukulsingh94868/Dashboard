@@ -388,6 +388,10 @@ header {
   padding: 11px 11px 11px 40px;
 }
 
+.header_right_icon {
+  display: flex;
+}
+
 .header_right_icon a {
   padding: 0 6px;
 }
