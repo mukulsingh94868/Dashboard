@@ -111,7 +111,6 @@ const DashHeader = () => {
                     </button>
                     <input type="search" placeholder="Search" />
                 </form>
-
                 {
                     cartState?.cartItems?.length >= 1 ?
                         <div className='cart_module'>
@@ -122,7 +121,6 @@ const DashHeader = () => {
                         :
                         null
                 }
-
                 <div className="header_right_icon">
                     <a href="#/">
                         <img src="../images/light_mode.svg" alt="" />
