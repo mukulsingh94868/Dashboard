@@ -45,14 +45,6 @@ const DashHeader = () => {
         // dispatch(Logout({ }, navigate));
     };
 
-    useEffect(() => {
-        if (isBodyClassActive) {
-            document.body.classList.add("hide_sidebar");
-        } else {
-            document.body.classList.remove("hide_sidebar");
-        }
-    }, [isBodyClassActive]);
-
     const toggleBodyClass = () => {
         setIsBodyClassActive(!isBodyClassActive);
     };
@@ -88,6 +80,14 @@ const DashHeader = () => {
         const res = dataFetch.filter((data) => data._id === JSON.parse(localStorage.getItem("authId")));
         return res[0]?.fullname?.substring(0, 1)?.toUpperCase();
     };
+
+    useEffect(() => {
+        if (isBodyClassActive) {
+            document.body.classList.add("hide_sidebar");
+        } else {
+            document.body.classList.remove("hide_sidebar");
+        }
+    }, [isBodyClassActive]);
 
     useEffect(() => {
         dispatch(getUserData());
