@@ -213,4 +213,4 @@ const DashHeader = () => {
     )
 }
 
-export default DashHeader
+export default DashHeader;
