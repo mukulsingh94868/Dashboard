@@ -91,7 +91,7 @@ const DashHeader = () => {
 
     useEffect(() => {
         dispatch(getUserData());
-    }, [dispatch]);
+    }, [dispatch])
     return (
         <>
             <header className="d-flex align-items-center">
