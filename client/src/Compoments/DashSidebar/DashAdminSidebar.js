@@ -61,11 +61,11 @@ const DashAdminSidebar = () => {
                 <img src="../images/dashboard.svg" alt="" /> Form Builder
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link to="/dashboard/product-categories">
                 <img src="../images/dashboard.svg" alt="" /> Product Categories
               </Link>
-            </li>
+            </li> */}
           </ul>
         </nav>
       </div>
