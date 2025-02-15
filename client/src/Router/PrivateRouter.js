@@ -128,9 +128,9 @@ export const AdminLayoutItem = [
     exact: true,
     component: FormBuilder
   },
-  {
-    path: "/product-categories",
-    exact: true,
-    component: ProductCategories,
-  },
+  // {
+  //   path: "/product-categories",
+  //   exact: true,
+  //   component: ProductCategories,
+  // },
 ];
