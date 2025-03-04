@@ -1,18 +1,14 @@
 import React from 'react';
-import Header from '../../Compoments/Header/Header';
-import LoginPage from '../../Auth/LoginPage';
 
 const Home = () => {
   return (
     <>
       <div className="main">
-        <Header />
-
         <div className='landingLogin'>
           <div className='loginSection'>
-            <LoginPage />
+            {/* <LoginPage /> */}
           </div>
-
+          <h1>Hello World</h1>
         </div>
         <div className=''>
         </div>

@@ -108,29 +108,6 @@ const RegisterPage = () => {
                         }}
                     >
                         <Box
-                            component="header"
-                            sx={{
-                                py: 3,
-                                display: 'flex',
-                                alignItems: 'left',
-                                justifyContent: 'space-between',
-                            }}
-                        >
-                            <Box
-                                sx={{
-                                    gap: 2,
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                }}
-                            >
-                                <IconButton variant="soft" color="primary" size="sm">
-                                    <BadgeRoundedIcon />
-                                </IconButton>
-                                <Typography level="title-lg">Company logo</Typography>
-                            </Box>
-
-                        </Box>
-                        <Box
                             component="main"
                             sx={{
                                 my: 'auto',

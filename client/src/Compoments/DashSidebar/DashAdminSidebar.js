@@ -1,76 +1,49 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 const DashAdminSidebar = () => {
-  const [isUser, setIsUser] = useState(null);
-  const [isFullName, setIsFullName] = useState(null);
+  const [user, setUser] = useState({ fullName: "", authPerson: "" });
+  const location = useLocation();
 
   useEffect(() => {
-    const getLocalStorage = JSON.parse(localStorage.getItem('authPerson'));
-    const getFullName = JSON.parse(localStorage.getItem('authFullName'));
-    setIsUser(getLocalStorage);
-    setIsFullName(getFullName);
+    const fullName = JSON.parse(localStorage.getItem("authFullName")) || "";
+    const authPerson = JSON.parse(localStorage.getItem("authPerson")) || "";
+    setUser({ fullName, authPerson });
   }, []);
-  return (
-    <>
-      <div className="left_sidebar">
-        <div className="d-flex align-items-center profile_img">
-          <img src="../images/user.jpg" alt="" />
-          <h6 className="mb-0">{isFullName} <br /> {isUser} </h6>
-        </div>
 
-        <nav className="sidebar_nav">
-          <ul>
-            <li>
-              <Link className="" to="/dashboard">
-                <img src="../images/dashboard.svg" alt="" /> Dashboard
-              </Link>
-            </li>
-            <li>
-              <Link to="/dashboard/user-management">
-                <img src="../images/payroll.svg" alt="" /> User Management
-              </Link>
-            </li>
-            <li>
-              <Link to="/dashboard/create-blog">
-                <img src="../images/payroll.svg" alt="" /> Create Blog
-              </Link>
-            </li>
-            <li>
-              <Link to="/dashboard/products-list">
-                <img src="../images/payroll.svg" alt="" /> Product List
-              </Link>
-            </li>
-            <li>
-              <Link to="/dashboard/orders-list">
-                <img src="../images/payroll.svg" alt="" /> Order List
-              </Link>
-            </li>
-            <li>
-              <Link to="/dashboard/timeline">
-                <img src="../images/payroll.svg" alt="" /> TimeLine
-              </Link>
-            </li>
-            <li>
-              <Link to="/dashboard/org-chart">
-                <img src="../images/dashboard.svg" alt="" /> Org Chart
-              </Link>
-            </li>
-            <li>
-              <Link to="/dashboard/form-builder">
-                <img src="../images/dashboard.svg" alt="" /> Form Builder
-              </Link>
-            </li>
-            {/* <li>
-              <Link to="/dashboard/product-categories">
-                <img src="../images/dashboard.svg" alt="" /> Product Categories
-              </Link>
-            </li> */}
-          </ul>
-        </nav>
+  const menuItems = [
+    { path: "/dashboard", label: "Dashboard", icon: "dashboard.svg" },
+    { path: "/dashboard/user-management", label: "User Management", icon: "payroll.svg" },
+    { path: "/dashboard/create-blog", label: "Create Blog", icon: "payroll.svg" },
+    { path: "/dashboard/products-list", label: "Product List", icon: "payroll.svg" },
+    { path: "/dashboard/orders-list", label: "Order List", icon: "payroll.svg" },
+    { path: "/dashboard/timeline", label: "Timeline", icon: "payroll.svg" },
+    { path: "/dashboard/org-chart", label: "Org Chart", icon: "dashboard.svg" },
+    { path: "/dashboard/form-builder", label: "Form Builder", icon: "dashboard.svg" },
+  ];
+
+  return (
+    <div className="left_sidebar">
+      <div className="d-flex align-items-center profile_img">
+        <img src="../images/user.jpg" alt="User" />
+        <h6 className="mb-0">
+          {user.fullName} <br /> {user.authPerson}
+        </h6>
       </div>
-    </>
-  )
-}
+
+      <nav className="sidebar_nav">
+        <ul>
+          {menuItems.map((item) => (
+            <li key={item.path}>
+              <Link to={item.path} className={location.pathname === item.path ? "active" : ""}>
+                <img src={`../images/${item.icon}`} alt={item.label} /> {item.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </div>
+  );
+};
 
 export default DashAdminSidebar;

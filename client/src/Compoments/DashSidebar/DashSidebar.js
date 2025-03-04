@@ -1,66 +1,48 @@
-import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 const DashSidebar = () => {
-    const [isUser, setIsUser] = useState(null);
-    const [isFullName, setIsFullName] = useState(null);
+    const [user, setUser] = useState({ fullName: "", authPerson: "" });
+    const location = useLocation();
 
     useEffect(() => {
-        const getLocalStorage = JSON.parse(localStorage.getItem('authPerson'));
-        const getFullName = JSON.parse(localStorage.getItem('authFullName'));
-        setIsUser(getLocalStorage);
-        setIsFullName(getFullName);
-    }, [])
+        const fullName = JSON.parse(localStorage.getItem("authFullName")) || "";
+        const authPerson = JSON.parse(localStorage.getItem("authPerson")) || "";
+        setUser({ fullName, authPerson });
+    }, []);
+
+    const menuItems = [
+        { path: "/dashboard", label: "Dashboard", icon: "dashboard.svg" },
+        { path: "/dashboard/profile", label: "User Profile", icon: "profile.svg" },
+        { path: "/dashboard/products", label: "Products", icon: "job.svg" },
+        { path: "/dashboard/blogs", label: "Blogs", icon: "onboarding.svg" },
+        { path: "/dashboard/kanban", label: "Kanban Board", icon: "payroll.svg" },
+        { path: "/dashboard/calender", label: "Calendar", icon: "payroll.svg" },
+        { path: "/dashboard/todo", label: "To Do", icon: "payroll.svg" },
+    ];
+
     return (
-        <>
-            <div className="left_sidebar">
-                <div className="d-flex align-items-center profile_img">
-                    <img src="../images/user.jpg" alt="" />
-                    <h6 className="mb-0">{isFullName} <br /> {isUser}</h6>
-                </div>
-
-                <nav className="sidebar_nav">
-                    <ul>
-                        <li>
-                            <Link className="" to="/dashboard">
-                                <img src="../images/dashboard.svg" alt="" /> Dashboard
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to="/dashboard/profile">
-                                <img src="../images/profile.svg" alt="" /> User Profile
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to="/dashboard/products">
-                                <img src="../images/job.svg" alt="" /> Products
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to="/dashboard/blogs">
-                                <img src="../images/onboarding.svg" alt="" /> Blogs
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to="/dashboard/kanban">
-                                <img src="../images/payroll.svg" alt="" /> Kanban Board
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to="/dashboard/calender">
-                                <img src="../images/payroll.svg" alt="" /> Calender
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to="/dashboard/todo">
-                                <img src="../images/payroll.svg" alt="" /> To Do
-                            </Link>
-                        </li>
-                    </ul>
-                </nav>
+        <div className="left_sidebar">
+            <div className="d-flex align-items-center profile_img">
+                <img src="../images/user.jpg" alt="User" />
+                <h6 className="mb-0">
+                    {user.fullName} <br /> {user.authPerson}
+                </h6>
             </div>
-        </>
-    )
-}
 
-export default DashSidebar
+            <nav className="sidebar_nav">
+                <ul>
+                    {menuItems.map((item) => (
+                        <li key={item.path}>
+                            <Link to={item.path} className={location.pathname === item.path ? "active" : ""}>
+                                <img src={`../images/${item.icon}`} alt={item.label} /> {item.label}
+                            </Link>
+                        </li>
+                    ))}
+                </ul>
+            </nav>
+        </div>
+    );
+};
+
+export default DashSidebar;
