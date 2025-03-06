@@ -12,7 +12,6 @@ export const getContactListData = () => async (dispatch) => {
 };
 
 export const submitContact = (contact) => async (dispatch) => {
-    console.log('contact', contact);;
     try {
         const { data } = await Api.addContact(contact);
         dispatch({ type: CONTACT_SUBMIT, payload: data });
