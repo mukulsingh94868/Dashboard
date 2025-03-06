@@ -28,13 +28,13 @@ const Header = () => {
                 <div className="headerButtonsGroup">
                     <button type="button" className="saleEnq"><Link to="/login" style={{ textDecoration: 'none' , color: '#fff'}}> Login</Link></button>
                     <button type="button" className="signUp"> <Link to="/register" style={{ textDecoration: 'none', color: '#fff'}}> Register </Link> </button>
-                    <div className="dropdown">
+                    {/* <div className="dropdown">
                         <button className="dropbtn"> <img className='Langicon' src={LangIcon} alt="#" /> EN <img className='Arrow' src={Arrow} alt="#" /></button>
                         <div className="dropdown-content">
                             <a href="#/">English</a>
                             <a href="#/">Hindi</a>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </>
