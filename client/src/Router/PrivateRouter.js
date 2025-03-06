@@ -1,5 +1,6 @@
 import AdminDashboard from "../Admin/AdminDashboard";
 import Dashboard from "../Admin/Dashboard";
+import ContactList from "../Admin/pages/ContactList";
 import CreateBlogAdmin from "../Admin/pages/CreateBlogAdmin";
 import FormBuilder from "../Admin/pages/FormBuilder";
 import OrderList from "../Admin/pages/OrderList";
@@ -122,6 +123,11 @@ export const AdminLayoutItem = [
     path: "/org-chart",
     exact: true,
     component: OrgChart,
+  },
+  {
+    path: "/contact-list",
+    exact: true,
+    component: ContactList
   },
   {
     path: "/form-builder",

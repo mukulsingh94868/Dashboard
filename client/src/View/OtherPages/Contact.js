@@ -2,15 +2,17 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./contact.css";
 import toast from "react-hot-toast";
+import { useDispatch, useSelector } from 'react-redux';
+import { submitContact } from "../../Redux/actions/contactActions";
 
 const Contact = () => {
+    const dispatch = useDispatch();
     const [formData, setFormData] = useState({
         name: "",
         email: "",
         subject: "",
         message: ""
     });
-    const [responseMsg, setResponseMsg] = useState("");
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -19,16 +21,10 @@ const Contact = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post("http://localhost:5000/api/contact/submitForm", formData);
-            console.log('res', res);
-            setResponseMsg(res.data.message);
+            dispatch(submitContact(formData));
             setFormData({ name: "", email: "", subject: "", message: "" });
-            toast.success(res?.data?.message, {
-                duration: 3000,
-                position: 'top-right'
-            });
         } catch (error) {
-            setResponseMsg("Something went wrong! Please try again.");
+            console.log('error', error);
         }
     };
 

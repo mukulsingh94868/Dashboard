@@ -19,6 +19,7 @@ const DashAdminSidebar = () => {
     { path: "/dashboard/orders-list", label: "Order List", icon: "payroll.svg" },
     { path: "/dashboard/timeline", label: "Timeline", icon: "payroll.svg" },
     { path: "/dashboard/org-chart", label: "Org Chart", icon: "dashboard.svg" },
+    { path: "/dashboard/contact-list", label: "Contact List", icon: "dashboard.svg" },
     { path: "/dashboard/form-builder", label: "Form Builder", icon: "dashboard.svg" },
   ];
 
