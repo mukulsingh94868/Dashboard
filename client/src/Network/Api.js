@@ -29,6 +29,19 @@ export const placedOrders = (formData) =>
   API.post("/order/place-order", formData);
 export const getOrders = () => API.get("/order/get-orders");
 
+
+
+
+
+// contact operations
+
+export const getContactList = () => API.get("/contact/getAllContacts");
+export const addContact = (formData) => API.post("/contact/submitForm", formData);
+
+
+
+
+
 // todo operations
 const API_NEW = "http://localhost:5000/api";
 

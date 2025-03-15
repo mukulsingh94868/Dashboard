@@ -4,12 +4,14 @@ import authReducer from './reducers/AuthReducers';
 import AuthCrudReducer from './reducers/AuthCrudReducer';
 import productReducer from './reducers/productReducer';
 import orderReducer from './reducers/orderReducer';
+import contactReducer from './reducers/contactReducer';
 
 const reducers = combineReducers({
     authReducer: authReducer,
     AuthCrudReducer: AuthCrudReducer,
     productReducer: productReducer,
-    orderReducer: orderReducer
+    orderReducer: orderReducer,
+    contactReducer: contactReducer
 });
 
 const cartItems = localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')) : [];

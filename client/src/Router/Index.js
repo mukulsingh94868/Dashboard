@@ -1,19 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import AdminLayout from '../Layout/AdminLayout';
-import Layout from '../Layout/Layout';
-import Home from '../View/Pages/Home';
+import { useSelector } from 'react-redux';
+import { Route, Routes } from "react-router-dom";
+import ForgotPage from '../Auth/ForgotPage';
 import LoginPage from '../Auth/LoginPage';
 import RegisterPage from '../Auth/RegisterPage';
-import Resource from '../View/OtherPages/Resource';
+import Header from '../Compoments/Header/Header';
+import AdminLayout from '../Layout/AdminLayout';
+import Layout from '../Layout/Layout';
 import About from '../View/OtherPages/About';
-import Job from '../View/OtherPages/Job';
+import Contact from '../View/OtherPages/Contact';
+import FAQ from '../View/OtherPages/FAQ';
 import IndustriesSolutions from '../View/OtherPages/IndustriesSolutions';
+import Job from '../View/OtherPages/Job';
+import Resource from '../View/OtherPages/Resource';
+import Home from '../View/Pages/Home';
 import ResetPassword from '../View/Pages/ResetPassword/ResetPassword';
-import ForgotPage from '../Auth/ForgotPage';
-import { useSelector } from 'react-redux';
 
-const Index = () => {
+const RouterIndex = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     const [isUser, setIsUser] = useState(null);
@@ -38,13 +41,15 @@ const Index = () => {
     }, [isLoggedIn]);
 
     return (
-        <BrowserRouter>
+        <>
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/job" element={<Job />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/IndustriesSolutions" element={<IndustriesSolutions />} />
                 <Route path="/resource" element={<Resource />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/faq" element={<FAQ />} />
                 <Route path="/register" exact element={<RegisterPage />} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/forgot-password" element={<ForgotPage />} />
@@ -80,8 +85,8 @@ const Index = () => {
                 } */}
                 {/* <Route path="*" element={<Navigate to='/dashboard' />} /> */}
             </Routes>
-        </BrowserRouter>
+        </>
     )
 }
 
-export default Index
+export default RouterIndex;

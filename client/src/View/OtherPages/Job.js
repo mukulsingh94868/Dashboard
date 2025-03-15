@@ -4,7 +4,6 @@ import Header from '../../Compoments/Header/Header'
 const Job = () => {
     return (
         <>
-            <Header />
             <div className='container'>
                 <h1 className="title is-1">This is the Job Page</h1>
                 <p>

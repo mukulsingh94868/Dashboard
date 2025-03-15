@@ -17,3 +17,7 @@ export const DELETE_FROM_CART = 'DELETE_FROM_CART';
 // order
 export const ORDER_PLACED = 'ORDER_PLACED';
 export const GET_ALL_ORDERS = 'ORDER_PLACED';
+
+// contact
+export const GET_ALL_CONTACT = 'GET_ALL_CONTACT';
+export const CONTACT_SUBMIT = 'CONTACT_SUBMIT';

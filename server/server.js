@@ -15,6 +15,7 @@ const favouriteRoutes = require('./routes/favouriteRoutes');
 const todoRoutes = require('./routes/todoRoutes'); 
 const userFormRoutes = require('./routes/userFormRoutes'); 
 const categoryProductRoutes = require('./routes/productCategoryRoutes');
+const contactRoutes = require('./routes/contactRoutes');
 
 app.use(cors('*'));
 app.use(express.json());
@@ -32,6 +33,7 @@ app.use('/api/favourite', favouriteRoutes);
 app.use('/api/todo', todoRoutes);
 app.use('/api/userForm', userFormRoutes);
 app.use('/api/categoryProduct', categoryProductRoutes);
+app.use('/api/contact', contactRoutes);
 
 const PORT = 5000;
 
