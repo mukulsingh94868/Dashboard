@@ -38,7 +38,7 @@ const AdminProductListTable = ({ prodData }) => {
     const handleExport = () => {
         // Prepare CSV content
         const headers = ["Name", "Color", "Inches", "Sale Price", "Type"];
-        const csvRows = prodData.map((prod) => [
+        const csvRows = prodData?.map((prod) => [
             prod.name,
             prod.color,
             prod.inches,

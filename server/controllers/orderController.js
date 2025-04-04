@@ -4,6 +4,7 @@ const OrderModel = require('../models/orderModel');
 
 module.exports.PlaceOrder = async (req, res) => {
     try {
+        const userId = res?.locals?.userId;
         const { token, subtotal, cartItems } = req.body;
 
         const customer = await stripe?.customers?.create({
@@ -22,6 +23,7 @@ module.exports.PlaceOrder = async (req, res) => {
 
         if (payment) {
             const neworder = new OrderModel({
+                userId,
                 orderItems: cartItems,
                 orderAmount: subtotal,
                 shippingAddress: {
@@ -46,7 +48,18 @@ module.exports.getOrders = async (req, res) => {
     // const { userid } = req.body;
     try {
         const orders = await OrderModel.find();
-        res.send(orders)
+        res.send({ statusCode: 200, message: 'Orders fetched successfully', orders });
+    } catch (error) {
+        return res.status(400).json({ messgae: 'Something went wrong' });
+    }
+}
+
+module.exports.getOrdersByUserId = async (req, res) => {
+    // const { userid } = req.body;
+    const query = { userId: res?.locals?.userId };
+    try {
+        const orders = await OrderModel.find(query);
+        res.send({ statusCode: 200, message: 'Orders fetched successfully', orders });
     } catch (error) {
         return res.status(400).json({ messgae: 'Something went wrong' });
     }

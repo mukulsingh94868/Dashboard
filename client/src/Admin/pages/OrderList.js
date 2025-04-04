@@ -8,9 +8,9 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { GetAllOrdersData } from '../../Redux/actions/orderActions';
 import moment from 'moment';
-import { Button } from '@mui/material';
-import './addProduct.css';
+import { Button, Typography } from '@mui/material';
 import { CSVLink } from 'react-csv';
+import './addProduct.css';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -35,6 +35,7 @@ const OrderList = () => {
   const dispatch = useDispatch();
   const [searchQuery, setSearchQuery] = useState('');
   const orderState = useSelector((state) => state.orderReducer);
+  const orders = orderState?.orders?.orders || [];
 
   useEffect(() => {
     dispatch(GetAllOrdersData());
@@ -44,26 +45,35 @@ const OrderList = () => {
     setSearchQuery(e.target.value);
   };
 
-  const filteredOrders = orderState?.orders?.filter(order =>
-    order?._id.includes(searchQuery) ||
-    order?.orderItems[0]?.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    order?.transactionId.includes(searchQuery) ||
-    order?.shippingAddress?.city.toLowerCase().includes(searchQuery.toLowerCase())
-  );
-  return (
-    <>
-      <div className="form-container">
-        <div className='exportTech'>
-          <div>
-            <input type='text' placeholder='Search' value={searchQuery} onChange={handleSearchChange} />
-          </div>
+  const filteredOrders = orders?.length > 0
+    ? orders.filter((order) =>
+    (order?._id?.includes(searchQuery) ||
+      order?.orderItems?.[0]?.name?.toLowerCase()?.includes(searchQuery.toLowerCase()) ||
+      order?.transactionId?.includes(searchQuery) ||
+      order?.shippingAddress?.city?.toLowerCase()?.includes(searchQuery.toLowerCase()))
+    )
+    : [];
 
-          <div>
-            <CSVLink data={filteredOrders} filename="data.csv">
-              <Button variant='outlined'>Export</Button>
-            </CSVLink>
-          </div>
+  return (
+    <div className="form-container">
+      <div className='exportTech'>
+        <div>
+          <input type='text' placeholder='Search' value={searchQuery} onChange={handleSearchChange} />
         </div>
+
+        <div>
+          <CSVLink data={filteredOrders?.length > 0 ? filteredOrders : []} filename="orders.csv">
+            <Button variant='outlined' disabled={filteredOrders.length === 0}>Export</Button>
+          </CSVLink>
+        </div>
+      </div>
+
+      {/* Show message if no orders exist */}
+      {orders.length === 0 ? (
+        <Typography variant="h6" style={{ textAlign: "center", marginTop: "20px", color: "red" }}>
+          No Orders Found
+        </Typography>
+      ) : (
         <Table sx={{ minWidth: 700 }} aria-label="customized table">
           <TableHead>
             <TableRow>
@@ -78,25 +88,35 @@ const OrderList = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {filteredOrders?.map((row, index) => {
-              return (
-                <StyledTableRow key={index}>
-                  <StyledTableCell component="th" scope="row">{index + 1}</StyledTableCell>
-                  <StyledTableCell component="th" scope="row">{row?._id}</StyledTableCell>
-                  <StyledTableCell align="left">{row?.orderItems[0]?.name}</StyledTableCell>
-                  <StyledTableCell align="left">{row?.orderAmount}</StyledTableCell>
-                  <StyledTableCell align="right">{row?.transactionId}</StyledTableCell>
-                  <StyledTableCell align="right">{moment(row?.createdAt).format("DD/MM/YYYY")}</StyledTableCell>
-                  <StyledTableCell align="right">{moment(row?.updatedAt).format("DD/MM/YYYY")}</StyledTableCell>
-                  <StyledTableCell align="right">{row?.shippingAddress?.city}</StyledTableCell>
+            {filteredOrders.length > 0 ? (
+              filteredOrders.map((row, index) => (
+                <StyledTableRow key={row?._id || index}>
+                  <StyledTableCell>{index + 1}</StyledTableCell>
+                  <StyledTableCell>{row?._id || "N/A"}</StyledTableCell>
+                  <StyledTableCell>{row?.orderItems?.[0]?.name || "N/A"}</StyledTableCell>
+                  <StyledTableCell>{row?.orderAmount || "N/A"}</StyledTableCell>
+                  <StyledTableCell align="right">{row?.transactionId || "N/A"}</StyledTableCell>
+                  <StyledTableCell align="right">
+                    {row?.createdAt ? moment(row?.createdAt).format("DD/MM/YYYY") : "N/A"}
+                  </StyledTableCell>
+                  <StyledTableCell align="right">
+                    {row?.updatedAt ? moment(row?.updatedAt).format("DD/MM/YYYY") : "N/A"}
+                  </StyledTableCell>
+                  <StyledTableCell align="right">{row?.shippingAddress?.city || "N/A"}</StyledTableCell>
                 </StyledTableRow>
-              )
-            })}
+              ))
+            ) : (
+              <TableRow>
+                <TableCell colSpan={8} style={{ textAlign: "center", color: "red" }}>
+                  No matching orders found
+                </TableCell>
+              </TableRow>
+            )}
           </TableBody>
         </Table>
-      </div>
-    </>
-  )
-}
+      )}
+    </div>
+  );
+};
 
 export default OrderList;

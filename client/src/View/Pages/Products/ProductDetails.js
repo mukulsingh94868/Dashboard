@@ -1,8 +1,6 @@
-import AddIcon from '@mui/icons-material/Add';
-import RemoveIcon from '@mui/icons-material/Remove';
 import Button from '@mui/joy/Button';
 import { Grid, Typography } from '@mui/material';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { addToCart, getProductDataById } from '../../../Redux/actions/productActions';
@@ -14,6 +12,8 @@ const ProductDetails = () => {
     const classes = useStyles();
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const [varient, setVarient] = useState('small');
+    const [quantity, setQuantity] = useState(1);
 
     useEffect(() => {
         dispatch(getProductDataById(id));
@@ -22,8 +22,7 @@ const ProductDetails = () => {
     const getProductData = useSelector((state) => state.productReducer.product);
 
     const addtocart = () => {
-        // dispatch(addToCart(getProductData, quantity, varient));
-        alert('Addtocart');
+        dispatch(addToCart(getProductData, quantity, varient));
     };
     return (
         <>
@@ -54,14 +53,35 @@ const ProductDetails = () => {
                                                     <Typography className={classes.colorName2}> {getProductData?.color}</Typography>
                                                 </div>
 
-                                                {/* <div className={classes.colorQuality}>
-                                                    <Typography className={classes.varientQuantity}> Quantity: </Typography>
-                                                    <div className={classes.minusPlus}>
-                                                        <AddIcon className={classes.addIcon} />
-                                                        <Typography className={classes.productQuantity}>{getProductData?.quantity}</Typography>
-                                                        <RemoveIcon className={classes.removeIcon} />
+                                                <div className={classes.selectPart}>
+                                                    <div>
+                                                        <Typography className={classes.selectTypo}>Varients</Typography>
+                                                        <select className={classes.selectControl} value={varient} onChange={(e) => setVarient(e.target.value)}>
+                                                            {
+                                                                getProductData?.varients?.map((varient, index) => {
+                                                                    return (
+                                                                        <option value={varient} key={index}>
+                                                                            {varient}
+                                                                        </option>
+                                                                    )
+                                                                })
+                                                            }
+                                                        </select>
                                                     </div>
-                                                </div> */}
+
+                                                    <div>
+                                                        <Typography className={classes.selectTypo}>Quantity</Typography>
+                                                        <select className={classes.selectControl} value={quantity} onChange={(e) => setQuantity(e.target.value)}>
+                                                            {[...Array(10)?.keys()]?.map((x, i) => {
+                                                                return (
+                                                                    <option value={i + 1} key={i}>
+                                                                        {i + 1}
+                                                                    </option>
+                                                                )
+                                                            })}
+                                                        </select>
+                                                    </div>
+                                                </div>
 
                                                 <div className={classes.colorQuality}>
                                                     <Typography className={classes.price}>Price: </Typography>

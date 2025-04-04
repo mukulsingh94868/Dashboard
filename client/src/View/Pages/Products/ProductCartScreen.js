@@ -79,12 +79,10 @@ const ProductCartScreen = () => {
 
                                         {
                                             !!orderDone && orderDone ? (
-                                                <>
-                                                    <div className={classes.orderPlaced}>
-                                                        <Typography>Your order is placed Successfully!</Typography>
-                                                        <Typography>Go to orders section for more information</Typography>
-                                                    </div>
-                                                </>
+                                                <div className={classes.orderPlaced}>
+                                                    <Typography>Your order is placed Successfully!</Typography>
+                                                    <Typography>Go to orders section for more information</Typography>
+                                                </div>
                                             ) : (
                                                 <>
                                                     <div className={classes.orderSummary}>
@@ -121,7 +119,6 @@ const ProductCartScreen = () => {
                                                 </>
                                             )
                                         }
-
                                     </div>
                                 </div>
                             )

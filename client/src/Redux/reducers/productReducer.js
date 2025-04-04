@@ -30,6 +30,11 @@ const productReducer = (state = { product: [], cartItems: [] }, action) => {
                 ...state,
                 cartItems: state?.cartItems?.filter((item) => item?._id !== action?.payload?._id)
             }    
+        case actionType.EMPTY_CART:
+            return {
+                ...state,
+                cartItems: []
+            }    
         default:
             return state;
     }

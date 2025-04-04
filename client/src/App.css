@@ -622,6 +622,7 @@ Grid Of Dashboards
 .cart_text {
   font-size: 16px !important;
   font-weight: 600 !important;
+  cursor: pointer;
 }
 
 .cardItemLength {

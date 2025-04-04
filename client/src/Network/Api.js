@@ -25,9 +25,9 @@ export const getProducts = () => API.get("/product/products");
 export const getProductsById = (id) => API.get(`/product/products/${id}`);
 
 // orders operations
-export const placedOrders = (formData) =>
-  API.post("/order/place-order", formData);
+export const placedOrders = (formData) => API.post("/order/place-order", formData);
 export const getOrders = () => API.get("/order/get-orders");
+// export const getOrdersByUserId = (userId) => API.get(`/order/get-orders/${userId}`);
 
 
 
@@ -44,6 +44,25 @@ export const addContact = (formData) => API.post("/contact/submitForm", formData
 
 // todo operations
 const API_NEW = "http://localhost:5000/api";
+
+
+// get order By userId
+export const getOrdersByUserId = async (userId) => {
+  try {
+    const token = JSON.parse(localStorage.getItem("authUser"));
+    if (!token) throw new Error("No token found");
+
+    const response = await axios.get(`${API_NEW}/order/get-orders/${userId}`, {
+      headers: {
+        Authorization: `${token}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching todos:", error);
+    throw error;
+  }
+};
 
 const getToken = () => localStorage.getItem("token");
 

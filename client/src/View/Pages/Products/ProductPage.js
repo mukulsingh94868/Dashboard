@@ -6,8 +6,7 @@ import { Grid } from '@mui/material';
 
 const ProductPage = () => {
     const dispatch = useDispatch();
-
-    const prodData = useSelector((state) => state?.productReducer?.product);
+    const prodData = useSelector((state) => state?.productReducer?.product ?? []);
 
     useEffect(() => {
         dispatch(getProductData());
@@ -15,7 +14,7 @@ const ProductPage = () => {
     return (
         <Grid container spacing={3}>
             {
-                !!prodData && prodData?.map((prod, index) => {
+                !!prodData && Array.isArray(prodData) && prodData?.map((prod, index) => {
                     return (
                         <Products prod={prod} index={index} />
                     )

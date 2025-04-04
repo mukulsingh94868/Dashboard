@@ -1,9 +1,9 @@
 import Button from '@mui/joy/Button';
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
 import StripeCheckout from 'react-stripe-checkout';
-import useStyles from './style';
 import { PlacedOrderData } from '../../../Redux/actions/orderActions';
+import useStyles from './style';
 
 const CheckoutPage = ({ subTotal, setOrderDone }) => {
     const dispatch = useDispatch();
