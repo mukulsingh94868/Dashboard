@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '../Compoments/Header/Header';
 import { useLocation } from 'react-router-dom';
+import Footer from '../Compoments/Footer/Footer';
 
 const OuterLayout = ({ children }) => {
     const location = useLocation();
@@ -10,6 +11,7 @@ const OuterLayout = ({ children }) => {
         <div>
             {shouldShowHeader && <Header />}
             <main>{children}</main>
+            <Footer />
         </div>
     );
 };
