@@ -1,5 +1,4 @@
-import React from 'react'
-import Header from '../../Compoments/Header/Header';
+import React from 'react';
 
 const About = () => (
     <>

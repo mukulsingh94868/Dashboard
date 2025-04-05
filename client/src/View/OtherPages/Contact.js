@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import axios from "axios";
-import "./contact.css";
-import toast from "react-hot-toast";
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { submitContact } from "../../Redux/actions/contactActions";
+import "./contact.css";
 
 const Contact = () => {
     const dispatch = useDispatch();

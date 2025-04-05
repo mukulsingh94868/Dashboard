@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 import { Route, Routes } from "react-router-dom";
 import ForgotPage from '../Auth/ForgotPage';
 import LoginPage from '../Auth/LoginPage';
 import RegisterPage from '../Auth/RegisterPage';
-import Header from '../Compoments/Header/Header';
 import AdminLayout from '../Layout/AdminLayout';
 import Layout from '../Layout/Layout';
 import About from '../View/OtherPages/About';
@@ -20,8 +18,6 @@ const RouterIndex = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     const [isUser, setIsUser] = useState(null);
-    const localUser = useSelector((state) => state.authReducer.authData);
-    const userd = localUser?.data?.role;
 
     useEffect(() => {
         const getLocalStorage = JSON.parse(localStorage.getItem('authPerson'));

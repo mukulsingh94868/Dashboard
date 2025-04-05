@@ -1,9 +1,8 @@
-import "./App.css";
-import Home from "./View/Pages/Home";
-import RouterIndex from './Router/Index';
 import { Toaster } from 'react-hot-toast';
 import { BrowserRouter as Router } from "react-router-dom";
+import "./App.css";
 import OuterLayout from "./Layout/OuterLayout";
+import RouterIndex from './Router/Index';
 
 
 function App() {

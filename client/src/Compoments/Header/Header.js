@@ -1,9 +1,6 @@
 import React from 'react';
-import './header.css';
-import Logo from '../../Assets/logo.svg'
-import LangIcon from '../../Assets/global-svgrepo-com.svg'
-import Arrow from '../../Assets/arrow-down-338-svgrepo-com.svg'
 import { Link } from "react-router-dom";
+import './header.css';
 
 
 
