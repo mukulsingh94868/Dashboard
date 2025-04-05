@@ -45,6 +45,10 @@ const Home = () => {
             <h3>✍️ Blog Manager</h3>
             <p>Create and manage your content with a built-in blog editor.</p>
           </div>
+          <div className="feature-card">
+            <h3>👤 User Profile</h3>
+            <p>Manage your profile proper profile documentation.</p>
+          </div>
         </div>
       </section>
     </div>

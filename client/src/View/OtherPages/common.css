@@ -1,0 +1,389 @@
+/* about css */
+
+.about-container {
+  font-family: "Segoe UI", sans-serif;
+  color: #2c3e50;
+  background-color: #fdfdfd;
+}
+
+.about-hero {
+  background: linear-gradient(to right, #2c3e50, #4ca1af);
+  color: white;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.about-hero h1 {
+  font-size: 48px;
+  margin-bottom: 15px;
+}
+
+.about-hero p {
+  font-size: 18px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.about-content {
+  padding: 60px 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.about-section {
+  margin-bottom: 40px;
+}
+
+.about-section h2 {
+  font-size: 28px;
+  margin-bottom: 15px;
+  color: #34495e;
+}
+
+.about-section p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.about-section ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.about-section li {
+  background: #ecf0f1;
+  padding: 10px 15px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  transition: 0.2s ease;
+}
+
+.about-section li:hover {
+  background: #d0e6f7;
+}
+
+.about-footer {
+  background-color: #2c3e50;
+  color: white;
+  text-align: center;
+  padding: 25px;
+  font-size: 14px;
+}
+
+/* industries and solutions css */
+
+.industries-container {
+  font-family: "Segoe UI", sans-serif;
+  color: #2c3e50;
+  background-color: #fcfcfc;
+}
+
+.industries-hero {
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  color: white;
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.industries-hero h1 {
+  font-size: 42px;
+  margin-bottom: 20px;
+}
+
+.industries-hero p {
+  font-size: 18px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.industry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  padding: 60px 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.industry-card {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  padding: 25px;
+  transition: transform 0.2s ease;
+}
+
+.industry-card:hover {
+  transform: translateY(-5px);
+}
+
+.industry-card h2 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.industry-card p {
+  font-size: 14px;
+  color: #555;
+}
+
+.solutions-section {
+  background-color: #f0f4f8;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.solutions-section h2 {
+  font-size: 30px;
+  margin-bottom: 25px;
+}
+
+.solutions-section ul {
+  list-style: none;
+  padding: 0;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.solutions-section li {
+  padding: 12px 20px;
+  margin-bottom: 12px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  font-size: 16px;
+  text-align: left;
+}
+
+.industries-footer {
+  background-color: #2c3e50;
+  color: white;
+  padding: 25px;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* resource page css */
+
+.resource-container {
+  font-family: "Segoe UI", sans-serif;
+  background: #f9fafb;
+  color: #2d3748;
+  padding-bottom: 60px;
+}
+
+.resource-hero {
+  background: linear-gradient(120deg, #4e54c8, #8f94fb);
+  color: white;
+  text-align: center;
+  padding: 70px 20px 50px;
+}
+
+.resource-hero h1 {
+  font-size: 42px;
+  margin-bottom: 15px;
+}
+
+.resource-hero p {
+  font-size: 18px;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.resource-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  padding: 50px 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.resource-card {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.resource-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.resource-card h3 {
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
+.resource-card p {
+  font-size: 15px;
+  margin-bottom: 15px;
+}
+
+.resource-card a {
+  font-weight: bold;
+  color: #4e54c8;
+  text-decoration: none;
+}
+
+.resource-card a:hover {
+  text-decoration: underline;
+}
+
+.resource-footer {
+  text-align: center;
+  padding: 40px 20px;
+  font-size: 14px;
+  background-color: #2d3748;
+  color: #fff;
+}
+
+.resource-footer a {
+  color: #90cdf4;
+  text-decoration: underline;
+}
+
+/* jobs css */
+
+.job-page {
+  padding: 60px 20px;
+  font-family: "Segoe UI", sans-serif;
+  background-color: #f9fafb;
+}
+
+.job-hero {
+  text-align: center;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #4f46e5, #3b82f6);
+  color: white;
+  border-radius: 12px;
+  margin-bottom: 40px;
+}
+
+.job-hero h1 {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.job-hero p {
+  font-size: 18px;
+  color: #dbeafe;
+}
+
+.job-values {
+  max-width: 1000px;
+  margin: 0 auto 50px;
+  text-align: center;
+}
+
+.job-values h2 {
+  font-size: 28px;
+  margin-bottom: 30px;
+  color: #1f2937;
+}
+
+.job-values-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.value-card {
+  flex: 1 1 30%;
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.value-card:hover {
+  transform: translateY(-5px);
+}
+
+.value-card h4 {
+  font-size: 20px;
+  color: #2563eb;
+  margin-bottom: 10px;
+}
+
+.value-card p {
+  color: #4b5563;
+  font-size: 15px;
+}
+
+.job-openings {
+  max-width: 1000px;
+  margin: auto;
+  text-align: center;
+}
+
+.job-openings h2 {
+  font-size: 28px;
+  margin-bottom: 30px;
+  color: #1f2937;
+}
+
+.job-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.job-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  width: 280px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+  text-align: left;
+  transition: transform 0.3s ease;
+}
+
+.job-card:hover {
+  transform: translateY(-6px);
+}
+
+.job-card h3 {
+  color: #111827;
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.job-card p {
+  color: #6b7280;
+  margin-bottom: 15px;
+}
+
+.job-card button {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.job-card button:hover {
+  background-color: #2563eb;
+}
+
+@media (max-width: 768px) {
+  .job-values-grid,
+  .job-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .value-card,
+  .job-card {
+    width: 100%;
+    max-width: 400px;
+  }
+}
