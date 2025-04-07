@@ -1,17 +1,13 @@
 
-import { Logout, PersonAdd, Settings } from '@mui/icons-material';
-import MoreVert from '@mui/icons-material/MoreVert';
-import Dropdown from '@mui/joy/Dropdown';
+import ControlCameraIcon from '@mui/icons-material/ControlCamera';
 import Menu from '@mui/joy/Menu';
-import MenuButton from '@mui/joy/MenuButton';
 import MenuItem from '@mui/joy/MenuItem';
-import { Avatar, Box, Divider, IconButton, ListItemIcon, Tooltip, Typography } from '@mui/material';
+import { Avatar, Divider, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
-import ControlCameraIcon from '@mui/icons-material/ControlCamera';
-import { getUserById, getUserData } from '../../Redux/actions/AuthCrudActions';
+import { getUserData } from '../../Redux/actions/AuthCrudActions';
 
 const DashHeader = () => {
     const navigate = useNavigate();

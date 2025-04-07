@@ -5,7 +5,6 @@ import CreateBlogAdmin from "../Admin/pages/CreateBlogAdmin";
 import FormBuilder from "../Admin/pages/FormBuilder";
 import OrderList from "../Admin/pages/OrderList";
 import OrgChart from "../Admin/pages/OrgChart";
-import ProductCategories from "../Admin/pages/ProductCategories";
 import ProductList from "../Admin/pages/ProductList";
 import TimeLine from "../Admin/pages/TimeLine";
 import KanbanBoard from "../Compoments/KanbanBoard/KanbanBoard";

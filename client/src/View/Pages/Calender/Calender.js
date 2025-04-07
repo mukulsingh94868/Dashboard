@@ -1,24 +1,22 @@
-import { useState, useEffect } from 'react';
-import FullCalendar from '@fullcalendar/react';
-import Grid from '@mui/material/Unstable_Grid2';
+import { formatDate } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
-import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import listPlugin from '@fullcalendar/list';
-import { formatDate } from '@fullcalendar/core';
+import FullCalendar from '@fullcalendar/react';
+import timeGridPlugin from '@fullcalendar/timegrid';
 import {
   Box,
   List,
   ListItem,
   ListItemText,
-  Typography,
-  useTheme,
+  Typography
 } from '@mui/material';
+import Grid from '@mui/material/Unstable_Grid2';
 import axios from 'axios';
+import { useEffect, useState } from 'react';
 import { addCalenderEvent, getCalenderEventByUserId } from '../../../Network/Api';
 
 const Calendar = () => {
-  const theme = useTheme();
   const [currentEvents, setCurrentEvents] = useState([]);
 
   const handleAddEvent = async (selected) => {

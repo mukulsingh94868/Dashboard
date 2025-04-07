@@ -1,13 +1,12 @@
-import React, { useEffect } from "react";
-import PropTypes from "prop-types";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
+import Tab from "@mui/material/Tab";
+import Tabs from "@mui/material/Tabs";
+import PropTypes from "prop-types";
+import React, { useEffect } from "react";
+import { getProductCategory } from "../../Network/Api";
 import MattressComponent from "../components/ProductCategoryComponent/MattressComponent";
 import PillowComponent from "../components/ProductCategoryComponent/PillowComponent";
 import SofaCumBed from "../components/ProductCategoryComponent/SofaCumBed";
-import axios from "axios";
-import { getProductCategory } from "../../Network/Api";
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
