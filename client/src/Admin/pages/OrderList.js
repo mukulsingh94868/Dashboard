@@ -53,7 +53,6 @@ const OrderList = () => {
       order?.shippingAddress?.city?.toLowerCase()?.includes(searchQuery.toLowerCase()))
     )
     : [];
-
   return (
     <div className="form-container">
       <div className='exportTech'>
