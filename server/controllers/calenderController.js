@@ -23,6 +23,7 @@ exports.getEvents = async (req, res) => {
   }
 };
 
+
 // Create a new event
 exports.createEvent = async (req, res) => {
   const userId = res?.locals?.userId;
