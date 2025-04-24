@@ -45,6 +45,7 @@ exports.createEvent = async (req, res) => {
   }
 };
 
+
 // Delete an event
 exports.deleteEvent = async (req, res) => {
   try {
