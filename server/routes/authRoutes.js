@@ -2,6 +2,7 @@ const express = require('express');
 const { register, login, getAllData, updateData, deleteData, getSingleData, forgotPassword, resetPassword, changePassword } = require('../controllers/authController');
 const router = express.Router();
 
+
 router.post('/register', register);
 router.post('/login', login);
 router.get('/getData', getAllData);
