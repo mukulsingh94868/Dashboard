@@ -43,4 +43,5 @@ const userModel = new mongoose.Schema({
 });
 
 const AuthModel = mongoose.model('users', userModel);
+
 module.exports = AuthModel;
