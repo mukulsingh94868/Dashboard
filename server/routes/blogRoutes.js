@@ -8,4 +8,5 @@ router.post('/post', upload.single("image"), blogPost);
 router.get('/post', getPost);
 router.get('/post/:id', getPostById);
 
+
 module.exports = router;
