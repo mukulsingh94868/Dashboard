@@ -11,7 +11,6 @@ exports.getAllEvents = async (req, res) => {
   }
 };
 
-
 // Get all events with user Id
 exports.getEvents = async (req, res) => {
   try {
@@ -22,7 +21,6 @@ exports.getEvents = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
-
 
 // Create a new event
 exports.createEvent = async (req, res) => {
